@@ -14,8 +14,8 @@ class { 'apache::mod::rewrite': }
 class { 'apache::mod::proxy': }
 class { 'apache::mod::proxy_http': }
 
-apache::custom_config { "proxyremote":
-    content => "ProxyRemote * http://proxy.service.consul:3128"
+apache::custom_config { 'proxyremote':
+    content => 'ProxyRemote * http://proxy.service.consul:3128'
 }
 
 file { '/etc/apache2/haul':
@@ -60,7 +60,7 @@ apache::vhost { 'tlscanary':
     rewrites           => [
         {
            comment      => 'Proxy to our bucket',
-           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ]
+           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ],
            rewrite_rule => ['/(.*) ${sitemap:tlscanary} [P,L]'],
         }
     ]
