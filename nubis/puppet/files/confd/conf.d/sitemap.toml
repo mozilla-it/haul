@@ -1,0 +1,13 @@
+[template]
+src = "sitemap.txt.tmpl"
+dest = "/etc/apache2/haul/sitemap.txt"
+prefix = "/%%PROJECT%%/%%ENVIRONMENT%%/config"
+
+uid = 0
+gid = 0
+mode = "0640"
+
+keys = [
+    "/sites/*",
+    "/sites"
+]
