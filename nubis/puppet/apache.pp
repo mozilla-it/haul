@@ -37,6 +37,13 @@ apache::vhost { 'localhost':
     port          => 81,
     default_vhost => true,
     docroot       => '/var/www/html',
+
+    setenvif           => [
+      'Remote_Addr 127\.0\.0\.1 internal',
+      'Remote_Addr ^10\. internal',
+    ],
+    access_log_env_var => '!internal',
+    access_log_format  => '%a %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"',
 }
 
 apache::vhost { 'tlscanary':
