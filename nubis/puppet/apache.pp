@@ -88,7 +88,7 @@ apache::vhost { 'nightly':
     rewrites           => [
         {
            comment      => 'Proxy to our bucket',
-           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ]
+           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ],
            rewrite_rule => ['/(.*) ${sitemap:nightly} [P,L]'],
         }
     ]
@@ -115,7 +115,7 @@ apache::vhost { 'archive':
     rewrites           => [
         {
            comment      => 'Proxy to our bucket',
-           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ]
+           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ],
            rewrite_rule => ['/(.*) ${sitemap:archive} [P,L]'],
         }
     ]
