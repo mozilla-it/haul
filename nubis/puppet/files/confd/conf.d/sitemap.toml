@@ -5,9 +5,11 @@ prefix = "/%%PROJECT%%/%%ENVIRONMENT%%/config"
 
 uid = 0
 gid = 0
-mode = "0640"
+mode = "0644"
 
 keys = [
     "/sites/*",
     "/sites"
 ]
+
+reload_cmd = "if /etc/init.d/apache2 status ; then /etc/init.d/apache2 reload ; else /etc/init.d/apache2 start; fi"
