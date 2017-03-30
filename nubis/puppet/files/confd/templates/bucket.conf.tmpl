@@ -1,0 +1,5 @@
+ProxyRemote * http://proxy.service.consul:3128
+
+RewriteEngine On
+
+RewriteRule /(.*) {{ getv "/bucket" }}$1 [P]

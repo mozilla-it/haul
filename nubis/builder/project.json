@@ -1,0 +1,10 @@
+{
+  "variables": {
+    "builders": [
+      "amazon-ebs-ubuntu"
+    ],
+    "project_description": "nubis haul",
+    "project_name": "haul",
+    "project_version": "v1.4.0-dev"
+  }
+}

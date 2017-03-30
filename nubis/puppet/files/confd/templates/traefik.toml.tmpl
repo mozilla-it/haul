@@ -1,0 +1,43 @@
+defaultEntryPoints = ["http","https"]
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+    [entryPoints.http.redirect]
+      entryPoint = "https"
+  [entryPoints.https]
+    address = ":443"
+    [entryPoints.https.tls]
+
+[web]
+address = ":8082"
+
+[consul]
+endpoint = "127.0.0.1:8500"
+watch = true
+prefix = "haul/{{ getv "/config/EnvironmentName" }}/config"
+
+[acme]
+# Handle when this isn't set
+email="{{ getv "/config/Email/Destination" }}"
+storage = "haul/{{ getv "/config/EnvironmentName" }}/acme"
+entryPoint = "https"
+
+# Disable for prod
+caServer = "https://acme-staging.api.letsencrypt.org/directory"
+
+acmeLogging = true
+OnHostRule = true
+
+[file]
+
+[backends]
+  [backends.backend1]
+    [backends.backend1.servers.server1]
+    # Send to Varnish
+    url = "http://127.0.0.1:82"
+
+[frontends]
+  [frontends.frontend1]
+  backend = "backend1"
+  passHostHeader = true
