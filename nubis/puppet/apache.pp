@@ -15,7 +15,7 @@ class { 'apache::mod::proxy': }
 class { 'apache::mod::proxy_http': }
 
 apache::custom_config { 'proxyremote':
-    content => 'ProxyRemote * http://proxy.service.consul:3128'
+    content => 'ProxyRemote * http://proxy.service.consul:3128',
     verify_config => false,
 }
 
