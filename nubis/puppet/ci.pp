@@ -1,3 +1,7 @@
+package { 'docker.io':
+  ensure => 'present',
+}
+
 package { 'daemon':
   ensure => 'present'
 }->
