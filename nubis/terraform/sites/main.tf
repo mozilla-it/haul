@@ -21,6 +21,12 @@ resource "consul_keys" "config" {
     value  = "http://${module.bucket.website_endpoint}/"
     delete = true
   }
+
+  key {
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/index"
+    value  = "${var.site_index}"
+    delete = true
+  }
 }
 
 module "bucket" {
