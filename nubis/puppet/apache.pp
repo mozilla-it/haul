@@ -38,8 +38,6 @@ apache::vhost { 'localhost':
     default_vhost => true,
     docroot       => '/var/www/html',
     access_log_file    => '/dev/null',
-    error_log_file     => '/dev/null',
-
 }
 
 apache::vhost { 'tlscanary':
