@@ -37,9 +37,8 @@ apache::vhost { 'localhost':
     port          => 81,
     default_vhost => true,
     docroot       => '/var/www/html',
-
-    access_log_file    => '/dev/null'
-    error_log_file     => '/dev/null'
+    access_log_file    => '/dev/null',
+    error_log_file     => '/dev/null',
 
 }
 

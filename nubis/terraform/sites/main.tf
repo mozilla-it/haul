@@ -1,5 +1,5 @@
 module "bucket" {
-  source       = "github.com/gozer/nubis-terraform//bucket?ref=develop"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=develop"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
