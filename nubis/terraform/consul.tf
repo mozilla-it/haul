@@ -17,14 +17,12 @@ provider "consul" {
 # Publish our outputs into Consul for our application to consume
 resource "consul_keys" "config" {
   key {
-    name   = "environment"
     path   = "${module.consul.config_prefix}/EnvironmentName"
     value  = "${var.environment}"
     delete = true
   }
 
   key {
-    name   = "email"
     path   = "${module.consul.config_prefix}/Email/Destination"
     value  = "${var.acme_email}"
     delete = true
