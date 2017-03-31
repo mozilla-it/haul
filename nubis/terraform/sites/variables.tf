@@ -17,3 +17,6 @@ variable "service_name" {
 variable "role" {}
 
 variable "site_name" {}
+variable "site_index" {
+  default = "index.html"
+}

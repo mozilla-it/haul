@@ -49,6 +49,7 @@ module "tlscanary" {
   role         = "${module.worker.role}"
   
   site_name = "tlscanary"
+  site_index = "index.htm"
 }
 
 module "nightly" {

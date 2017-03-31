@@ -1,10 +1,12 @@
 module "bucket" {
-  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.4.0"
+  source       = "github.com/gozer/nubis-terraform//bucket?ref=develop"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
   service_name = "${var.service_name}"
   role         = "${var.role}"
   
-  purpose      = "${var.site_name}"
+  acl           = "public-read"
+  website_index = "${var.site_index}"
+  purpose       = "${var.site_name}"
 }
