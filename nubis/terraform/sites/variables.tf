@@ -20,3 +20,6 @@ variable "site_name" {}
 variable "site_index" {
   default = "index.html"
 }
+variable "site_frequency" {
+  default = "H/10 * * * *"
+}

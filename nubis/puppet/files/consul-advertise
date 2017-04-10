@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cat <<EOF | tee /etc/consul/advertise.json
+{
+  "advertise_addr"         : "$(ec2metadata --local-ipv4)"
+}
+EOF
