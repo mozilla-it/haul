@@ -62,4 +62,5 @@ module "nightly" {
   role         = "${module.worker.role}"
   
   site_name = "nightly"
+  site_frequency = "H/15 * * * *"
 }
