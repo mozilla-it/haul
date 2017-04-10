@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 cat <<EOF | tee /etc/consul/advertise.json
 {

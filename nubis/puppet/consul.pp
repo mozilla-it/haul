@@ -1,4 +1,4 @@
-file { '/etc/nubis.d/000-consul-advertise':
+file { '/etc/nubis.d/0-consul-advertise':
   ensure => file,
   owner  => root,
   group  => root,
