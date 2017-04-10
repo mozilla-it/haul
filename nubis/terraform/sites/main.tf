@@ -27,6 +27,12 @@ resource "consul_keys" "config" {
     value  = "${var.site_index}"
     delete = true
   }
+
+  key {
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/frequency"
+    value  = "${var.site_frequency}"
+    delete = true
+  }
 }
 
 module "bucket" {
