@@ -1,5 +1,5 @@
 [template]
-src = "sitemap.txt.tmpl"
+src = "sites.yaml.tmpl"
 dest = "/etc/haul/sites.yaml"
 prefix = "/%%STACK%%/%%ENVIRONMENT%%/config"
 
