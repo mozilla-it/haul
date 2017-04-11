@@ -24,7 +24,7 @@ resource "consul_keys" "config" {
 
   key {
     path   = "${module.consul.config_prefix}/sites/${var.site_name}/bucket_name"
-    value  = "http://${module.bucket.name}/"
+    value  = "${module.bucket.name}"
     delete = true
   }
 
