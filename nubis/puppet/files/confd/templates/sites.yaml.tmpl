@@ -1,0 +1,4 @@
+# Confd generated
+---{{range ls "/sites" }}
+{{.}}:{{range gets ( print "/sites/" . "/*") }} {{ $path := split .Key "/" }} {{ $key := index $path 3 }}
+  {{$key}}: "{{.Value}}"{{end}}{{end}}

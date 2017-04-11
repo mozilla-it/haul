@@ -19,7 +19,7 @@ apache::custom_config { 'proxyremote':
     verify_config => false,
 }
 
-file { '/etc/apache2/haul':
+file { '/etc/haul':
   ensure  => directory,
 
   owner   => 'root',
@@ -63,7 +63,7 @@ apache::vhost { 'tlscanary':
     rewrites           => [
         {
            comment      => 'Proxy to our bucket',
-           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ],
+           rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
            rewrite_rule => ['/(.*) ${sitemap:tlscanary} [P,L]'],
         }
     ]
@@ -91,7 +91,7 @@ apache::vhost { 'nightly':
     rewrites           => [
         {
            comment      => 'Proxy to our bucket',
-           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ],
+           rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
            rewrite_rule => ['/(.*) ${sitemap:nightly} [P,L]'],
         }
     ]
@@ -118,7 +118,7 @@ apache::vhost { 'archive':
     rewrites           => [
         {
            comment      => 'Proxy to our bucket',
-           rewrite_map  => [ 'sitemap txt:/etc/apache2/haul/sitemap.txt' ],
+           rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
            rewrite_rule => ['/(.*) ${sitemap:archive} [P,L]'],
         }
     ]

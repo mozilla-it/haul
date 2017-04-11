@@ -1,6 +1,6 @@
 [template]
 src = "sitemap.txt.tmpl"
-dest = "/etc/haul/sitemap.txt"
+dest = "/etc/haul/sites.yaml"
 prefix = "/%%STACK%%/%%ENVIRONMENT%%/config"
 
 uid = 0
@@ -11,5 +11,3 @@ keys = [
     "/sites/*",
     "/sites"
 ]
-
-reload_cmd = "if /etc/init.d/apache2 status ; then /etc/init.d/apache2 reload ; else /etc/init.d/apache2 start; fi"
