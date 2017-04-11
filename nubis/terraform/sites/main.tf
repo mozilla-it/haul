@@ -17,8 +17,14 @@ provider "consul" {
 # Publish our outputs into Consul for our application to consume
 resource "consul_keys" "config" {
   key {
-    path   = "${module.consul.config_prefix}/sites/${var.site_name}/bucket"
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/bucket_endpoint"
     value  = "http://${module.bucket.website_endpoint}/"
+    delete = true
+  }
+
+  key {
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/bucket_name"
+    value  = "http://${module.bucket.id}/"
     delete = true
   }
 
