@@ -1,17 +1,17 @@
 module "worker" {
-  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.0"
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  purpose      = "webserver"
-  instance_type = "t2.medium"
+  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.0"
+  region            = "${var.region}"
+  environment       = "${var.environment}"
+  account           = "${var.account}"
+  service_name      = "${var.service_name}"
+  purpose           = "webserver"
+  instance_type     = "t2.medium"
   root_storage_size = "64G"
-  ami          = "${var.ami}"
-  elb          = "${module.load_balancer.name}"
-  ssh_key_file = "${var.ssh_key_file}"
-  ssh_key_name = "${var.ssh_key_name}"
-  min_instances = 1
+  ami               = "${var.ami}"
+  elb               = "${module.load_balancer.name}"
+  ssh_key_file      = "${var.ssh_key_file}"
+  ssh_key_name      = "${var.ssh_key_name}"
+  min_instances     = 1
 }
 
 module "load_balancer" {
@@ -50,7 +50,7 @@ module "tlscanary" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name = "tlscanary"
+  site_name  = "tlscanary"
   site_index = "index.htm"
 }
 
@@ -63,7 +63,7 @@ module "nightly" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name = "nightly"
+  site_name      = "nightly"
   site_frequency = "H/15 * * * *"
 }
 
@@ -76,7 +76,7 @@ module "archive" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name    = "archive"
+  site_name = "archive"
 }
 
 module "bugzilla" {
@@ -88,7 +88,7 @@ module "bugzilla" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name    = "bugzilla"
+  site_name = "bugzilla"
 }
 
 module "services" {
@@ -100,7 +100,7 @@ module "services" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name    = "services"
+  site_name = "services"
 }
 
 module "sso" {
@@ -112,7 +112,7 @@ module "sso" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name    = "sso"
+  site_name = "sso"
 }
 
 module "publicsuffix" {
@@ -124,5 +124,5 @@ module "publicsuffix" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name    = "publicsuffix"
+  site_name = "publicsuffix"
 }
