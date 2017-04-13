@@ -5,6 +5,8 @@ module "worker" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
   purpose      = "webserver"
+  instance_type = "t2.medium"
+  root_storage_size = "64G"
   ami          = "${var.ami}"
   elb          = "${module.load_balancer.name}"
   ssh_key_file = "${var.ssh_key_file}"
