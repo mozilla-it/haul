@@ -15,3 +15,6 @@ mod 'darin/zypprepo', '1.0.2'
 
 # Jenkins itself
 mod 'rtyler/jenkins', '1.7.0'
+
+# Docker
+mod 'garethr/docker', '5.3.0'
