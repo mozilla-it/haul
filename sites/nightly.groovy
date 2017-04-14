@@ -9,7 +9,7 @@ node {
    }
    
   stage ('Build') {
-    docker.image('python:2.7').inside {
+    docker.image('python:2.7').inside('-e HTTPS_PROXY=http://proxy.service.consul:3128/ -e HTTP_PROXY=http://proxy.service.consul:3128/')  {
       sh "python src/scrape.py --output-dir=src/"
     }
     sh "rsync -a --delete --cvs-exclude src/ dst/"
