@@ -2,9 +2,6 @@ class {'varnish':
   varnish_listen_port => 82,
   storage_type          => 'file',
   varnish_storage_size  => '80%',
-  require => [
-    Class['docker'],
-  ]
 }
 
 class { 'varnish::vcl':
