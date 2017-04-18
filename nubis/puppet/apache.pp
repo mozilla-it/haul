@@ -130,7 +130,7 @@ apache::vhost { 'trackertest':
     serveraliases      => [
       'itsatracker.org',
       'itsatracker.com',
-    ]
+    ],
 
     docroot            => '/var/www/html',
 
