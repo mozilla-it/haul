@@ -16,5 +16,5 @@ file { '/etc/resolvconf/resolv.conf.d/tail':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => 'nameserver 172.17.42.1',
+  content => "nameserver 172.17.42.1\n",
 }
