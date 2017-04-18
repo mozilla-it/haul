@@ -20,6 +20,11 @@ class { 'jenkins':
   },
 }
 
+jenkins::job { '00-haul':
+  enabled => 0,
+  config  => "",
+}
+
 jenkins::plugin { 'workflow-cps':
     version => '2.29'
 }
