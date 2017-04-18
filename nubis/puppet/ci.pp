@@ -20,8 +20,9 @@ class { 'jenkins':
   },
 }
 
-user { 'jenkins':
-  groups => 'docker',
+# Jenkins is already defining the user for this, so cheat
+exec { 'jenkins-docker-group':
+  command => '/usr/sbin/usermod -G docker jenkins',
   require => [
     Class['jenkins'],
     Class['docker'],
