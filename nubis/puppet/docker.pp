@@ -11,10 +11,10 @@ file { '/etc/dnsmasq.d/docker.conf':
   content => 'interface=docker0',
 }
 
-file { '/etc/network/interfaces.d/dns.cfg':
+file { '/etc/resolvconf/resolv.conf.d/tail':
   ensure  => file,
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => 'append domain-name-servers 172.17.42.1',
+  content => 'nameserver 172.17.42.1',
 }
