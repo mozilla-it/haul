@@ -29,11 +29,6 @@ exec { 'jenkins-docker-group':
   ],
 }
 
-jenkins::job { '00-haul':
-  enabled => 0,
-  config  => "",
-}
-
 jenkins::plugin { 'workflow-cps':
     version => '2.29'
 }
