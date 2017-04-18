@@ -20,6 +20,14 @@ class { 'jenkins':
   },
 }
 
+user { 'jenkins':
+  groups => 'docker',
+  require => [
+    Class['jenkins'],
+    Class['docker'],
+  ],
+}
+
 jenkins::job { '00-haul':
   enabled => 0,
   config  => "",
