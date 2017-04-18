@@ -15,7 +15,7 @@ class { 'apache::mod::proxy': }
 class { 'apache::mod::proxy_http': }
 
 apache::custom_config { 'proxyremote':
-    content => 'ProxyRemote * http://proxy.service.consul:3128',
+    content       => 'ProxyRemote * http://proxy.service.consul:3128',
     verify_config => false,
 }
 
@@ -33,17 +33,20 @@ file { '/etc/haul':
 
 # For monitoring to have someone to talk to
 apache::vhost { 'localhost':
-    priority      => 0,
-    port          => 81,
-    default_vhost => true,
-    docroot       => '/var/www/html',
+    priority        => 0,
+    port            => 81,
+    default_vhost   => true,
+    docroot         => '/var/www/html',
 
-    access_log_file    => '/dev/null',
+    access_log_file => '/dev/null',
 }
 
 apache::vhost { 'tlscanary':
     port               => 81,
     servername         => 'tlscanary.mozilla.org',
+    serveraliases      => [
+      'tlscanary.allizom.org',
+    ],
 
     docroot            => '/var/www/html',
 
