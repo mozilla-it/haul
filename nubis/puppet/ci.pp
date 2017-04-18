@@ -12,7 +12,7 @@ class { 'jenkins':
   version            => 'latest',
   configure_firewall => false,
   service_enable     => true,
-  service_ensure     => 'stopped',
+  service_ensure     => 'running',
   config_hash        => {
     'JAVA_ARGS' => {
       'value' => '-Djava.awt.headless=true -Dhudson.diyChunking=false -Dhttp.proxyHost=proxy.service.consul -Dhttp.proxyPort=3128 -Dhttps.proxyHost=proxy.service.consul -Dhttps.proxyPort=3128'
