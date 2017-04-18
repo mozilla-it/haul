@@ -307,8 +307,3 @@ jenkins::plugin { 'token-macro':
 jenkins::plugin { 'cloudbees-folder':
     version => '6.0.3'
 }
-
-jenkins::plugin { 'credentials':
-    version => '2.1.13'
-}
-
