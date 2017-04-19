@@ -15,7 +15,7 @@ class { 'jenkins':
   service_ensure     => 'running',
   config_hash        => {
     'JAVA_ARGS' => {
-      'value' => '-Djava.awt.headless=true -Dhudson.diyChunking=false -Dhttp.proxyHost=proxy.service.consul -Dhttp.proxyPort=3128 -Dhttps.proxyHost=proxy.service.consul -Dhttps.proxyPort=3128'
+      'value' => '-Djenkins.install.runSetupWizard=false -Djava.awt.headless=true -Dhudson.diyChunking=false -Dhttp.proxyHost=proxy.service.consul -Dhttp.proxyPort=3128 -Dhttps.proxyHost=proxy.service.consul -Dhttps.proxyPort=3128'
     },
   },
 }
@@ -26,6 +26,28 @@ exec { 'jenkins-docker-group':
   require => [
     Class['jenkins'],
     Class['docker'],
+  ],
+}
+
+file { '/var/lib/jenkins/init.groovy.d':
+  ensure => directory,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  require => [
+    Class['jenkins'],
+  ],
+}
+
+file { '/var/lib/jenkins/init.groovy.d/security.groovy':
+  ensure  => present,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  source  => 'puppet:///nubis/files/security.groovy',
+
+  require => [
+    File['/var/lib/jenkins/init.groovy.d''],
   ],
 }
 
