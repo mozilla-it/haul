@@ -5,8 +5,10 @@
 
 # Define how Apache should be installed and configured
 
+$port = 81
+
 class { 'nubis_apache':
-  port      => 81,
+  port      => $port,
   check_url => '/server-status?auto',
 }
 
@@ -34,7 +36,7 @@ file { '/etc/haul':
 # For monitoring to have someone to talk to
 apache::vhost { 'localhost':
     priority        => 0,
-    port            => 81,
+    port            => $port,
     default_vhost   => true,
     docroot         => '/var/www/html',
 
