@@ -28,7 +28,7 @@ apache::vhost { 'tlscanary':
     {
       comment      => 'Proxy to our bucket',
       rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-      rewrite_rule => ['/(.*) ${sitemap:tlscanary} [P,L]'],
+      rewrite_rule => ['/(.*) ${sitemap:tlscanary}$1 [P,L]'],
     }
   ]
 }
@@ -55,7 +55,7 @@ apache::vhost { 'nightly':
       {
          comment      => 'Proxy to our bucket',
          rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-         rewrite_rule => ['/(.*) ${sitemap:nightly} [P,L]'],
+         rewrite_rule => ['/(.*) ${sitemap:nightly}$1 [P,L]'],
       }
   ]
 }
@@ -82,7 +82,7 @@ apache::vhost { 'archive':
       {
          comment      => 'Proxy to our bucket',
          rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-         rewrite_rule => ['/(.*) ${sitemap:archive} [P,L]'],
+         rewrite_rule => ['/(.*) ${sitemap:archive}$1 [P,L]'],
       }
   ]
 }
@@ -113,7 +113,7 @@ apache::vhost { 'trackertest':
       {
          comment      => 'Proxy to our bucket',
          rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-         rewrite_rule => ['/(.*) ${sitemap:trackertest} [P,L]'],
+         rewrite_rule => ['/(.*) ${sitemap:trackertest}$1 [P,L]'],
       }
   ]
 }

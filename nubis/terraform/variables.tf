@@ -25,5 +25,5 @@ variable "ssh_key_name" {
 }
 
 variable "acme_email" {
-  default = "gozer@ectoplasm.org"
+  default = "gozer+haul@ectoplasm.org"
 }
