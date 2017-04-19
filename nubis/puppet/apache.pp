@@ -41,4 +41,11 @@ apache::vhost { 'localhost':
     docroot         => '/var/www/html',
 
     access_log_file => '/dev/null',
+
+    rewrites           => [
+      {
+         comment      => 'Proxy to Jenkins',
+         rewrite_rule => ['/jenkins/(.*) http://localhost:8080/jenkins/$1 [P,L]'],
+      }
+    ]
 }
