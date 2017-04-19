@@ -17,7 +17,7 @@ class { 'apache::mod::proxy': }
 class { 'apache::mod::proxy_http': }
 
 apache::custom_config { 'proxyremote':
-    content       => 'ProxyRemoteMatch "\.amazonaws\.com/$" http://proxy.service.consul:3128',
+    content       => 'ProxyRemoteMatch "\.amazonaws\.com/" http://proxy.service.consul:3128',
     verify_config => false,
 }
 
