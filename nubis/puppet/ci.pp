@@ -63,6 +63,18 @@ file { '/var/lib/jenkins/jenkins.security.QueueItemAuthenticatorConfiguration.xm
   ],
 }
 
+file { '/var/lib/jenkins/config.xml':
+  ensure  => present,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  source  => 'puppet:///nubis/files/jenkins.xml',
+
+  require => [
+    Class['jenkins'],
+  ],
+}
+
 file { '/var/lib/jenkins/org.jenkinsci.plugins.workflow.libs.GlobalLibraries.xml':
   ensure  => present,
   owner   => 'jenkins',
