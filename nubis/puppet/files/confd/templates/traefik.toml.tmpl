@@ -3,6 +3,8 @@ defaultEntryPoints = ["http","https"]
 [entryPoints]
   [entryPoints.http]
     address = ":80"
+     [entryPoints.http.redirect]
+       entryPoint = "https"
   [entryPoints.https]
     address = ":443"
     [entryPoints.https.tls]
@@ -31,9 +33,6 @@ onHostRule = true
 [file]
 
 [backends]
-  [backends.jenkins]
-    [backends.jenkins.servers.server1]
-    url = "http://127.0.0.1:8080"
   [backends.backend1]
     [backends.backend1.servers.server1]
     # Send to Varnish
@@ -43,8 +42,4 @@ onHostRule = true
   [frontends.frontend1]
   backend = "backend1"
   passHostHeader = true
-  entryPoints = [ "https" ]
-  [frontends.jenkins]
-  backend = "jenkins"
-  entryPoints = [ "http" ]
-  passHostHeader = true
+  entryPoints = [ "http", "https" ]
