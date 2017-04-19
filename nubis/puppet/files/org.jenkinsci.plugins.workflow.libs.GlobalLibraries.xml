@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.workflow.libs.GlobalLibraries plugin="workflow-cps-global-lib@2.7">
+  <libraries>
+    <org.jenkinsci.plugins.workflow.libs.LibraryConfiguration>
+      <name>nubis</name>
+      <retriever class="org.jenkinsci.plugins.workflow.libs.SCMSourceRetriever">
+        <scm class="jenkins.plugins.git.GitSCMSource" plugin="git@3.2.0">
+          <remote>https://github.com/gozer/haul-libs.git</remote>
+          <credentialsId></credentialsId>
+          <remoteName>origin</remoteName>
+          <rawRefSpecs>+refs/heads/*:refs/remotes/origin/*</rawRefSpecs>
+          <includes>*</includes>
+          <excludes></excludes>
+          <ignoreOnPushNotifications>false</ignoreOnPushNotifications>
+        </scm>
+      </retriever>
+      <defaultVersion>master</defaultVersion>
+      <implicit>false</implicit>
+      <allowVersionOverride>true</allowVersionOverride>
+    </org.jenkinsci.plugins.workflow.libs.LibraryConfiguration>
+  </libraries>
+</org.jenkinsci.plugins.workflow.libs.GlobalLibraries>

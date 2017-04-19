@@ -47,10 +47,55 @@ file { '/var/lib/jenkins/init.groovy.d/security.groovy':
   source  => 'puppet:///nubis/files/security.groovy',
 
   require => [
-    File['/var/lib/jenkins/init.groovy.d''],
+    File['/var/lib/jenkins/init.groovy.d'],
   ],
 }
 
+file { '/var/lib/jenkins/jenkins.security.QueueItemAuthenticatorConfiguration.xml':
+  ensure  => present,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  source  => 'puppet:///nubis/files/jenkins.security.QueueItemAuthenticatorConfiguration.xml',
+
+  require => [
+    Class['jenkins'],
+  ],
+}
+
+file { '/var/lib/jenkins/org.jenkinsci.plugins.workflow.libs.GlobalLibraries.xml':
+  ensure  => present,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  source  => 'puppet:///nubis/files/org.jenkinsci.plugins.workflow.libs.GlobalLibraries.xml',
+
+  require => [
+    Class['jenkins'],
+  ],
+}
+
+file { '/var/lib/jenkins/jobs/00-haul':
+  ensure  => directory,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  require => [
+    Class['jenkins'],
+  ],
+}
+
+file { '/var/lib/jenkins/jobs/00-haul/config.xml':
+  ensure  => present,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+
+  source  => 'puppet:///nubis/files/haul.xml',
+
+  require => [
+    File['/var/lib/jenkins/jobs/00-haul'],
+  ],
+}
 jenkins::plugin { 'workflow-cps':
     version => '2.29'
 }
@@ -268,7 +313,7 @@ jenkins::plugin { 'docker-commons':
 }
 
 jenkins::plugin { 'matrix-project':
-    version => '1.9'
+    version => '1.10'
 }
 
 jenkins::plugin { 'docker-workflow':
@@ -337,4 +382,8 @@ jenkins::plugin { 'token-macro':
 
 jenkins::plugin { 'cloudbees-folder':
     version => '6.0.3'
+}
+
+jenkins::plugin { 'authorize-project':
+    version => '1.3.0'
 }
