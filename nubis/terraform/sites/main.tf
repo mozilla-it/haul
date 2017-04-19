@@ -35,8 +35,14 @@ resource "consul_keys" "config" {
   }
 
   key {
-    path   = "${module.consul.config_prefix}/sites/${var.site_name}/frequency"
-    value  = "${var.site_frequency}"
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/poll_frequency"
+    value  = "${var.site_poll_frequency}"
+    delete = true
+  }
+
+  key {
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/build_frequency"
+    value  = "${var.site_build_frequency}"
     delete = true
   }
 }
