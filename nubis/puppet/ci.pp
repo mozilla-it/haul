@@ -1,5 +1,5 @@
-package { 'awscli':
-  ensure => latest,
+python::pip { 'awscli':
+  ensure  => '1.11.78',
 }
 
 package { 'mercurial':
