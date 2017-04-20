@@ -276,13 +276,13 @@ apache::vhost { 'seamonkey':
     "set X-Nubis-Version ${project_version}",
     "set X-Nubis-Project ${project_name}",
     "set X-Nubis-Build   ${packer_build_name}",
-    "set X-Nubis-Site    ${title}",
+    "set X-Nubis-Site    seamonkey",
   ],
   rewrites           => [
       {
          comment      => 'Proxy to our bucket',
          rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-         rewrite_rule => ["/(.*) \${sitemap:${title}}\$1 [P,L]"],
+         rewrite_rule => ['/(.*) ${sitemap:seamonkey}$1 [P,L]"],
       }
   ]
 }
