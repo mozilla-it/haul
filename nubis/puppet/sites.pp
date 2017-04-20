@@ -5,7 +5,6 @@ $default_headers = [
   "set X-Nubis-Version ${project_version}",
   "set X-Nubis-Project ${project_name}",
   "set X-Nubis-Build   ${packer_build_name}",
-  "set X-Nubis-Site    $title",
   'set X-Content-Type-Options "nosniff"',
   'set X-XSS-Protection "1; mode=block"',
   'set X-Frame-Options "DENY"',
@@ -35,7 +34,7 @@ define nubis::static ($servername, $serveraliases=[], $headers=[], $rewrites=[])
     access_log_env_var => '!internal',
     access_log_format  => $access_log_format,
   
-    headers            => concat($default_headers, $headers),
+    headers            => concat($default_headers, "set X-Nubis-Site $title", $headers),
     rewrites           => concat($rewrites, $final_rewrite),
   }
 }
