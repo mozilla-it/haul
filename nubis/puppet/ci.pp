@@ -2,6 +2,10 @@ package { 'awscli':
   ensure => latest,
 }
 
+package { 'mercurial':
+  ensure => latest,
+}
+
 package { 'daemon':
   ensure => 'present'
 }->
