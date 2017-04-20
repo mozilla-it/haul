@@ -1,5 +1,5 @@
 module "worker" {
-  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.0"
+  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.1"
   region            = "${var.region}"
   environment       = "${var.environment}"
   account           = "${var.account}"
@@ -15,7 +15,7 @@ module "worker" {
 }
 
 module "load_balancer" {
-  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -32,8 +32,14 @@ module "load_balancer" {
   health_check_target = "TCP:80"
 }
 
+### XXX: Cheat for now
+#resource "aws_proxy_protocol_policy" "smtp" {
+#  load_balancer  = "${module.load_balancer.name}"
+#  instance_ports = ["80", "443"]
+#}
+
 module "dns" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
