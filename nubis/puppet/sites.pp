@@ -207,6 +207,12 @@ apache::vhost { 'tlscanary':
     "set X-Nubis-Version ${project_version}",
     "set X-Nubis-Project ${project_name}",
     "set X-Nubis-Build   ${packer_build_name}",
+
+    #Bug 1317833 Observatory
+    'set X-Content-Type-Options "nosniff"',
+    'set X-XSS-Protection "1; mode=block"',
+    'set X-Frame-Options "DENY"',
+    'set Strict-Transport-Security "max-age=31536000"',
   ],
 
   rewrites           => [
