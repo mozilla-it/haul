@@ -8,6 +8,7 @@ defaultEntryPoints = ["http","https"]
   [entryPoints.https]
     address = ":443"
     [entryPoints.https.tls]
+    MinVersion = "VersionTLS12"
 
 [web]
 address = ":8082"
