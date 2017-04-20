@@ -6,7 +6,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'nubis/nubis_apache',
     :git => 'https://github.com/nubisproject/nubis-puppet-apache.git',
-    :ref => 'v0.1.7'
+    :ref => '68711d00983e7ffd7da91181e87b4f6b382ba032'
 
 # Jenkins Dependencies
 mod 'puppetlabs/apt', '2.2.1'
