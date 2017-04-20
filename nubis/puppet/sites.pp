@@ -282,7 +282,7 @@ apache::vhost { 'seamonkey':
       {
          comment      => 'Proxy to our bucket',
          rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-         rewrite_rule => ['/(.*) ${sitemap:seamonkey}$1 [P,L]"],
+         rewrite_rule => ['/(.*) ${sitemap:seamonkey}$1 [P,L]'],
       }
   ]
 }
