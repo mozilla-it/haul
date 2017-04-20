@@ -21,6 +21,11 @@ apache::custom_config { 'proxyremote':
     verify_config => false,
 }
 
+apache::custom_config { 'proxyerror':
+    content       => 'ProxyErrorOverride On',
+    verify_config => false,
+}
+
 file { '/etc/haul':
   ensure  => directory,
 
