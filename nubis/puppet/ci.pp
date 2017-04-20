@@ -402,3 +402,7 @@ jenkins::plugin { 'cloudbees-folder':
 jenkins::plugin { 'authorize-project':
     version => '1.3.0'
 }
+
+jenkins::plugin { 'mercurial':
+    version => '1.59'
+}
