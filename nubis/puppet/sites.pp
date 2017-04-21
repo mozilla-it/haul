@@ -1,4 +1,6 @@
-
+nubis::static { 'static':
+  servername => 'static.mozilla.com',
+}
 
 nubis::static { 'archive':
   servername => 'website-archive.mozilla.org',
