@@ -35,7 +35,8 @@ define nubis::static ($servername, $serveraliases=[], $indexes=[], $headers=[], 
 
     docroot            => "/data/haul/$title",
 
-    directoryindex     => join(" ", concat($indexes, $default_indexes)),
+    directoryindex     => join(concat($indexes, $default_indexes), " "),
+
     setenvif           => [
       'Remote_Addr 127\.0\.0\.1 internal',
       'Remote_Addr ^10\. internal',
