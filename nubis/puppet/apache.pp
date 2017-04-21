@@ -40,7 +40,6 @@ file { '/etc/haul':
 apache::vhost { 'localhost':
     priority        => 0,
     port            => $port,
-    default_vhost   => true,
     docroot         => '/var/www/html',
 
     access_log_file => '/dev/null',
