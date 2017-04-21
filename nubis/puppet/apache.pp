@@ -5,8 +5,6 @@
 
 # Define how Apache should be installed and configured
 
-$port = 81
-
 class { 'nubis_apache':
   port      => $port,
   check_url => '/server-status?auto',

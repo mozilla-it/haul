@@ -1,5 +1,4 @@
 $port = 81
-$docroot = '/var/www/html'
 $access_log_format = '%a %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"'
 
 $default_headers = [
