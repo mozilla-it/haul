@@ -34,7 +34,7 @@ module "nightly" {
 
   site_name      = "nightly"
   site_poll_frequency = "H/15 * * * *"
-  site_build_frequency = "@hourly"
+  site_build_frequency = "@daily"
 }
 
 module "archive" {
