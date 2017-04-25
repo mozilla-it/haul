@@ -7,7 +7,7 @@ module "static" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "static"
+  site_name = "static"
 }
 
 module "tlscanary" {
@@ -32,8 +32,8 @@ module "nightly" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name      = "nightly"
-  site_poll_frequency = "H/15 * * * *"
+  site_name            = "nightly"
+  site_poll_frequency  = "H/15 * * * *"
   site_build_frequency = "@daily"
 }
 
