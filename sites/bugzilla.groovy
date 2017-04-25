@@ -11,7 +11,7 @@ node {
   stage ('Build') {
     // Symlink destination
     sh "ln -sf ../dst src/dest"
-    docker.image('perl:5.22').inside('-u 0:0 -e https_proxy -e HTTPS_PROXY -e http_proxy -e HTTP_PROXY') {
+    docker.image('perl:5.22').inside('-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
       sh "apt-get update"
       sh "apt-get -y install rsync xmlto texlive-lang-cyrillic lynx"
       sh "cd src/files && cpanm --notest --installdeps ."
