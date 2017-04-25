@@ -24,7 +24,7 @@ class { 'jenkins':
   repo               => false,
   version            => 'latest',
   configure_firewall => false,
-  service_enable     => false,
+  service_enable     => true,
   service_ensure     => 'stopped',
   config_hash        => {
     'JENKINS_ARGS' => {
