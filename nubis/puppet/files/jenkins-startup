@@ -1,7 +1,6 @@
-#!/bin/bash -l
+#!/bin/bash
 
-# Exit if we are a CI role
-nubis-purpose ci && exit 0
+# Exit if we are not a CI role
+nubis-purpose ci || exit 0
 
-# Stop CI otherwise
-/etc/init.d/jenkins stop
+/etc/init.d/jenkins start
