@@ -18,7 +18,7 @@ module "load_balancer_web" {
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
-  service_name = "${var.service_name}"
+  service_name = "${var.service_name}-web"
 
   # We are a unusual Load Balancer with raw connectivity
   no_ssl_cert        = "1"
@@ -52,7 +52,7 @@ module "load_balancer_ci" {
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
-  service_name = "${var.service_name}"
+  service_name = "${var.service_name}-ci"
 
   # We are a unusual Load Balancer with raw connectivity
   no_ssl_cert        = "1"
