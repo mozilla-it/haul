@@ -7,7 +7,7 @@ module "worker" {
   purpose       = "webserver"
   instance_type = "t2.small"
   ami           = "${var.ami}"
-  elb           = "${module.load_balancer.name}"
+  elb           = "${module.load_balancer_web.name}"
   ssh_key_file  = "${var.ssh_key_file}"
   ssh_key_name  = "${var.ssh_key_name}"
   min_instances = 2
