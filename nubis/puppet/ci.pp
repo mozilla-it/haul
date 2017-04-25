@@ -6,6 +6,15 @@ package { 'mercurial':
   ensure => latest,
 }
 
+file { '/etc/nubis.d/99-jenkins':
+  ensure => file,
+  owner  => root,
+  group  => root,
+  mode   => '0755',
+  source => 'puppet:///nubis/files/jenkins-startup',
+}
+
+
 package { 'daemon':
   ensure => 'present'
 }->
@@ -15,8 +24,8 @@ class { 'jenkins':
   repo               => false,
   version            => 'latest',
   configure_firewall => false,
-  service_enable     => true,
-  service_ensure     => 'running',
+  service_enable     => false,
+  service_ensure     => 'stopped',
   config_hash        => {
     'JENKINS_ARGS' => {
       'value' => '--webroot=/var/cache/$NAME/war --httpPort=$HTTP_PORT --prefix=$PREFIX'

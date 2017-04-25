@@ -1,8 +1,7 @@
 output "address" {
-  value = "https://${module.dns.fqdn}/"
+  value = "https://${module.dns_web.fqdn}/"
 }
 
-#output "bucket_tlscanary" {
-#  value = "${module.bucket-tlscanary}
-#}
-
+output "ci_address" {
+  value = "https://${module.dns_ci.fqdn}/"
+}
