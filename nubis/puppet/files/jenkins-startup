@@ -3,4 +3,9 @@
 # Exit if we are not a CI role
 nubis-purpose ci || exit 0
 
+unset HTTPS_PROXY
+unset HTTP_PROXY
+unset http_proxy
+unset https_proxy
+
 /etc/init.d/jenkins start
