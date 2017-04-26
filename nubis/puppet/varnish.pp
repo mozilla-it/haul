@@ -1,7 +1,7 @@
 class {'varnish':
   varnish_listen_port   => 82,
   storage_type          => 'file',
-  varnish_storage_size  => '90%',
+  varnish_storage_size  => '1G',
   varnish_storage_file  => '/mnt/varnish_storage.bin',
 }
 
