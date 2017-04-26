@@ -4,6 +4,7 @@ def nubisStatic = new org.mozilla.nubis.Static()
 
 node {
    stage('Prep') {
+        sh "env"
         checkout([$class: 'MercurialSCM', clean: true, credentialsId: '', source: 'https://hg.mozilla.org/projects/kraken', subdir: 'src'])
    nubisStatic.prepSite()
    }
