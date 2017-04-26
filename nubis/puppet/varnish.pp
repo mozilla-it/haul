@@ -13,6 +13,10 @@ class { 'varnish::vcl':
       port => '81'
     },
   },
+  
+  # Don't scrub headers
+  unset_headers          = [ ],
+  unset_headers_debugips = [ ],
 
   # More options
   cookiekeeps => [
