@@ -46,11 +46,11 @@
             <comparator class="hudson.util.CaseInsensitiveComparator"/>
           </default>
           <int>3</int>
-          <string>http_proxy</string>
+          <string>HTTP_PROXY</string>
           <string>http://proxy.service.consul:3128/</string>
-          <string>https_proxy</string>
+          <string>HTTPS_PROXY</string>
           <string>http://proxy.service.consul:3128/</string>
-          <string>no_proxy</string>
+          <string>NO_PROXY</string>
           <string>169.254.169.254</string>
         </tree-map>
       </envVars>
