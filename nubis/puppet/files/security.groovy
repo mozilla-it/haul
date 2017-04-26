@@ -14,4 +14,9 @@ instance.setSecurityRealm(hudsonRealm)
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 strategy.setAllowAnonymousRead(true)
 instance.setAuthorizationStrategy(strategy)
+
+println "--> creating proxy configuration"
+def proxy = new hudson.ProxyConfiguration('consul.service.consul', 3128, '', '', '127.0.0.1,169.254.169.254')
+instance.proxy = proxy
+
 instance.save()
