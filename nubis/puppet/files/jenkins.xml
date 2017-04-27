@@ -45,13 +45,7 @@
           <default>
             <comparator class="hudson.util.CaseInsensitiveComparator"/>
           </default>
-          <int>7</int>
-          <string>HTTP_PROXY</string>
-          <string>http://proxy.service.consul:3128/</string>
-          <string>HTTPS_PROXY</string>
-          <string>http://proxy.service.consul:3128/</string>
-          <string>NO_PROXY</string>
-          <string>169.254.169.254</string>
+          <int>4</int>
           <string>http_proxy</string>
           <string>http://proxy.service.consul:3128/</string>
           <string>https_proxy</string>
