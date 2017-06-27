@@ -233,7 +233,7 @@ jenkins::plugin { 'github-organization-folder':
 }
 
 jenkins::plugin { 'gradle':
-  version => '1.27-SNAPSHOT (private-06/23/2017 09:49-wolf)'
+  version => '1.27'
 }
 
 jenkins::plugin { 'handlebars':
