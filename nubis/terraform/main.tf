@@ -1,5 +1,5 @@
 module "worker" {
-  source        = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.1"
+  source        = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
   region        = "${var.region}"
   environment   = "${var.environment}"
   account       = "${var.account}"
@@ -14,7 +14,7 @@ module "worker" {
 }
 
 module "load_balancer_web" {
-  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.1"
+  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.5.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -32,7 +32,7 @@ module "load_balancer_web" {
 }
 
 module "ci" {
-  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.1"
+  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
   region            = "${var.region}"
   environment       = "${var.environment}"
   account           = "${var.account}"
@@ -48,7 +48,7 @@ module "ci" {
 }
 
 module "load_balancer_ci" {
-  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.1"
+  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.5.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -72,7 +72,7 @@ module "load_balancer_ci" {
 #}
 
 module "dns_web" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.1"
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.5.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -81,7 +81,7 @@ module "dns_web" {
 }
 
 module "dns_ci" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.1"
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.5.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -91,7 +91,7 @@ module "dns_ci" {
 }
 
 module "storage" {
-  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v1.4.1"
+  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v1.5.0"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
