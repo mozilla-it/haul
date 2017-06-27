@@ -6,6 +6,17 @@ package { 'mercurial':
   ensure => latest,
 }
 
+file { '/var/lib/jenkins/.hgrc':
+  ensure => file,
+  owner  => 'jenkins',
+  group  => 'jenkins',
+  mode   => '0644',
+  require => [
+    Class['jenkins'],
+  ],
+  source => 'puppet:///nubis/files/hgrc',
+}
+
 file { '/etc/nubis.d/99-jenkins':
   ensure => file,
   owner  => root,
