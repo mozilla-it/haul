@@ -135,298 +135,303 @@ file { '/var/lib/jenkins/jobs/00-haul/config.xml':
     File['/var/lib/jenkins/jobs/00-haul'],
   ],
 }
-jenkins::plugin { 'workflow-cps':
-    version => '2.29'
-}
-
-jenkins::plugin { 'git-server':
-    version => '1.7'
-}
-
-jenkins::plugin { 'bouncycastle-api':
-    version => '2.16.1'
-}
-
-jenkins::plugin { 'windows-slaves':
-    version => '1.3.1'
-}
-
-jenkins::plugin { 'antisamy-markup-formatter':
-    version => '1.5'
-}
-
-jenkins::plugin { 'workflow-api':
-    version => '2.13'
-}
-
-jenkins::plugin { 'pipeline-input-step':
-    version => '2.5'
-}
-
-jenkins::plugin { 'github-api':
-    version => '1.85'
-}
-
-jenkins::plugin { 'display-url-api':
-    version => '2.0'
-}
-
-jenkins::plugin { 'script-security':
-    version => '1.27'
-}
-
-jenkins::plugin { 'workflow-step-api':
-    version => '2.9'
-}
 
 jenkins::plugin { 'ace-editor':
-    version => '1.1'
-}
-
-jenkins::plugin { 'github':
-    version => '1.27.0'
-}
-
-jenkins::plugin { 'workflow-support':
-    version => '2.14'
-}
-
-jenkins::plugin { 'pipeline-model-declarative-agent':
-    version => '1.1.1'
-}
-
-jenkins::plugin { 'junit':
-    version => '1.20'
-}
-
-jenkins::plugin { 'matrix-auth':
-    version => '1.5'
-}
-
-jenkins::plugin { 'github-organization-folder':
-    version => '1.6'
-}
-
-jenkins::plugin { 'pipeline-rest-api':
-    version => '2.6'
-}
-
-jenkins::plugin { 'email-ext':
-    version => '2.57.2'
-}
-
-jenkins::plugin { 'github-branch-source':
-    version => '2.0.5'
-}
-
-jenkins::plugin { 'workflow-basic-steps':
-    version => '2.4'
-}
-
-jenkins::plugin { 'durable-task':
-    version => '1.13'
-}
-
-jenkins::plugin { 'workflow-durable-task-step':
-    version => '2.10'
-}
-
-jenkins::plugin { 'credentials-binding':
-    version => '1.11'
-}
-
-jenkins::plugin { 'scm-api':
-    version => '2.1.1'
-}
-
-jenkins::plugin { 'workflow-cps-global-lib':
-    version => '2.7'
-}
-
-jenkins::plugin { 'timestamper':
-    version => '1.8.8'
-}
-
-jenkins::plugin { 'pipeline-graph-analysis':
-    version => '1.3'
-}
-
-jenkins::plugin { 'pipeline-model-extensions':
-    version => '1.1.2'
-}
-
-jenkins::plugin { 'pipeline-milestone-step':
-    version => '1.3.1'
-}
-
-jenkins::plugin { 'mailer':
-    version => '1.20'
-}
-
-jenkins::plugin { 'pipeline-stage-step':
-    version => '2.2'
-}
-
-jenkins::plugin { 'handlebars':
-    version => '1.1.1'
-}
-
-jenkins::plugin { 'envinject':
-    version => '2.0'
-}
-
-jenkins::plugin { 'pipeline-model-api':
-    version => '1.1.2'
-}
-
-jenkins::plugin { 'ssh-slaves':
-    version => '1.17'
-}
-
-jenkins::plugin { 'job-dsl':
-    version => '1.61'
-}
-
-jenkins::plugin { 'build-timeout':
-    version => '1.18'
-}
-
-jenkins::plugin { 'authentication-tokens':
-    version => '1.3'
-}
-
-jenkins::plugin { 'gradle':
-    version => '1.26'
-}
-
-jenkins::plugin { 'pam-auth':
-    version => '1.3'
-}
-
-jenkins::plugin { 'mapdb-api':
-    version => '1.0.9.0'
+  ensure => '1.1'
 }
 
 jenkins::plugin { 'ant':
-    version => '1.4'
+  ensure => '1.5'
 }
 
-jenkins::plugin { 'workflow-aggregator':
-    version => '2.5'
+jenkins::plugin { 'antisamy-markup-formatter':
+  ensure => '1.5'
 }
 
-jenkins::plugin { 'ldap':
-    version => '1.14'
-}
-
-jenkins::plugin { 'momentjs':
-    version => '1.1.1'
-}
-
-jenkins::plugin { 'external-monitor-job':
-    version => '1.7'
-}
-
-jenkins::plugin { 'jquery-detached':
-    version => '1.2.1'
-}
-
-jenkins::plugin { 'branch-api':
-    version => '2.0.8'
-}
-
-jenkins::plugin { 'workflow-scm-step':
-    version => '2.4'
-}
-
-jenkins::plugin { 'workflow-multibranch':
-    version => '2.14'
-}
-
-jenkins::plugin { 'subversion':
-    version => '2.7.2'
-}
-
-jenkins::plugin { 'docker-commons':
-    version => '1.6'
-}
-
-jenkins::plugin { 'matrix-project':
-    version => '1.10'
-}
-
-jenkins::plugin { 'docker-workflow':
-    version => '1.10'
-}
-
-jenkins::plugin { 'icon-shim':
-    version => '2.0.3'
-}
-
-jenkins::plugin { 'pipeline-build-step':
-    version => '2.5'
-}
-
-jenkins::plugin { 'ws-cleanup':
-    version => '0.32'
-}
-
-jenkins::plugin { 'pipeline-github-lib':
-    version => '1.0'
-}
-
-jenkins::plugin { 'resource-disposer':
-    version => '0.6'
-}
-
-jenkins::plugin { 'git':
-    version => '3.2.0'
-}
-
-jenkins::plugin { 'git-client':
-    version => '2.4.1'
-}
-
-jenkins::plugin { 'plain-credentials':
-    version => '1.4'
-}
-
-jenkins::plugin { 'structs':
-    version => '1.6'
-}
-
-jenkins::plugin { 'pipeline-model-definition':
-    version => '1.1.2'
-}
-
-jenkins::plugin { 'pipeline-stage-tags-metadata':
-    version => '1.1.2'
-}
-
-jenkins::plugin { 'ssh-credentials':
-    version => '1.13'
-}
-
-jenkins::plugin { 'workflow-job':
-    version => '2.10'
-}
-
-jenkins::plugin { 'pipeline-stage-view':
-    version => '2.6'
-}
-
-jenkins::plugin { 'token-macro':
-    version => '2.1'
-}
-
-jenkins::plugin { 'cloudbees-folder':
-    version => '6.0.3'
+jenkins::plugin { 'authentication-tokens':
+  ensure => '1.3'
 }
 
 jenkins::plugin { 'authorize-project':
-    version => '1.3.0'
+  ensure => '1.3.0'
+}
+
+jenkins::plugin { 'bouncycastle-api':
+  ensure => '2.16.1'
+}
+
+jenkins::plugin { 'branch-api':
+  ensure => '2.0.10'
+}
+
+jenkins::plugin { 'build-timeout':
+  ensure => '1.18'
+}
+
+jenkins::plugin { 'cloudbees-folder':
+  ensure => '6.0.4'
+}
+
+jenkins::plugin { 'credentials-binding':
+  ensure => '1.12'
+}
+
+jenkins::plugin { 'display-url-api':
+  ensure => '2.0'
+}
+
+jenkins::plugin { 'docker-commons':
+  ensure => '1.7'
+}
+
+jenkins::plugin { 'docker-workflow':
+  ensure => '1.12'
+}
+
+jenkins::plugin { 'durable-task':
+  ensure => '1.14'
+}
+
+jenkins::plugin { 'email-ext':
+  ensure => '2.57.2'
+}
+
+jenkins::plugin { 'envinject':
+  ensure => '2.1.1'
+}
+
+jenkins::plugin { 'external-monitor-job':
+  ensure => '1.7'
+}
+
+jenkins::plugin { 'git':
+  ensure => '3.3.1'
+}
+
+jenkins::plugin { 'git-client':
+  ensure => '2.4.6'
+}
+
+jenkins::plugin { 'git-server':
+  ensure => '1.7'
+}
+
+jenkins::plugin { 'github':
+  ensure => '1.27.0'
+}
+
+jenkins::plugin { 'github-api':
+  ensure => '1.85.1'
+}
+
+jenkins::plugin { 'github-branch-source':
+  ensure => '2.0.6'
+}
+
+jenkins::plugin { 'github-organization-folder':
+  ensure => '1.6'
+}
+
+jenkins::plugin { 'gradle':
+  ensure => '1.27-SNAPSHOT (private-06/23/2017 09:49-wolf)'
+}
+
+jenkins::plugin { 'handlebars':
+  ensure => '1.1.1'
+}
+
+jenkins::plugin { 'icon-shim':
+  ensure => '2.0.3'
+}
+
+jenkins::plugin { 'jackson2-api':
+  ensure => '2.7.3'
+}
+
+jenkins::plugin { 'job-dsl':
+  ensure => '1.63'
+}
+
+jenkins::plugin { 'jquery-detached':
+  ensure => '1.2.1'
+}
+
+jenkins::plugin { 'junit':
+  ensure => '1.20'
+}
+
+jenkins::plugin { 'ldap':
+  ensure => '1.15'
+}
+
+jenkins::plugin { 'mailer':
+  ensure => '1.20'
+}
+
+jenkins::plugin { 'mapdb-api':
+  ensure => '1.0.9.0'
+}
+
+jenkins::plugin { 'matrix-auth':
+  ensure => '1.6'
+}
+
+jenkins::plugin { 'matrix-project':
+  ensure => '1.11'
 }
 
 jenkins::plugin { 'mercurial':
-    version => '1.59'
+  ensure => '1.61'
+}
+
+jenkins::plugin { 'momentjs':
+  ensure => '1.1.1'
+}
+
+jenkins::plugin { 'pam-auth':
+  ensure => '1.3'
+}
+
+jenkins::plugin { 'pipeline-build-step':
+  ensure => '2.5'
+}
+
+jenkins::plugin { 'pipeline-github-lib':
+  ensure => '1.0'
+}
+
+jenkins::plugin { 'pipeline-graph-analysis':
+  ensure => '1.4'
+}
+
+jenkins::plugin { 'pipeline-input-step':
+  ensure => '2.7'
+}
+
+jenkins::plugin { 'pipeline-milestone-step':
+  ensure => '1.3.1'
+}
+
+jenkins::plugin { 'pipeline-model-api':
+  ensure => '1.1.7'
+}
+
+jenkins::plugin { 'pipeline-model-declarative-agent':
+  ensure => '1.1.1'
+}
+
+jenkins::plugin { 'pipeline-model-definition':
+  ensure => '1.1.7'
+}
+
+jenkins::plugin { 'pipeline-model-extensions':
+  ensure => '1.1.7'
+}
+
+jenkins::plugin { 'pipeline-rest-api':
+  ensure => '2.8'
+}
+
+jenkins::plugin { 'pipeline-stage-step':
+  ensure => '2.2'
+}
+
+jenkins::plugin { 'pipeline-stage-tags-metadata':
+  ensure => '1.1.7'
+}
+
+jenkins::plugin { 'pipeline-stage-view':
+  ensure => '2.8'
+}
+
+jenkins::plugin { 'plain-credentials':
+  ensure => '1.4'
+}
+
+jenkins::plugin { 'resource-disposer':
+  ensure => '0.6'
+}
+
+jenkins::plugin { 'scm-api':
+  ensure => '2.1.1'
+}
+
+jenkins::plugin { 'script-security':
+  ensure => '1.29'
+}
+
+jenkins::plugin { 'ssh-credentials':
+  ensure => '1.13'
+}
+
+jenkins::plugin { 'ssh-slaves':
+  ensure => '1.20'
+}
+
+jenkins::plugin { 'structs':
+  ensure => '1.9'
+}
+
+jenkins::plugin { 'subversion':
+  ensure => '2.8'
+}
+
+jenkins::plugin { 'timestamper':
+  ensure => '1.8.8'
+}
+
+jenkins::plugin { 'token-macro':
+  ensure => '2.1'
+}
+
+jenkins::plugin { 'windows-slaves':
+  ensure => '1.3.1'
+}
+
+jenkins::plugin { 'workflow-aggregator':
+  ensure => '2.5'
+}
+
+jenkins::plugin { 'workflow-api':
+  ensure => '2.17'
+}
+
+jenkins::plugin { 'workflow-basic-steps':
+  ensure => '2.5'
+}
+
+jenkins::plugin { 'workflow-cps':
+  ensure => '2.36'
+}
+
+jenkins::plugin { 'workflow-cps-global-lib':
+  ensure => '2.8'
+}
+
+jenkins::plugin { 'workflow-durable-task-step':
+  ensure => '2.12'
+}
+
+jenkins::plugin { 'workflow-job':
+  ensure => '2.11.1'
+}
+
+jenkins::plugin { 'workflow-multibranch':
+  ensure => '2.16'
+}
+
+jenkins::plugin { 'workflow-scm-step':
+  ensure => '2.5'
+}
+
+jenkins::plugin { 'workflow-step-api':
+  ensure => '2.11'
+}
+
+jenkins::plugin { 'workflow-support':
+  ensure => '2.14'
+}
+
+jenkins::plugin { 'ws-cleanup':
+  ensure => '0.33'
 }
