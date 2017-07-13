@@ -48,7 +48,7 @@ resource "consul_keys" "config" {
 }
 
 module "bucket" {
-  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=1.5.0"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.5.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
