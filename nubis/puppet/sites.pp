@@ -3,15 +3,15 @@ nubis::static { 'static':
 }
 
 nubis::static { 'archive':
-  servername => 'website-archive.mozilla.org',
-  serveraliases      => [
+  servername    => 'website-archive.mozilla.org',
+  serveraliases => [
     'website-archive.allizom.org',
   ],
 }
 
 nubis::static { 'bugzilla':
-  servername => 'www.bugzilla.org',
-  serveraliases      => [
+  servername    => 'www.bugzilla.org',
+  serveraliases => [
     'bugzilla.org',
     'bugzilla.org.uk',
     'www.bugzilla.org.uk',
@@ -22,22 +22,22 @@ nubis::static { 'bugzilla':
 }
 
 nubis::static { 'tlscanary':
-  servername => 'tlscanary.mozilla.org',
-  serveraliases      => [
+  servername    => 'tlscanary.mozilla.org',
+  serveraliases => [
     'tlscanary.allizom.org',
   ],
 }
 
 nubis::static { 'nightly':
-  servername => 'nightly.mozilla.org',
-  serveraliases      => [
+  servername    => 'nightly.mozilla.org',
+  serveraliases => [
     'nightly.allizom.org',
   ],
 }
 
 nubis::static { 'publicsuffix':
-  servername => 'www.publicsuffix.org',
-  serveraliases      => [
+  servername    => 'www.publicsuffix.org',
+  serveraliases => [
     'publicsuffix.org',
   ],
 }
@@ -51,16 +51,16 @@ nubis::static { 'sso':
 }
 
 nubis::static { 'trackertest':
-  servername => 'trackertest.org',
-  serveraliases      => [
+  servername    => 'trackertest.org',
+  serveraliases => [
     'itsatracker.org',
     'itsatracker.com',
   ],
 }
 
 nubis::static { 'seamonkey':
-  servername => 'www.seamonkey-project.org',
-  serveraliases      => [
+  servername    => 'www.seamonkey-project.org',
+  serveraliases => [
     'www-stage.seamonkey-project.org',
     'seamonkey-project.org',
   ],

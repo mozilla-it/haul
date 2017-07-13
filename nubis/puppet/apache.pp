@@ -44,10 +44,10 @@ apache::vhost { 'localhost':
 
     access_log_file => '/dev/null',
 
-    rewrites           => [
+    rewrites        => [
       {
-         comment      => 'Proxy to Jenkins',
-         rewrite_rule => ['/jenkins/(.*) http://localhost:8080/jenkins/$1 [P,L]'],
+        comment      => 'Proxy to Jenkins',
+        rewrite_rule => ['/jenkins/(.*) http://localhost:8080/jenkins/$1 [P,L]'],
       }
     ]
 }

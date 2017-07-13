@@ -7,14 +7,14 @@ package { 'mercurial':
 }
 
 file { '/var/lib/jenkins/.hgrc':
-  ensure => file,
-  owner  => 'jenkins',
-  group  => 'jenkins',
-  mode   => '0644',
+  ensure  => file,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+  mode    => '0644',
   require => [
     Class['jenkins'],
   ],
-  source => 'puppet:///nubis/files/hgrc',
+  source  => 'puppet:///nubis/files/hgrc',
 }
 
 file { '/etc/nubis.d/99-jenkins':
@@ -41,7 +41,7 @@ class { 'jenkins':
     'JENKINS_ARGS' => {
       'value' => '--webroot=/var/cache/$NAME/war --httpPort=$HTTP_PORT --prefix=$PREFIX'
     },
-    'JAVA_ARGS' => {
+    'JAVA_ARGS'    => {
       'value' => '-Djenkins.install.runSetupWizard=false -Djava.awt.headless=true -Dhudson.diyChunking=false -Dhttp.proxyHost=proxy.service.consul -Dhttp.proxyPort=3128 -Dhttps.proxyHost=proxy.service.consul -Dhttps.proxyPort=3128'
     },
   },
@@ -57,7 +57,7 @@ exec { 'jenkins-docker-group':
 }
 
 file { '/var/lib/jenkins/init.groovy.d':
-  ensure => directory,
+  ensure  => directory,
   owner   => 'jenkins',
   group   => 'jenkins',
 
