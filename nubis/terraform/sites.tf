@@ -1,3 +1,17 @@
+module "example" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name            = "example"
+  site_poll_frequency  = "H/15 * * * *"
+  site_build_frequency = "@daily"
+}
+
 module "static" {
   source = "sites"
 
