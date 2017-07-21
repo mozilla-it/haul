@@ -1,10 +1,3 @@
-nubis::static { 'example':
-  servername => 'example.mozilla.org',
-  serveraliases => [
-    'example.allizom.org',
-  ],
-}
-
 nubis::static { 'static':
   servername => 'static.mozilla.com',
 }
