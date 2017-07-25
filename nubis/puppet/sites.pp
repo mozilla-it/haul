@@ -2,6 +2,10 @@ nubis::static { 'static':
   servername => 'static.mozilla.com',
 }
 
+nubis::static { 'start':
+  servername => 'start.mozilla.org',
+}
+
 nubis::static { 'archive':
   servername    => 'website-archive.mozilla.org',
   serveraliases => [
