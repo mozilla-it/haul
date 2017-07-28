@@ -49,6 +49,18 @@ module "archive" {
   site_name = "archive"
 }
 
+module "start" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name = "start"
+}
+
 module "bugzilla" {
   source = "sites"
 
