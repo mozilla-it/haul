@@ -27,3 +27,7 @@ variable "ssh_key_name" {
 variable "acme_email" {
   default = "gozer+haul@ectoplasm.org"
 }
+
+variable "technical_owner" {
+  default = "gozer@mozilla.com"
+}

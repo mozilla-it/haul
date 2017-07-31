@@ -1,3 +1,62 @@
+module "info" {
+  source      = "../info"
+  region      = "${var.region}"
+  environment = "${var.environment}"
+  account     = "${var.account}"
+}
+
+provider "aws" {
+  region = "${var.region}"
+}
+
+resource "aws_security_group" "ci" {
+  name_prefix = "${var.service_name}-${var.environment}-ci-"
+
+  vpc_id = "${module.info.vpc_id}"
+
+  tags = {
+    Name           = "${var.service_name}-${var.environment}-ci}"
+    Region         = "${var.region}"
+    Environment    = "${var.environment}"
+    TechnicalOwner = "${var.technical_owner}"
+    Backup         = "true"
+    Shutdown       = "never"
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+
+    security_groups = [
+      "${module.info.sso_security_group}",
+    ]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+
+    security_groups = [
+      "${module.info.sso_security_group}",
+    ]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 module "worker" {
   source        = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
   region        = "${var.region}"
@@ -45,6 +104,8 @@ module "ci" {
   ssh_key_file      = "${var.ssh_key_file}"
   ssh_key_name      = "${var.ssh_key_name}"
   min_instances     = 1
+  security_group_custom = true
+  security_group = "${aws_security_group.ci.id}"
 }
 
 module "load_balancer_ci" {
@@ -64,12 +125,6 @@ module "load_balancer_ci" {
 
   health_check_target = "TCP:80"
 }
-
-### XXX: Cheat for now
-#resource "aws_proxy_protocol_policy" "smtp" {
-#  load_balancer  = "${module.load_balancer_web.name}"
-#  instance_ports = ["80", "443"]
-#}
 
 module "dns_web" {
   source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.5.0"
