@@ -1,5 +1,5 @@
 module "info" {
-  source      = "../info"
+  source      = "github.com/nubisproject/nubis-terraform//info?ref=v1.5.0"
   region      = "${var.region}"
   environment = "${var.environment}"
   account     = "${var.account}"
