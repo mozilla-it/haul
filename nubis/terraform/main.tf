@@ -33,6 +33,17 @@ resource "aws_security_group" "ci" {
     ]
   }
 
+  # Jenkins itself
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+
+    security_groups = [
+      "${module.info.sso_security_group}",
+    ]
+  }
+
   ingress {
     from_port   = 80
     to_port     = 80
