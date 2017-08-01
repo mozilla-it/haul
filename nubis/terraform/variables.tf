@@ -29,5 +29,5 @@ variable "acme_email" {
 }
 
 variable "technical_owner" {
-  default = "gozer@mozilla.com"
+  default = "infra-aws@mozilla.com"
 }

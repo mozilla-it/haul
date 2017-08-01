@@ -33,7 +33,7 @@ resource "aws_security_group" "ci" {
     ]
   }
 
-  # Jenkins itself
+  # Jenkins itself for the SSO dashboard
   ingress {
     from_port   = 8080
     to_port     = 8080
@@ -44,26 +44,20 @@ resource "aws_security_group" "ci" {
     ]
   }
 
+  # Traefik for the ELBs
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
-    security_groups = [
-      "${module.info.sso_security_group}",
-    ]
   }
-
+ 
+  # Traefik for the ELBs
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
-    security_groups = [
-      "${module.info.sso_security_group}",
-    ]
   }
 
   egress {

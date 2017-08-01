@@ -47,7 +47,7 @@ apache::vhost { 'localhost':
     rewrites        => [
       {
         comment      => 'Proxy to Jenkins',
-        rewrite_rule => ['/jenkins/(.*) http://localhost:8080/jenkins/$1 [P,L]'],
+        rewrite_rule => ['/haul/(.*) http://localhost:8080/jenkins/$1 [P,L]'],
       }
     ]
 }

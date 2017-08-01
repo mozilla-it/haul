@@ -3,5 +3,5 @@ output "address" {
 }
 
 output "ci_address" {
-  value = "https://${module.dns_ci.fqdn}/jenkins/"
+  value = "https://${module.dns_ci.fqdn}/haul/"
 }
