@@ -7,6 +7,7 @@
 
 class { 'nubis_apache':
   port      => $port,
+  tags      => [ '%%PURPOSE%%'],
   check_url => '/server-status?auto',
 }
 
