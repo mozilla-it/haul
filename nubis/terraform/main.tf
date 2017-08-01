@@ -15,7 +15,7 @@ resource "aws_security_group" "ci" {
   vpc_id = "${module.info.vpc_id}"
 
   tags = {
-    Name           = "${var.service_name}-${var.environment}-ci}"
+    Name           = "${var.service_name}-${var.environment}-ci"
     Region         = "${var.region}"
     Environment    = "${var.environment}"
     TechnicalOwner = "${var.technical_owner}"
