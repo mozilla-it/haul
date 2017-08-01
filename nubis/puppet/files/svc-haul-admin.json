@@ -3,7 +3,8 @@
     "name": "haul-admin",
     "port": 8080,
     "tags": [
-      "dashboard=true"
+      "sso=true",
+      "sso.name=haul"
     ],
     "check": {
        "http": "http://localhost:8080/haul/cc.xml",
