@@ -24,9 +24,9 @@ resource "aws_security_group" "ci" {
   }
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port = 22
+    to_port   = 22
+    protocol  = "tcp"
 
     security_groups = [
       "${module.info.ssh_security_group}",
@@ -35,9 +35,9 @@ resource "aws_security_group" "ci" {
 
   # Jenkins itself for the SSO dashboard
   ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
+    from_port = 8080
+    to_port   = 8080
+    protocol  = "tcp"
 
     security_groups = [
       "${module.info.sso_security_group}",
@@ -51,7 +51,7 @@ resource "aws_security_group" "ci" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
- 
+
   # Traefik for the ELBs
   ingress {
     from_port   = 443
@@ -106,21 +106,21 @@ module "load_balancer_web" {
 }
 
 module "ci" {
-  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
-  region            = "${var.region}"
-  environment       = "${var.environment}"
-  account           = "${var.account}"
-  service_name      = "${var.service_name}"
-  purpose           = "ci"
-  instance_type     = "t2.medium"
-  root_storage_size = "64"
-  ami               = "${var.ami}"
-  elb               = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
-  ssh_key_file      = "${var.ssh_key_file}"
-  ssh_key_name      = "${var.ssh_key_name}"
-  min_instances     = 1
+  source                = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
+  region                = "${var.region}"
+  environment           = "${var.environment}"
+  account               = "${var.account}"
+  service_name          = "${var.service_name}"
+  purpose               = "ci"
+  instance_type         = "t2.medium"
+  root_storage_size     = "64"
+  ami                   = "${var.ami}"
+  elb                   = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
+  ssh_key_file          = "${var.ssh_key_file}"
+  ssh_key_name          = "${var.ssh_key_name}"
+  min_instances         = 1
   security_group_custom = true
-  security_group = "${aws_security_group.ci.id}"
+  security_group        = "${aws_security_group.ci.id}"
 }
 
 module "load_balancer_ci" {
