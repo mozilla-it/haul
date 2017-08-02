@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson>
   <disabledAdministrativeMonitors/>
+  <version>1.0</version>
   <numExecutors>2</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
@@ -68,7 +69,7 @@
         </tree-map>
       </envVars>
     </hudson.slaves.EnvironmentVariablesNodeProperty>
-    <org.jenkinsci.plugins.envinject.EnvInjectNodeProperty plugin="envinject@2.0">
+    <org.jenkinsci.plugins.envinject.EnvInjectNodeProperty plugin="envinject@2.1.3">
       <unsetSystemVariables>false</unsetSystemVariables>
     </org.jenkinsci.plugins.envinject.EnvInjectNodeProperty>
   </globalNodeProperties>
