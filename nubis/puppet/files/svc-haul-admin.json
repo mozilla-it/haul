@@ -3,11 +3,10 @@
     "name": "haul-admin",
     "port": 8080,
     "tags": [
-      "sso=true",
-      "sso.name=haul"
+      "sso=true"
     ],
     "check": {
-       "http": "http://localhost:8080/haul/cc.xml",
+       "http": "http://localhost:8080/admin/haul-admin/cc.xml",
        "interval": "10s",
        "timeout": "1s"
     }
