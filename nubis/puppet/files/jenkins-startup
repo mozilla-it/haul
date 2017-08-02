@@ -1,6 +1,11 @@
 #!/bin/bash -l
 
 # Exit if we are not a CI role
-nubis-purpose ci || exit 0
-
-/etc/init.d/jenkins start
+if nubis-purpose ci; then
+  echo "We are a CI node, starting Jenkins"
+  /etc/init.d/jenkins start
+else
+  # Disable haul-admin role
+  gzip /etc/consul/svc-haul-admin.json
+  service consul reload
+fi
