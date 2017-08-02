@@ -85,6 +85,7 @@ module "worker" {
   ssh_key_file  = "${var.ssh_key_file}"
   ssh_key_name  = "${var.ssh_key_name}"
   min_instances = 2
+  wait_for_capacity_timeout = "20m"
 }
 
 module "load_balancer_web" {
@@ -121,6 +122,7 @@ module "ci" {
   min_instances         = 1
   security_group_custom = true
   security_group        = "${aws_security_group.ci.id}"
+  wait_for_capacity_timeout = "20m"
 }
 
 module "load_balancer_ci" {
