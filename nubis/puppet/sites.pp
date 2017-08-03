@@ -4,6 +4,9 @@ nubis::static { 'static':
 
 nubis::static { 'start':
   servername => 'start.mozilla.org',
+  serveraliases => [
+    'start.allizom.org',
+  ],
 }
 
 nubis::static { 'archive':
