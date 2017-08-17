@@ -1,11 +1,13 @@
 nubis::static { 'static':
-  servername => 'static.mozilla.com',
+  servername  => 'static.mozilla.com',
+  serveralias => 'static-haul.allizom.org',
 }
 
 nubis::static { 'start':
   servername => 'start.mozilla.org',
   serveraliases => [
     'start.allizom.org',
+    'start-haul.allizom.org',
   ],
 }
 
@@ -13,6 +15,7 @@ nubis::static { 'archive':
   servername    => 'website-archive.mozilla.org',
   serveraliases => [
     'website-archive.allizom.org',
+    'website-archive-haul.allizom.org',
   ],
 }
 
@@ -25,6 +28,7 @@ nubis::static { 'bugzilla':
     'virtual-bzorg.mozilla.org',
     'website-beta.bugzilla.org',
     'bugzilla.mozilla.osuosl.org',
+    'bugzilla-haul.allizom.org',
   ],
 }
 
@@ -39,6 +43,7 @@ nubis::static { 'nightly':
   servername    => 'nightly.mozilla.org',
   serveraliases => [
     'nightly.allizom.org',
+    'nightly-haul.allizom.org',
   ],
 }
 
@@ -46,15 +51,20 @@ nubis::static { 'publicsuffix':
   servername    => 'www.publicsuffix.org',
   serveraliases => [
     'publicsuffix.org',
+    'publicsuffix-haul.allizom.org',
   ],
 }
 
 nubis::static { 'services':
-  servername => 'docs.services.mozilla.com',
+  servername    => 'docs.services.mozilla.com',
+  serveraliases => [
+    'docs-haul-services.allizom.org',
 }
 
 nubis::static { 'sso':
-  servername => 'sso.mozilla.com',
+  servername    => 'sso.mozilla.com',
+  serveraliases => [
+    'sso-haul.allizom.org',
 }
 
 nubis::static { 'trackertest':
@@ -62,6 +72,7 @@ nubis::static { 'trackertest':
   serveraliases => [
     'itsatracker.org',
     'itsatracker.com',
+    'itisatracker-haul.allizom.org',
   ],
 }
 
@@ -70,6 +81,7 @@ nubis::static { 'seamonkey':
   serveraliases => [
     'www-stage.seamonkey-project.org',
     'seamonkey-project.org',
+    'seamonkey-project-haul.allizom.org',
   ],
 }
 
