@@ -74,5 +74,6 @@ nubis::static { 'seamonkey':
 }
 
 nubis::static { 'krakenbenchmark':
-  servername => 'krakenbenchmark.mozilla.org',
+  servername    => 'krakenbenchmark.mozilla.org',
+  serveraliases => 'krakenbenchmark.allizom.org',
 }
