@@ -1,6 +1,8 @@
 nubis::static { 'static':
   servername  => 'static.mozilla.com',
-  serveralias => 'static-haul.allizom.org',
+  serveraliases => [
+    'static-haul.allizom.org',
+  ]
 }
 
 nubis::static { 'start':
@@ -59,12 +61,14 @@ nubis::static { 'services':
   servername    => 'docs.services.mozilla.com',
   serveraliases => [
     'docs-haul-services.allizom.org',
+  ]
 }
 
 nubis::static { 'sso':
   servername    => 'sso.mozilla.com',
   serveraliases => [
     'sso-haul.allizom.org',
+  ]
 }
 
 nubis::static { 'trackertest':
@@ -87,5 +91,7 @@ nubis::static { 'seamonkey':
 
 nubis::static { 'krakenbenchmark':
   servername    => 'krakenbenchmark.mozilla.org',
-  serveraliases => 'krakenbenchmark.allizom.org',
+  serveraliases => [
+    'krakenbenchmark.allizom.org',
+  ]
 }
