@@ -6,11 +6,20 @@ nubis::static { 'static':
 }
 
 nubis::static { 'start':
-  servername => 'start.mozilla.org',
-  serveraliases => [
+  servername           => 'start.mozilla.org',
+  serveraliases        => [
     'start.allizom.org',
     'start-haul.allizom.org',
   ],
+  rewrites             => [
+    {
+      # RedirectMatch ^/$ http://start.mozilla.org/en-US/
+      redirectmatch_status => ['302'],
+      redirectmatch_regexp => ['^/$'],
+      redirectmatch_dest   => ['http://start-haul.allizom.org/en-US/'],
+    },
+  ]
+
 }
 
 nubis::static { 'archive':
