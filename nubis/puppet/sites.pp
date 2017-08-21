@@ -5,6 +5,13 @@ nubis::static { 'static':
   ]
 }
 
+nubis::static { 'planet':
+  servername    => 'planet.mozilla.org',
+  serveraliases => [
+    'planet.allizom.org',
+  ]
+}
+
 nubis::static { 'start':
   servername           => 'start.mozilla.org',
   serveraliases        => [
