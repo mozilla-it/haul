@@ -4,7 +4,9 @@ def nubisStatic = new org.mozilla.nubis.Static()
 
 node {
    stage('Prep') {
-     nubisStatic.prepSite()
+     // Do you have to call checkout in order to setup the src directory?
+     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'src/'], [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: true, reference: '', trackingSubmodules: true], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/mozilla/planet-source.git']]])
+   nubisStatic.prepSite()
    }
 
   stage ('Build') {
