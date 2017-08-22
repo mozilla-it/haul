@@ -16,7 +16,7 @@ node {
       sh "apt update"
       sh "apt install -y rsync"
       sh "/usr/local/bin/planet-prod.sh"
-      sh "rsync -aq --exclude=.git /data/genericrhel6/src/ dest/planet-sites/"
+      sh "rsync -aq --exclude=.git /data/genericrhel6/src/ dest/"
     }
   }
 
