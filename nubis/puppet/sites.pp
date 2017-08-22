@@ -1,8 +1,9 @@
 nubis::static { 'static':
-  servername  => 'static.mozilla.com',
+  servername    => 'static.mozilla.com',
   serveraliases => [
     'static-haul.allizom.org',
-  ]
+  ],
+  options       => ['-Indexes'],
 }
 
 nubis::static { 'planet':
