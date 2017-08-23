@@ -1,6 +1,6 @@
 {
   "service": {
-    "name": "haul",
+    "name": "haul-frontend",
     "port": 8082,
     "tags": [
     ],

@@ -1,20 +1,33 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson>
   <disabledAdministrativeMonitors/>
+  <version>1.0</version>
   <numExecutors>2</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
   <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
     <denyAnonymousReadAccess>false</denyAnonymousReadAccess>
   </authorizationStrategy>
-  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
-    <disableSignup>true</disableSignup>
-    <enableCaptcha>false</enableCaptcha>
+  <securityRealm class="org.jenkinsci.plugins.reverse_proxy_auth.ReverseProxySecurityRealm" plugin="reverse-proxy-auth-plugin@1.5">
+    <proxyTemplate/>
+    <authContext/>
+    <authorityUpdateCache/>
+    <inhibitInferRootDN>false</inhibitInferRootDN>
+    <userSearchBase></userSearchBase>
+    <userSearch>uid={0}</userSearch>
+    <updateInterval>15</updateInterval>
+    <forwardedUser>OIDC_CLAIM_email</forwardedUser>
+    <headerGroups>OIDC_CLAIM_groups</headerGroups>
+    <headerGroupsDelimiter>,</headerGroupsDelimiter>
+    <disableLdapEmailResolver>true</disableLdapEmailResolver>
+    <displayNameLdapAttribute></displayNameLdapAttribute>
+    <emailAddressLdapAttribute></emailAddressLdapAttribute>
   </securityRealm>
   <disableRememberMe>false</disableRememberMe>
   <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
   <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
   <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
   <jdks/>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
@@ -34,7 +47,7 @@
   <slaveAgentPort>-1</slaveAgentPort>
   <label></label>
   <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
-    <excludeClientIPFromCrumb>false</excludeClientIPFromCrumb>
+    <excludeClientIPFromCrumb>true</excludeClientIPFromCrumb>
   </crumbIssuer>
   <nodeProperties/>
   <globalNodeProperties>
@@ -57,7 +70,7 @@
         </tree-map>
       </envVars>
     </hudson.slaves.EnvironmentVariablesNodeProperty>
-    <org.jenkinsci.plugins.envinject.EnvInjectNodeProperty plugin="envinject@2.0">
+    <org.jenkinsci.plugins.envinject.EnvInjectNodeProperty plugin="envinject@2.1.3">
       <unsetSystemVariables>false</unsetSystemVariables>
     </org.jenkinsci.plugins.envinject.EnvInjectNodeProperty>
   </globalNodeProperties>

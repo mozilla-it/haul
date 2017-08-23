@@ -1,3 +1,77 @@
+module "info" {
+  source      = "github.com/nubisproject/nubis-terraform//info?ref=v1.5.0"
+  region      = "${var.region}"
+  environment = "${var.environment}"
+  account     = "${var.account}"
+}
+
+provider "aws" {
+  region = "${var.region}"
+}
+
+resource "aws_security_group" "ci" {
+  name_prefix = "${var.service_name}-${var.environment}-ci-"
+
+  vpc_id = "${module.info.vpc_id}"
+
+  tags = {
+    Name           = "${var.service_name}-${var.environment}-ci"
+    Region         = "${var.region}"
+    Environment    = "${var.environment}"
+    TechnicalOwner = "${var.technical_owner}"
+    Backup         = "true"
+    Shutdown       = "never"
+  }
+
+  ingress {
+    from_port = 22
+    to_port   = 22
+    protocol  = "tcp"
+
+    security_groups = [
+      "${module.info.ssh_security_group}",
+    ]
+  }
+
+  # Jenkins itself for the SSO dashboard
+  ingress {
+    from_port = 8080
+    to_port   = 8080
+    protocol  = "tcp"
+
+    security_groups = [
+      "${module.info.sso_security_group}",
+    ]
+  }
+
+  # Traefik for the ELBs
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Traefik for the ELBs
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 module "worker" {
   source        = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
   region        = "${var.region}"
@@ -11,6 +85,7 @@ module "worker" {
   ssh_key_file  = "${var.ssh_key_file}"
   ssh_key_name  = "${var.ssh_key_name}"
   min_instances = 2
+  wait_for_capacity_timeout = "20m"
 }
 
 module "load_balancer_web" {
@@ -32,19 +107,22 @@ module "load_balancer_web" {
 }
 
 module "ci" {
-  source            = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
-  region            = "${var.region}"
-  environment       = "${var.environment}"
-  account           = "${var.account}"
-  service_name      = "${var.service_name}"
-  purpose           = "ci"
-  instance_type     = "t2.medium"
-  root_storage_size = "64"
-  ami               = "${var.ami}"
-  elb               = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
-  ssh_key_file      = "${var.ssh_key_file}"
-  ssh_key_name      = "${var.ssh_key_name}"
-  min_instances     = 1
+  source                = "github.com/nubisproject/nubis-terraform//worker?ref=v1.5.0"
+  region                = "${var.region}"
+  environment           = "${var.environment}"
+  account               = "${var.account}"
+  service_name          = "${var.service_name}"
+  purpose               = "ci"
+  instance_type         = "t2.medium"
+  root_storage_size     = "64"
+  ami                   = "${var.ami}"
+  elb                   = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
+  ssh_key_file          = "${var.ssh_key_file}"
+  ssh_key_name          = "${var.ssh_key_name}"
+  min_instances         = 1
+  security_group_custom = true
+  security_group        = "${aws_security_group.ci.id}"
+  wait_for_capacity_timeout = "20m"
 }
 
 module "load_balancer_ci" {
@@ -64,12 +142,6 @@ module "load_balancer_ci" {
 
   health_check_target = "TCP:80"
 }
-
-### XXX: Cheat for now
-#resource "aws_proxy_protocol_policy" "smtp" {
-#  load_balancer  = "${module.load_balancer_web.name}"
-#  instance_ports = ["80", "443"]
-#}
 
 module "dns_web" {
   source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.5.0"

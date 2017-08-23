@@ -1,0 +1,14 @@
+{
+  "service": {
+    "name": "haul-admin",
+    "port": 8080,
+    "tags": [
+      "sso=true"
+    ],
+    "check": {
+       "http": "http://localhost:8080/admin/haul-admin/cc.xml",
+       "interval": "10s",
+       "timeout": "1s"
+    }
+  }
+}

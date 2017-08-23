@@ -7,6 +7,7 @@
 
 class { 'nubis_apache':
   port      => $port,
+  #tags      => [ '%%PURPOSE%%'],
   check_url => '/server-status?auto',
 }
 
@@ -47,7 +48,7 @@ apache::vhost { 'localhost':
     rewrites        => [
       {
         comment      => 'Proxy to Jenkins',
-        rewrite_rule => ['/jenkins/(.*) http://localhost:8080/jenkins/$1 [P,L]'],
+        rewrite_rule => ['/admin/haul-admin/(.*) http://localhost:8080/admin/haul-admin/$1 [P,L]'],
       }
     ]
 }
