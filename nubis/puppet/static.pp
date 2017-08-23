@@ -3,12 +3,15 @@ define nubis::static (
   $serveraliases=[],
   $indexes=[],
   $headers=[],
+  $options=[],
   $rewrites=[]) {
 
   apache::vhost { $title:
     port               => $port,
     servername         => $servername,
     serveraliases      => $serveraliases,
+
+    options            => $options,
 
     docroot            => "/data/haul/${title}",
 

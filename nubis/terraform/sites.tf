@@ -10,6 +10,19 @@ module "static" {
   site_name = "static"
 }
 
+module "planet" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name  = "planet"
+  site_index = "index.html"
+}
+
 module "tlscanary" {
   source = "sites"
 
