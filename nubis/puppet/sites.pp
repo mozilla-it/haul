@@ -19,9 +19,9 @@ nubis::static { 'start':
     'start.allizom.org',
     'start-haul.allizom.org',
   ],
-  redirectmatch_status => ['302']
-  redirectmatch_regexp => ['^/$']
-  redirectmatch_dest => ['/en-US']
+  redirectmatch_status => ['302'],
+  redirectmatch_regexp => ['^/$'],
+  redirectmatch_dest => ['/en-US'],
 }
 
 nubis::static { 'archive':
