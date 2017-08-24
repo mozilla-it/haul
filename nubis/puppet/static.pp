@@ -4,28 +4,35 @@ define nubis::static (
   $indexes=[],
   $headers=[],
   $options=[],
+  $redirectmatch_status=[],
+  $redirectmatch_regexp=[],
+  $redirectmatch_dest=[],
   $rewrites=[]) {
 
   apache::vhost { $title:
-    port               => $port,
-    servername         => $servername,
-    serveraliases      => $serveraliases,
+    port                    => $port,
+    servername              => $servername,
+    serveraliases           => $serveraliases,
 
-    options            => $options,
+    options                 => $options,
 
-    docroot            => "/data/haul/${title}",
+    redirectmatch_status    => $redirectmatch_status,
+    redirectmatch_regexp    => $redirectmatch_regexp,
+    redirectmatch_dest      => $redirectmatch_dest,
 
-    directoryindex     => join(concat($indexes, $default_indexes), ' '),
+    docroot                 => "/data/haul/${title}",
 
-    setenvif           => [
+    directoryindex          => join(concat($indexes, $default_indexes), ' '),
+
+    setenvif                => [
       'Remote_Addr 127\.0\.0\.1 internal',
       'Remote_Addr ^10\. internal',
     ],
-    access_log_env_var => '!internal',
-    access_log_format  => $access_log_format,
+    access_log_env_var      => '!internal',
+    access_log_format       => $access_log_format,
 
-    headers            => concat($default_headers, "set X-Nubis-Site ${title}", $headers),
-    rewrites           => concat($default_rewrites, $rewrites),
+    headers                 => concat($default_headers, "set X-Nubis-Site ${title}", $headers),
+    rewrites                => concat($default_rewrites, $rewrites),
   }
 
 }
