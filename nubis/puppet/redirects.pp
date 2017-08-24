@@ -12,7 +12,7 @@
 
 file { "$::apache::confd_dir/redirects.conf":
     ensure => exists,
-    source => "puppet:///modules/${module_name}/redirects.conf",
+    source => "puppet:///nubis/files/redirects.conf",
     before => Custom_config['redirects'],
 }
 
