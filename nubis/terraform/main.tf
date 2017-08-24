@@ -169,5 +169,5 @@ module "storage" {
   account                = "${var.account}"
   service_name           = "${var.service_name}"
   storage_name           = "${var.service_name}"
-  client_security_groups = "${module.worker.security_group},${module.ci.security_group}"
+  client_security_groups = "${module.worker.security_group},${aws_security_group.ci.id}"
 }
