@@ -21,7 +21,7 @@ nubis::static { 'start':
   ],
   redirectmatch_status => ['302'],
   redirectmatch_regexp => ['^/$'],
-  redirectmatch_dest => ['/en-US'],
+  redirectmatch_dest => ['/en-US/'],
 }
 
 nubis::static { 'archive':
