@@ -11,7 +11,7 @@ node {
 
   stage ('Build') {
     // Symlink destination
-    docker.image('dhartnell/mozilla-planet-builder:latest').inside('-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
+    docker.image('dhartnell/mozilla-planet-builder:2.0').inside('-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
       sh "/usr/local/bin/planet-prod.sh"
       sh "cp -r /data/genericrhel6/src/* dst/"
     }
