@@ -31,3 +31,7 @@ variable "acme_email" {
 variable "technical_owner" {
   default = "infra-aws@mozilla.com"
 }
+
+variable "nubis_sudo_groups" {
+  default = "nubis_global_admins,team_webops"
+}

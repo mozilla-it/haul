@@ -86,6 +86,7 @@ module "worker" {
   ssh_key_name  = "${var.ssh_key_name}"
   min_instances = 2
   wait_for_capacity_timeout = "20m"
+  nubis_sudo_groups = "${var.nubis_sudo_groups}"
 }
 
 module "load_balancer_web" {
