@@ -75,13 +75,6 @@ nubis::static { 'services':
   ]
 }
 
-nubis::static { 'sso':
-  servername    => 'sso.mozilla.com',
-  serveraliases => [
-    'sso-haul.allizom.org',
-  ]
-}
-
 nubis::static { 'trackertest':
   servername    => 'trackertest.org',
   serveraliases => [
