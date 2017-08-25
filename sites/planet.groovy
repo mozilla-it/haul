@@ -12,10 +12,8 @@ node {
   stage ('Build') {
     // Symlink destination
     docker.image('dhartnell/mozilla-planet-builder:latest').inside('-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
-      sh "apt update"
-      sh "apt install -y rsync"
       sh "/usr/local/bin/planet-prod.sh"
-      sh "rsync -aq --exclude=.git /data/genericrhel6/src/ dst/"
+      sh "cp -r /data/genericrhel6/src/* dst/"
     }
   }
 
