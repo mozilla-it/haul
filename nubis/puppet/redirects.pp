@@ -11,7 +11,9 @@
 #
 
 file { "$::apache::confd_dir/redirects.conf":
-    ensure => exists,
+    owner => root,
+    group => www-data,
+    mode => '0750',
     source => "puppet:///nubis/files/redirects.conf",
     before => Custom_config['redirects'],
 }
