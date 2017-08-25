@@ -4,13 +4,13 @@ def nubisStatic = new org.mozilla.nubis.Static()
 
 node {
    stage('Prep') {
-        checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[credentialsId: '', depthOption: 'infinity', ignoreExternalsOption: true, local: 'src', remote: 'https://svn.mozilla.org/projects/publicsuffix.org/trunk']], workspaceUpdater: [$class: 'UpdateUpdater']])
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'src/'], [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: true, reference: '', trackingSubmodules: true], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/publicsuffix/publicsuffix.org.git']]])
    }
-   
+
   stage ('Build') {
     nubisStatic.buildSite()
   }
-    
+
   stage('Sync') {
      nubisStatic.syncSite()
   }
