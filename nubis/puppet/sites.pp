@@ -10,6 +10,7 @@ nubis::static { 'planet':
   servername    => 'planet.mozilla.org',
   serveraliases => [
     'planet.allizom.org',
+    'planet-haul.allizom.org',
   ]
 }
 
