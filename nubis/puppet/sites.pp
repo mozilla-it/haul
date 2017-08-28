@@ -15,7 +15,7 @@ nubis::static { 'planet':
 }
 
 nubis::static { 'en-us.start.mozilla.org':
-  servername => 'en-us.start.mozilla.org'
+  servername => 'en-us.start.mozilla.org',
   serveraliases => [
     'en-us.start-haul.allizom.org',
     '*.start.mozilla.org',
@@ -40,7 +40,7 @@ nubis::static { 'en-us.start.mozilla.org':
 }
 
 nubis::static { 'start2.mozilla.org':
-  servername => 'start2.mozilla.org'
+  servername => 'start2.mozilla.org',
   serveraliases => [
     'start2-haul.allizom.org',
     'start3.mozilla.org',
@@ -60,7 +60,7 @@ nubis::static { 'start2.mozilla.org':
 }
 
 nubis::static { 'start.mozilla.org':
-  servername => 'start.mozilla.org'
+  servername => 'start.mozilla.org',
   serveraliases => [
     'start-haul.allizom.org',
     'start-origin.cdn.mozilla.net',
