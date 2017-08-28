@@ -7,7 +7,8 @@ define nubis::static (
   $redirectmatch_status=[],
   $redirectmatch_regexp=[],
   $redirectmatch_dest=[],
-  $rewrites=[]) {
+  $rewrites=[],
+  $custom_fragment) {
 
   apache::vhost { $title:
     port                    => $port,
@@ -34,6 +35,8 @@ define nubis::static (
 
     headers                 => concat($default_headers, "set X-Nubis-Site ${title}", $headers),
     rewrites                => concat($default_rewrites, $rewrites),
+
+    custom_fragment         => $custom_fragment,
   }
 
 }
