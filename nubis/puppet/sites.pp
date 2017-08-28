@@ -6,13 +6,42 @@ nubis::static { 'static':
   options       => ['-Indexes'],
 }
 
-nubis::static { 'planet':
+nubis::static { 'planet-mozilla':
   servername    => 'planet.mozilla.org',
   serveraliases => [
     'planet.allizom.org',
     'planet-haul.allizom.org',
   ]
 }
+
+nubis::static { 'planet-de':
+  servername    => 'planet.mozilla.de',
+  serveraliases => [
+    'planet-de.allizom.org',
+  ]
+}
+
+nubis::static { 'planet-firefox':
+  servername    => 'planet.firefox.com',
+  serveraliases => [
+    'planet-firefox.allizom.org',
+  ]
+}
+
+nubis::static { 'planet-bugzilla':
+  servername    => 'planet.bugzilla.org',
+  serveraliases => [
+    'planet-bugzilla.allizom.org',
+  ]
+}
+
+nubis::static { 'planet-webmademovies':
+  servername    => 'planet.webmademovies.org',
+  serveraliases => [
+    'planet-webmademovies.allizom.org',
+  ]
+}
+
 
 nubis::static { 'en-us.start.mozilla.org':
   servername => 'en-us.start.mozilla.org',

@@ -10,7 +10,7 @@ module "static" {
   site_name = "static"
 }
 
-module "planet" {
+module "planet-mozilla" {
   source = "sites"
 
   region       = "${var.region}"
@@ -19,7 +19,59 @@ module "planet" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "planet"
+  site_name  = "planet-mozilla"
+  site_index = "index.html"
+}
+
+module "planet-de" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name  = "planet-de"
+  site_index = "index.html"
+}
+
+module "planet-firefox" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name  = "planet-firefox"
+  site_index = "index.html"
+}
+
+module "planet-bugzilla" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name  = "planet-bugzilla"
+  site_index = "index.html"
+}
+
+module "planet-webmademovies" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name  = "planet-webmademovies"
   site_index = "index.html"
 }
 
