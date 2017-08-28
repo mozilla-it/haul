@@ -13,15 +13,85 @@ nubis::static { 'planet':
   ]
 }
 
-nubis::static { 'start':
-  servername           => 'start.mozilla.org',
-  serveraliases        => [
-    'start.allizom.org',
-    'start-haul.allizom.org',
+nubis::static { 'en-us.start.mozilla.org':
+  servername => 'en-us.start.mozilla.org'
+  serveraliases => [
+    'en-us.start-haul.allizom.org',
+    '*.start.mozilla.org',
+    '*.start2.mozilla.org',
+    '*.start3.mozilla.org',
+    '*.start-prod.mozilla.org',
+    '*.start.mozilla.com',
+    '*.start2.mozilla.com',
+    '*.start3.mozilla.com',
+    '*.start-prod.mozilla.com',
   ],
-  redirectmatch_status => ['302'],
-  redirectmatch_regexp => ['^/$'],
-  redirectmatch_dest => ['/en-US/'],
+  custom_fragment => '
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{HTTP_HOST} ^([a-z]{2,3})(-[a-z]{2})?\.(start.*)$
+    RewriteMap uppercase int:toupper
+    RewriteRule ^ http://start.mozilla.org/%1${uppercase:%2}/? [R=301,L]
+  '
+}
+
+nubis::static { 'start2.mozilla.org':
+  servername => 'start2.mozilla.org'
+  serveraliases => [
+    'start2-haul.allizom.org',
+    'start3.mozilla.org',
+    'start-prod.mozilla.org',
+    'start.mozilla.com',
+    'start2.mozilla.com',
+    'start3.mozilla.com',
+    'start-prod.mozilla.com',
+  ],
+  custom_fragment => '
+    # Why would we even get these? Oh well, very simple redirect...
+    # should preserve whatever path they asked for... dont know if that path will *work*
+    Redirect permanent / http://start.mozilla.org/
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+  '
+}
+
+nubis::static { 'start.mozilla.org':
+  servername => 'start.mozilla.org'
+  serveraliases => [
+    'start-haul.allizom.org',
+    'start-origin.cdn.mozilla.net',
+    'start-origin-phx1.cdn.mozilla.net',
+    'start-phx1.mozilla.org',
+  ],
+  custom_fragment => '
+    # in case you dont specify a path, send you to en-US
+    # triggers if you came in without a subdomain on start.mozilla.org directly
+    RedirectMatch ^/$ http://start.mozilla.org/en-US/
+
+    # Firefox actually defaults to locale.start3.mozilla.com/firefox?stuff
+    # we try to redirect away from the /firefox, but apparently some things are still busted
+    # this is a hack to get them to the proper page, rather than 404
+    RedirectMatch ^/([a-z]{2,3}(-[a-zA-Z]{2})?)/firefox http://start.mozilla.org/$1/
+
+    # We also get things like this occasionally (bug 773654, 758910):
+    # http://start.mozilla.org/firefox?client=firefox-a&rls=org.mozilla:en-US:official
+    # Should redirect these based on the locale in the string
+    # mod_alias cant deal with query strings, need to use mod_rewrite
+    RewriteEngine on
+    RewriteCond %{QUERY_STRING} ^client=firefox-a&rls=org\.mozilla:([a-z]{2,3}(-[a-zA-Z]{2})?):official$
+    RewriteRule ^/firefox/?$ http://start.mozilla.org/%1/? [R=301,L]
+
+    # One last shot... redirect plain old /firefox, regardless of query string
+    # or locales
+    RewriteRule ^/firefox/?$ http://start.mozilla.org/? [R=301,L]
+
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/html "access plus 1 week"
+  '
 }
 
 nubis::static { 'archive':
