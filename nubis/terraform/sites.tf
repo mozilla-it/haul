@@ -20,7 +20,7 @@ module "planet-mozilla" {
   role         = "${module.worker.role}"
 
   site_name            = "planet-mozilla"
-  site_poll_frequency  = "H/15 * * * *"
+  site_poll_frequency  = "H/90 * * * *"
   site_build_frequency = "@daily"
   site_index           = "index.html"
 }
@@ -35,7 +35,7 @@ module "planet-de" {
   role         = "${module.worker.role}"
 
   site_name            = "planet-de"
-  site_poll_frequency  = "H/15 * * * *"
+  site_poll_frequency  = "H/90 * * * *"
   site_build_frequency = "@daily"
   site_index           = "index.html"
 }
@@ -50,7 +50,7 @@ module "planet-firefox" {
   role         = "${module.worker.role}"
 
   site_name            = "planet-firefox"
-  site_poll_frequency  = "H/15 * * * *"
+  site_poll_frequency  = "H/90 * * * *"
   site_build_frequency = "@daily"
   site_index           = "index.html"
 }
@@ -65,7 +65,7 @@ module "planet-bugzilla" {
   role         = "${module.worker.role}"
 
   site_name            = "planet-bugzilla"
-  site_poll_frequency  = "H/15 * * * *"
+  site_poll_frequency  = "H/90 * * * *"
   site_build_frequency = "@daily"
   site_index           = "index.html"
 }
@@ -80,7 +80,7 @@ module "planet-webmademovies" {
   role         = "${module.worker.role}"
 
   site_name            = "planet-webmademovies"
-  site_poll_frequency  = "H/15 * * * *"
+  site_poll_frequency  = "H/90 * * * *"
   site_build_frequency = "@daily"
   site_index           = "index.html"
 }
