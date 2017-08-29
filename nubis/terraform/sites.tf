@@ -19,8 +19,9 @@ module "planet-mozilla" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "planet-mozilla"
-  site_index = "index.html"
+  site_name           = "planet-mozilla"
+  site_poll_frequency = "H/15 * * * *"
+  site_index          = "index.html"
 }
 
 module "planet-de" {
@@ -32,8 +33,9 @@ module "planet-de" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "planet-de"
-  site_index = "index.html"
+  site_name           = "planet-de"
+  site_poll_frequency = "H/15 * * * *"
+  site_index          = "index.html"
 }
 
 module "planet-firefox" {
@@ -45,8 +47,9 @@ module "planet-firefox" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "planet-firefox"
-  site_index = "index.html"
+  site_name           = "planet-firefox"
+  site_poll_frequency = "H/15 * * * *"
+  site_index          = "index.html"
 }
 
 module "planet-bugzilla" {
@@ -58,8 +61,9 @@ module "planet-bugzilla" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "planet-bugzilla"
-  site_index = "index.html"
+  site_name           = "planet-bugzilla"
+  site_poll_frequency = "H/15 * * * *"
+  site_index          = "index.html"
 }
 
 module "planet-webmademovies" {
@@ -71,8 +75,9 @@ module "planet-webmademovies" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "planet-webmademovies"
-  site_index = "index.html"
+  site_name           = "planet-webmademovies"
+  site_poll_frequency = "H/15 * * * *"
+  site_index          = "index.html"
 }
 
 module "tlscanary" {
