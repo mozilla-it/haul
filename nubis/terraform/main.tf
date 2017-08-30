@@ -153,16 +153,6 @@ module "dns_web" {
   target       = "${module.load_balancer_web.address}"
 }
 
-module "dns_ci" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.5.0"
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  target       = "${module.load_balancer_ci.address}"
-  prefix       = "ci"
-}
-
 module "storage" {
   source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v1.5.0"
   region                 = "${var.region}"
