@@ -79,7 +79,7 @@ module "worker" {
   account       = "${var.account}"
   service_name  = "${var.service_name}"
   purpose       = "webserver"
-  instance_type = "t2.small"
+  instance_type = "t2.medium"
   ami           = "${var.ami}"
   elb           = "${module.load_balancer_web.name}"
   ssh_key_file  = "${var.ssh_key_file}"
