@@ -33,4 +33,10 @@ resource "consul_keys" "config" {
     value  = "${var.site_build_frequency}"
     delete = true
   }
+
+  key {
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/git_branches"
+    value  = "${var.site_git_branches}"
+    delete = true
+  }
 }

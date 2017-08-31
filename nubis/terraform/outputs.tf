@@ -3,5 +3,5 @@ output "address" {
 }
 
 output "ci_address" {
-  value = "https://${module.dns_ci.fqdn}/haul/"
+  value = "https://sso.${var.environment}.${var.region}.${var.account}.nubis.allizom.org/admin/haul-admin/"
 }
