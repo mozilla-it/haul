@@ -29,3 +29,7 @@ variable "site_poll_frequency" {
 variable "site_build_frequency" {
   default = "@daily"
 }
+
+variable "site_git_branches" {
+  default = "master"
+}
