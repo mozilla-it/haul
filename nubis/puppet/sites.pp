@@ -1,9 +1,11 @@
 nubis::static { 'static':
-  servername    => 'static.mozilla.com',
-  serveraliases => [
+  servername           => 'static.mozilla.com',
+  serveraliases        => [
     'static-haul.allizom.org',
   ],
-  options       => ['-Indexes'],
+  options              => ['-Indexes'],
+  redirectmatch_status => ['200'],
+  redirectmatch_regexp => ['^/health$'],
 }
 
 nubis::static { 'planet-mozilla':

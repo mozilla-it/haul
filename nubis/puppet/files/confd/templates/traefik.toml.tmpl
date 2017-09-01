@@ -24,8 +24,10 @@ email="{{ getv "/config/Email/Destination" }}"
 storage = "haul/{{ getv "/config/EnvironmentName" }}/acme"
 entryPoint = "https"
 
-# Disable for prod
-# caServer = "https://acme-staging.api.letsencrypt.org/directory"
+# Only set CA server in stage where this consul key exists
+{{if exists "/config/LetsEncrypt/CAServer" }}
+caServer = "{{ getv "/config/LetsEncrypt/CAServer" }}"
+{{end}}
 
 acmeLogging = true
 onDemand = true
