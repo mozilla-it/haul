@@ -8,9 +8,9 @@ node {
   }
 
   stage ('Build') {
-    docker.image('dhartnell/mozilla-planet-builder:2.0').inside('-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
-      sh "/usr/local/bin/planet-prod.sh"
-      sh "cp -r /data/genericrhel6/src/planet.webmademovies.org/* dst/"
+    docker.image('dhartnell/mozilla-planet-builder:3.0').inside('-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
+      sh "/usr/local/bin/planet-prod.sh webmademovies"
+      sh "rsync -aq /data/genericrhel6/src/planet.webmademovies.org/* dst/"
     }
   }
 
