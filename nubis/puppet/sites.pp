@@ -136,16 +136,58 @@ nubis::static { 'archive':
 }
 
 nubis::static { 'bugzilla':
-  servername    => 'www.bugzilla.org',
-  serveraliases => [
-    'bugzilla.org',
-    'bugzilla.org.uk',
-    'www.bugzilla.org.uk',
-    'virtual-bzorg.mozilla.org',
-    'website-beta.bugzilla.org',
-    'bugzilla.mozilla.osuosl.org',
-    'bugzilla-haul.allizom.org',
+  servername      => 'bugzilla.org',
+  serveraliases   => [
+    'www.bugzilla.org',
   ],
+  serveradmin     => 'webmaster@bugzilla.org',
+  custom_fragment => '
+  RewriteEngine On
+  RewriteRule ^(.*)$ https://www.bugzilla.org$1 [R,NE]
+  <Directory /data/www/www.bugzilla.org>
+    AllowOverride All
+    Options Indexes FollowSymLinks
+  </Directory>
+  <Location />
+    AllowOverride All
+    Options Indexes FollowSymLinks
+  </Location>
+  <Files favicon.ico>
+    ForceType image/png
+  </Files>
+  RewriteEngine On
+
+  RewriteRule ^/docs/html(.*)$ /docs/tip/html$1 [R]
+  RewriteRule ^/docs/txt(.*)$ /docs/tip/txt$1 [R]
+  RewriteRule ^/docs/pdf(.*)$ /docs/tip/pdf$1 [R]
+  RewriteRule ^/docs/xml(.*)$ /docs/tip/xml$1 [R]
+  RewriteRule ^/docs/pod(.*)$ /docs/tip/html/api$1 [R]
+  RewriteRule ^/docs216(.*)$ /docs/2.16$1 [R]
+  RewriteRule ^/docs214(.*)$ /docs/2.14$1 [R]
+  RewriteRule ^/docs/tip/pod(.*)$ /docs/tip/html/api$1 [R]
+  RewriteRule ^/docs/tip/html(.*)$ /docs/tip/en/html$1 [R=301]
+
+  RewriteRule ^/about\.html$ /about/ [R]
+  RewriteRule ^/how_to_help\.html$ /developers/how_to_help.html [R]
+  RewriteRule ^/reporting_bugs\.html$ /developers/reporting_bugs.html [R]
+  RewriteRule ^/roadmap\.html$ /status/roadmap.html [R]
+  RewriteRule ^/consulting\.html$ /support/consulting.html [R]
+  RewriteRule ^/download\.html$ /download/ [R]
+  RewriteRule ^/discussion\.html$ /support/ [R]
+  RewriteRule ^/documentation\.html$ /docs/ [R]
+  RewriteRule ^/who_we_are\.html$ /developers/ [R]
+  RewriteRule ^/developerguide\.html$ /docs/developer.html [R]
+  RewriteRule ^/reviewerguide\.html$ /docs/reviewer.html [R]
+  RewriteRule ^/queries\.html$ /docs/queries.html [R]
+  RewriteRule ^/changes\.html$ /status/changes.html [R]
+  RewriteRule ^/status_updates/2004-04-10.html$ /status/2004-07-10.html [R]
+  RewriteRule ^/status/2004-04-10.html$ /status/2004-07-10.html [R]
+  RewriteRule ^/status_reports/(.*)$ /status/$1 [R]
+  RewriteRule ^/status_updates/(.*)$ /status/$1 [R]
+  RewriteRule ^/releases/2\.18rc1/(.*)$ /releases/2.18/$1 [R]
+  RewriteRule ^/docs/html/stepbystep\.html$ /docs/2.16/html/installing-bugzilla.html [R]
+  RewriteRule ^/docs/tip/en/html/faq\.html$ https://wiki.mozilla.org/Bugzilla:FAQ [R]
+  ',
 }
 
 nubis::static { 'tlscanary':
