@@ -206,11 +206,26 @@ nubis::static { 'nightly':
 }
 
 nubis::static { 'publicsuffix':
-  servername    => 'www.publicsuffix.org',
-  serveraliases => [
+  servername      => 'www.publicsuffix.org',
+  serveraliases   => [
     'publicsuffix.org',
     'publicsuffix-haul.allizom.org',
   ],
+  custom_fragment => '
+    ExpiresActive On
+    ExpiresDefault "access plus 1 hour"
+
+    Header set Access-Control-Allow-Origin "*"
+    Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
+    Header always set Content-Security-Policy "default-src \'none\'; img-src \'self\'; script-src \'unsafe-inline\'; style-src \'self\'"
+
+    <FilesMatch "\.(dat)$">
+        ExpiresActive  On
+        ExpiresDefault "access plus 1 week"
+
+        Header set Cache-Control "max-age=604800"
+    </FilesMatch>
+  '
 }
 
 nubis::static { 'services':
