@@ -140,7 +140,6 @@ nubis::static { 'bugzilla':
   serveraliases   => [
     'www.bugzilla.org',
   ],
-  serveradmin     => 'webmaster@bugzilla.org',
   custom_fragment => '
   RewriteEngine On
   RewriteRule ^(.*)$ https://www.bugzilla.org$1 [R,NE]
@@ -245,12 +244,79 @@ nubis::static { 'trackertest':
 }
 
 nubis::static { 'seamonkey':
-  servername    => 'www.seamonkey-project.org',
-  serveraliases => [
+  servername      => 'www.seamonkey-project.org',
+  serveraliases   => [
     'www-stage.seamonkey-project.org',
     'seamonkey-project.org',
     'seamonkey-project-haul.allizom.org',
   ],
+  custom_fragment => '
+    ServerName www.seamonkey-project.org
+    ServerAlias www-stage.seamonkey-project.org
+    ServerAdmin webmaster@seamonkeyproject.org
+
+    ServerName www.seamonkey-project.org
+    ServerAlias www-stage.seamonkey-project.org
+    ServerAdmin webmaster@seamonkeyproject.org
+    Header always append X-Frame-Options SAMEORIGIN
+
+    <Directory "/data/www/www.seamonkeyproject.org">
+        Options FollowSymLinks -Indexes +MultiViews
+        AllowOverride FileInfo Options=All,MultiViews Indexes
+    </Directory>
+
+    ErrorDocument 403 /404.html
+    ErrorDocument 404 /404.html
+    ErrorDocument 500 /500.html
+    <LocationMatch ^/[0-9]+\.html$>
+        SetEnvIf Referer ^http HasReferer=True
+        SetEnvIf Referer ^https?://[^/]+\.mozilla\.com/ RefererIsMoz=True
+        Options +IncludesNoExec
+        SetHandler server-parsed
+    </LocationMatch>
+
+    AddDefaultCharset UTF-8
+    AddType image/svg+xml .svg
+    AddType application/vnd.mozilla.xul+xml .xul
+    AddType text/xml .rdf
+    AddType image/x-icon .ico
+    AddType text/calendar .ics
+    AddType application/vnd.stardivision.impress .sdd
+    AddType application/vnd.stardivision.writer .sdw
+    AddType application/vnd.stardivision.draw .sda
+    AddType application/vnd.stardivision.calc .sdc
+
+    <Location /server-status>
+        SetHandler server-status
+        Order deny,allow
+        Deny from all
+        Allow from 209.157.131.162
+        Allow from 66.227.244.37
+        Allow from 10.8.75.19
+        Allow from 10.22.75.42
+    </Location>
+
+    <Location /server-info>
+        SetHandler server-info
+        Order deny,allow
+        Deny from all
+        Allow from 209.157.131.162
+        Allow from 66.227.244.37
+    </Location>
+
+    ServerName seamonkeyproject.org
+    ServerAlias www.seamonkeyproject.org www-stage.seamonkeyproject.org seamonkey-project.org
+    ServerAdmin webmaster@seamonkeyproject.org
+
+    RewriteEngine On
+    RewriteRule "^/?(.*)" "https://%{HTTP_HOST}/$1" [L,R=307,QSA]
+
+    ServerName seamonkeyproject.org
+    ServerAlias www.seamonkeyproject.org www-stage.seamonkeyproject.org seamonkey-project.org
+    ServerAdmin webmaster@seamonkeyproject.org
+
+    Redirect permanent / https://www.seamonkey-project.org/
+  '
 }
 
 nubis::static { 'krakenbenchmark':
