@@ -20,7 +20,7 @@ module "planet-mozilla" {
   role         = "${module.worker.role}"
 
   site_name            = "planet-mozilla"
-  site_build_frequency = "H */2 * * *"
+  site_build_frequency = "H/30 * * * *"
   site_index           = "index.html"
 }
 
