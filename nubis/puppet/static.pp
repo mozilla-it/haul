@@ -39,7 +39,7 @@ define nubis::static (
     access_log_env_var   => '!internal',
     access_log_format    => $access_log_format,
 
-    if $use_default_headers {
+    if $use_default_headers = true {
       headers => concat($default_headers, "set X-Nubis-Site ${title}", $headers),
     }
     elsif {
