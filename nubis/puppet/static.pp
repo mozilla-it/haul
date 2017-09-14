@@ -1,5 +1,6 @@
 define nubis::static (
   $servername,
+  $serveradmin=undef,
   $serveraliases=[],
   $indexes=[],
   $headers=[],
@@ -13,6 +14,7 @@ define nubis::static (
 
   apache::vhost { $title:
     port                 => $port,
+    serveradmin          => $serveradmin,
     servername           => $servername,
     serveraliases        => $serveraliases,
 
