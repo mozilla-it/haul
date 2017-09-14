@@ -216,7 +216,7 @@ nubis::static { 'publicsuffix':
     'publicsuffix.org',
     'publicsuffix-haul.allizom.org',
   ],
-  headers = [
+  headers             => [
   "set X-Nubis-Version ${project_version}",
   "set X-Nubis-Project ${project_name}",
   "set X-Nubis-Build   ${packer_build_name}",
