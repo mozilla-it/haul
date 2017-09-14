@@ -14,9 +14,9 @@ define nubis::static (
   $use_default_headers=true) {
 
   if $use_default_headers {
-    $headers => concat($default_headers, "set X-Nubis-Site ${title}", $headers),
+    $headers = concat($default_headers, "set X-Nubis-Site ${title}", $headers),
   } else {
-    $headers => concat("set X-Nubis-Site ${title}", $headers),
+    $headers = concat("set X-Nubis-Site ${title}", $headers),
   }
 
   apache::vhost { $title:
