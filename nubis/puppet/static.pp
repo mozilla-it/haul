@@ -42,7 +42,7 @@ define nubis::static (
     if $use_default_headers = true {
       headers => concat($default_headers, "set X-Nubis-Site ${title}", $headers),
     }
-    elsif {
+    else {
       headers => concat("set X-Nubis-Site ${title}", $headers),
     }
 
