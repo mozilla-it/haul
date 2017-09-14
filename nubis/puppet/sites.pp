@@ -140,6 +140,7 @@ nubis::static { 'bugzilla':
   servername      => 'www.bugzilla.org',
   serveraliases   => [
     'bugzilla.org',
+    'bugzilla-haul.allizom.org',
   ],
   directories     => [
     {
