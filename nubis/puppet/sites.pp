@@ -152,7 +152,12 @@ nubis::static { 'bugzilla':
       provider       => 'location',
       allow_override => ['All'],
       options        => ['Indexes', 'FollowSymLinks'],
-    }
+    },
+    {
+      path       => "/data/haul/${title}/favicon.ico",
+      provider   => 'files',
+      force_type => 'image/png',
+    },
   ],
   custom_fragment => '
     RewriteEngine On
