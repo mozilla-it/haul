@@ -11,6 +11,7 @@ define nubis::static (
   $rewrites=[],
   $custom_fragment=undef,
   $directories=undef,
+  $error_documents=undef,
   $use_default_headers=true) {
 
   if $use_default_headers {
@@ -48,6 +49,8 @@ define nubis::static (
     headers              => $all_headers,
 
     rewrites             => concat($default_rewrites, $rewrites),
+
+    error_documents      => $error_documents,
 
     custom_fragment      => $custom_fragment,
   }
