@@ -119,6 +119,18 @@ module "archive" {
   site_name = "archive"
 }
 
+module "www-archive" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name    = "www-archive"
+}
+
 module "start" {
   source = "sites"
 

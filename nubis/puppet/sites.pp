@@ -134,6 +134,13 @@ nubis::static { 'archive':
   ],
 }
 
+nubis::static { 'www-archive':
+  servername    => 'www-archive.mozilla.org',
+  serveraliases => [
+    'www-archive.allizom.org',
+  ],
+}
+
 nubis::static { 'bugzilla':
   serveradmin     => 'webmaster@bugzilla.org',
   servername      => 'www.bugzilla.org',
