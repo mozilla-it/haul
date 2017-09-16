@@ -14,7 +14,12 @@ class { 'nubis_apache':
 class { 'apache::mod::rewrite': }
 class { 'apache::mod::proxy': }
 class { 'apache::mod::proxy_http': }
-class { 'apache::mod::negotiation': }
+
+::apache::mod::negotiation {
+  language_priority => ['us']
+}
+
+include ::apache::mod::negotiation
 
 apache::custom_config { 'proxyremote':
     content       => 'ProxyRemoteMatch "\.amazonaws\.com/" http://proxy.service.consul:3128',
