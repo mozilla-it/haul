@@ -53,9 +53,9 @@ apache::custom_config { 'negotiationmodule':
       AddLanguage sv .sv
       AddLanguage zh-CN .zh-cn
       AddLanguage zh-TW .zh-tw
-      LanguagePriority en ca cs da de el eo es et fr he hr it ja ko ltz nl nn no pl pt pt-BR ru sv zh-CN zh-TW
-    ',
+      LanguagePriority en ca cs da de el eo es et fr he hr it ja ko ltz nl nn no pl pt pt-BR ru sv zh-CN zh-TW',
     verify_config => false,
+}
 
 
 file { '/etc/haul':
