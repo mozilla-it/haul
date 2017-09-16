@@ -15,12 +15,6 @@ class { 'apache::mod::rewrite': }
 class { 'apache::mod::proxy': }
 class { 'apache::mod::proxy_http': }
 
-::apache::mod::negotiation {
-  language_priority => ['us']
-}
-
-include ::apache::mod::negotiation
-
 apache::custom_config { 'proxyremote':
     content       => 'ProxyRemoteMatch "\.amazonaws\.com/" http://proxy.service.consul:3128',
     verify_config => false,
@@ -30,6 +24,39 @@ apache::custom_config { 'proxyerror':
     content       => 'ProxyErrorOverride On',
     verify_config => false,
 }
+
+apache::custom_config { 'negotiationmodule':
+    content       => '
+      AddLanguage ca .ca
+      AddLanguage cs .cz .cs
+      AddLanguage da .dk
+      AddLanguage de .de
+      AddLanguage el .el
+      AddLanguage en .en
+      AddLanguage eo .eo
+      AddLanguage es .es
+      AddLanguage et .et
+      AddLanguage fr .fr
+      AddLanguage he .he
+      AddLanguage hr .hr
+      AddLanguage it .it
+      AddLanguage ja .ja
+      AddLanguage ko .ko
+      AddLanguage ltz .ltz
+      AddLanguage nl .nl
+      AddLanguage nn .nn
+      AddLanguage no .no
+      AddLanguage pl .po
+      AddLanguage pt .pt
+      AddLanguage pt-BR .pt-br
+      AddLanguage ru .ru
+      AddLanguage sv .sv
+      AddLanguage zh-CN .zh-cn
+      AddLanguage zh-TW .zh-tw
+      LanguagePriority en ca cs da de el eo es et fr he hr it ja ko ltz nl nn no pl pt pt-BR ru sv zh-CN zh-TW
+    ',
+    verify_config => false,
+
 
 file { '/etc/haul':
   ensure  => directory,
