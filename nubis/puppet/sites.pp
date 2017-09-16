@@ -272,6 +272,7 @@ nubis::static { 'seamonkey':
     'seamonkey-project.org',
     'seamonkey-project-haul.allizom.org',
   ],
+  indexes         => ['index.en.html'],
   directories     => [
     {
       path           => "/data/haul/${title}",
