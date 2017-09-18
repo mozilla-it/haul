@@ -327,7 +327,7 @@ nubis::static { 'krakenbenchmark':
 # Redirect sites
 
 # Make the Apache config file for redirects
-file { "/data/haul/static.mozilla.com/index.html":
+file { "/data/haul/static/index.html":
   owner =>  root,
   group =>  www-data,
   mode =>  '0644',
