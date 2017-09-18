@@ -323,3 +323,13 @@ nubis::static { 'krakenbenchmark':
     'krakenbenchmark.allizom.org',
   ]
 }
+
+# Redirect sites
+
+# Make the Apache config file for redirects
+file { "/data/haul/${title}/index.html":
+  owner =>  root,
+  group =>  www-data,
+  mode =>  '0644',
+  source =>  "puppet:///nubis/files/static-index.html",
+}
