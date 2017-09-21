@@ -273,48 +273,48 @@ nubis::static { 'seamonkey':
     'seamonkey-project-haul.allizom.org',
   ],
   # indexes         => ['index.en.html'],
-  # directories     => [
-  #  {
-  #    path           => "/data/haul/${title}",
-  #    allow_override => ['FileInfo', 'Options=All', 'MultiViews', 'Indexes'],
-  #    options        => ['-Indexes', 'FollowSymLinks', '+MultiViews'],
-  #  },
-  #],
-  #error_documents => [
-  #  {
-  #    'error_code' => '403',
-  #    'document'   => '/404.html'
-  #  },
-  #  {
-  #    'error_code' => '404',
-  #    'document'   => '/404.html'
-  #  },
-  #  {
-  #    'error_code' => '500',
-  #    'document'   => '/500.html'
-  #  }
-  #],
-  #custom_fragment => '
-  #  <LocationMatch ^/[0-9]+\.html$>
-  #      SetEnvIf Referer ^http HasReferer=True
-  #      SetEnvIf Referer ^https?://[^/]+\.mozilla\.com/ RefererIsMoz=True
-  #      Options +IncludesNoExec
-  #      SetHandler server-parsed
-  #  </LocationMatch>
+  directories     => [
+    {
+      path           => "/data/haul/${title}",
+      allow_override => ['FileInfo', 'Options=All,MultiViews', 'Indexes'],
+      options        => ['+FollowSymLinks', '-Indexes', '+MultiViews'],
+    },
+  ],
+  error_documents => [
+    {
+      'error_code' => '403',
+      'document'   => '/404.html'
+    },
+    {
+      'error_code' => '404',
+      'document'   => '/404.html'
+    },
+    {
+      'error_code' => '500',
+      'document'   => '/500.html'
+    }
+  ],
+  custom_fragment => '
+    <LocationMatch ^/[0-9]+\.html$>
+        SetEnvIf Referer ^http HasReferer=True
+        SetEnvIf Referer ^https?://[^/]+\.mozilla\.com/ RefererIsMoz=True
+        Options +IncludesNoExec
+        SetHandler server-parsed
+    </LocationMatch>
 
-  #  AddDefaultCharset UTF-8
-  #  AddType image/svg+xml .svg
-  #  AddType application/vnd.mozilla.xul+xml .xul
-  #  AddType text/xml .rdf
-  #  AddType image/x-icon .ico
-  #  AddType text/calendar .ics
-  #  AddType application/vnd.stardivision.impress .sdd
-  #  AddType application/vnd.stardivision.writer .sdw
-  #  AddType application/vnd.stardivision.draw .sda
-  #  AddType application/vnd.stardivision.calc .sdc
+    AddDefaultCharset UTF-8
+    AddType image/svg+xml .svg
+    AddType application/vnd.mozilla.xul+xml .xul
+    AddType text/xml .rdf
+    AddType image/x-icon .ico
+    AddType text/calendar .ics
+    AddType application/vnd.stardivision.impress .sdd
+    AddType application/vnd.stardivision.writer .sdw
+    AddType application/vnd.stardivision.draw .sda
+    AddType application/vnd.stardivision.calc .sdc
 
-  #  Redirect permanent / https://www.seamonkey-project.org/
-  #'
+    Redirect permanent / https://www.seamonkey-project.org/
+  '
 }
 
 nubis::static { 'krakenbenchmark':
