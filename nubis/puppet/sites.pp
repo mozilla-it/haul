@@ -323,3 +323,8 @@ nubis::static { 'krakenbenchmark':
     'krakenbenchmark.allizom.org',
   ]
 }
+
+nubis::static { 'mozilla-europe':
+  servername => 'mozilla-europe.org',
+}
+
