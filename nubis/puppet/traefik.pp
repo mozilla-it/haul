@@ -29,7 +29,7 @@ upstart::job { 'traefik':
     respawn        => true,
     respawn_limit  => 'unlimited',
     limit          => {
-      'nofile'     => '32768',
+      'nofile'     => '32768 32768',
     },
     start_on       => '(local-filesystems and net-device-up IFACE!=lo)',
     env            => {
