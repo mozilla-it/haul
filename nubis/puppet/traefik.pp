@@ -28,6 +28,9 @@ upstart::job { 'traefik':
     # Never give up
     respawn        => true,
     respawn_limit  => 'unlimited',
+    limit          => {
+      'nofile'     => 4096,
+    },
     start_on       => '(local-filesystems and net-device-up IFACE!=lo)',
     env            => {
       'SLEEP_TIME' => 1,
