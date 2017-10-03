@@ -10,12 +10,12 @@ nubis::static { 'static':
 }
 
 nubis::static { 'planet-mozilla':
-  servername    => 'planet.mozilla.org',
-  serveraliases => [
+  servername          => 'planet.mozilla.org',
+  serveraliases       => [
     'planet.allizom.org',
     'planet-haul.allizom.org',
   ],
-  headers       => [
+  headers             => [
     "set X-Nubis-Version ${project_version}",
     "set X-Nubis-Project ${project_name}",
     "set X-Nubis-Build   ${packer_build_name}",
@@ -58,8 +58,8 @@ nubis::static { 'planet-webmademovies':
 }
 
 nubis::static { 'en-us.start.mozilla.org':
-  servername => 'en-us.start.mozilla.org',
-  serveraliases => [
+  servername      => 'en-us.start.mozilla.org',
+  serveraliases   => [
     'en-us.start-haul.allizom.org',
     '*.start.mozilla.org',
     '*.start2.mozilla.org',
@@ -70,6 +70,7 @@ nubis::static { 'en-us.start.mozilla.org':
     '*.start3.mozilla.com',
     '*.start-prod.mozilla.com',
   ],
+  # lint:ignore:single_quote_string_with_variables
   custom_fragment => '
     ExpiresActive On
     ExpiresDefault "access plus 1 year"
@@ -80,11 +81,12 @@ nubis::static { 'en-us.start.mozilla.org':
     RewriteMap uppercase int:toupper
     RewriteRule ^ http://start.mozilla.org/%1${uppercase:%2}/? [R=301,L]
   '
+  # lint:endignore
 }
 
 nubis::static { 'start2.mozilla.org':
-  servername => 'start2.mozilla.org',
-  serveraliases => [
+  servername      => 'start2.mozilla.org',
+  serveraliases   => [
     'start2-haul.allizom.org',
     'start3.mozilla.org',
     'start-prod.mozilla.org',
@@ -103,8 +105,8 @@ nubis::static { 'start2.mozilla.org':
 }
 
 nubis::static { 'start.mozilla.org':
-  servername => 'start.mozilla.org',
-  serveraliases => [
+  servername      => 'start.mozilla.org',
+  serveraliases   => [
     'start-haul.allizom.org',
     'start-origin.cdn.mozilla.net',
     'start-origin-phx1.cdn.mozilla.net',
