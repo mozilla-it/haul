@@ -1,3 +1,10 @@
+include nubis_discovery
+
+nubis::discovery::service { 'varnish':
+  tcp      => 82,
+  interval => '15s',
+}
+
 class {'varnish':
   varnish_listen_port => 82,
   storage_type          => 'file',
