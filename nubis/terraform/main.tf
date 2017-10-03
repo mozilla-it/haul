@@ -124,7 +124,6 @@ module "ci" {
   security_group_custom = true
   security_group        = "${aws_security_group.ci.id}"
   wait_for_capacity_timeout = "20m"
-  nubis_sudo_groups = "${var.nubis_sudo_groups}"
 }
 
 module "load_balancer_ci" {
