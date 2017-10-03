@@ -14,7 +14,19 @@ nubis::static { 'planet-mozilla':
   serveraliases => [
     'planet.allizom.org',
     'planet-haul.allizom.org',
-  ]
+  ],
+  headers       => [
+    "set X-Nubis-Version ${project_version}",
+    "set X-Nubis-Project ${project_name}",
+    "set X-Nubis-Build   ${packer_build_name}",
+    'set X-Content-Type-Options "nosniff"',
+    'set X-XSS-Protection "1; mode=block"',
+    'set X-Frame-Options "SAMEORIGIN"',
+    'set Strict-Transport-Security "max-age=31536000"',
+    'always set Content-Security-Policy "default-src \'none\'; img-src http: https:; script-src \'self\'; style-src \'self\' \'unsafe-inline\'"',
+    'set Content-Type "application/xhtml+xml;charset=utf-8"',
+  ],
+  use_default_headers => false,
 }
 
 nubis::static { 'planet-de':
