@@ -1,0 +1,16 @@
+language: ruby
+sudo: false
+gemfile: nubis/travis/Gemfile
+cache:
+  bundler: true
+  directories:
+  - "${HOME}/bin"
+  - nubis/librarian-puppet
+addons:
+  apt:
+    sources:
+    - debian-sid
+    packages:
+    - shellcheck
+script:
+- nubis/travis/run-checks
