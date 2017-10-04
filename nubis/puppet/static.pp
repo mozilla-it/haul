@@ -5,6 +5,7 @@ define nubis::static (
   $indexes=[],
   $headers=[],
   $options=[],
+  $override=[],
   $redirectmatch_status=[],
   $redirectmatch_regexp=[],
   $redirectmatch_dest=[],
@@ -53,6 +54,8 @@ define nubis::static (
     error_documents      => $error_documents,
 
     custom_fragment      => $custom_fragment,
+
+    override             => $override,
   }
 
 }
