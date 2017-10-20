@@ -56,10 +56,10 @@ onHostRule = false
 # Static Sites
 {{ $env:=getv "/config/EnvironmentName" }}
 {{ if eq $env "prod" }}
-main = static-san-nubis.mozilla.org
+main = "static-san-nubis.mozilla.org"
 sans = [ "planet.mozilla.org", "static-haul.mozilla.com", "static.mozilla.com", "tlscanary.mozilla.org", "www-archive.mozilla.org"]
 {{ else }}
-main = static-san-nubis.allizom.org
+main = "static-san-nubis.allizom.org"
 sans = ["bugzilla-haul.allizom.org", "docs-haul-services.allizom.org", "itisatracker-haul.allizom.org", "nightly-haul.allizom.org", "planet-bugzilla.allizom.org", "planet-de.allizom.org", "planet-firefox.allizom.org", "planet-haul.allizom.org", "planet-webmademovies.allizom.org", "publicsuffix-haul.allizom.org", "seamonkey-project-haul.allizom.org", "sso-haul.allizom.org", "start-haul.allizom.org", "static-haul.allizom.org", "tlscanary.allizom.org", "website-archive-haul.allizom.org"]
 {{ end }}
 
