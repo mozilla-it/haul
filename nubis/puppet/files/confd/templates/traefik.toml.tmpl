@@ -34,8 +34,8 @@ caServer = "{{ getv "/config/LetsEncrypt/CAServer" }}"
 {{end}}
 
 acmeLogging = true
-onDemand = true
-onHostRule = true
+onDemand = false
+onHostRule = false
 
 [file]
 
@@ -62,3 +62,6 @@ sans = [ "planet.mozilla.org", "static-haul.mozilla.com", "static.mozilla.com", 
 main = static-san-nubis.allizom.org
 sans = ["bugzilla-haul.allizom.org", "docs-haul-services.allizom.org", "itisatracker-haul.allizom.org", "nightly-haul.allizom.org", "planet-bugzilla.allizom.org", "planet-de.allizom.org", "planet-firefox.allizom.org", "planet-haul.allizom.org", "planet-webmademovies.allizom.org", "publicsuffix-haul.allizom.org", "seamonkey-project-haul.allizom.org", "sso-haul.allizom.org", "start-haul.allizom.org", "static-haul.allizom.org", "tlscanary.allizom.org", "website-archive-haul.allizom.org"]
 {{ end }}
+
+# Redirects
+#www.mozilla.net "apps.mozillalabs.com","events.mozspaces.org","krakenbenchmark.mozilla.org",prs.paas.allizom.org, redirecttest.allizom.org
