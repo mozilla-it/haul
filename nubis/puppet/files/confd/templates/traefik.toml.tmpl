@@ -51,11 +51,11 @@ onHostRule = false
   passHostHeader = true
   entryPoints = [ "http", "https" ]
 
-[[acme.domains]]
-
 # Static Sites
 {{ $env:=getv "/config/EnvironmentName" }}
 {{ if eq $env "prod" }}
+
+[[acme.domains]]
 main = "static-san-nubis.mozilla.org"
 sans = [
     "planet.mozilla.org",
@@ -64,7 +64,16 @@ sans = [
     "tlscanary.mozilla.org",
     "www-archive.mozilla.org"
     ]
+
+[[acme.domains]]
+main = "tlscanary.mozilla.org"
+sans = [
+  "tlscanary-haul.mozilla.org"
+]
+
 {{ else }}
+
+[[acme.domains]]
 main = "static-san-nubis.allizom.org"
 sans = [
     "bugzilla-haul.allizom.org",
@@ -77,8 +86,14 @@ sans = [
     "seamonkey-project-haul.allizom.org",
     "sso-haul.allizom.org",
     "start-haul.allizom.org",
-    "tlscanary.allizom.org",
     ]
+
+[[acme.domains]]
+main = "tlscanary.allizom.org"
+sans = [
+  "tlscanary-haul.allizom.org"
+]
+
 {{ end }}
 
 # Redirects
