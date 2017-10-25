@@ -4,9 +4,10 @@ forge "https://forgeapi.puppetlabs.com"
 # All modules *must* be pinned to a specific version/tag #
 ##########################################################
 
-mod 'nubis/nubis_apache',
-    :git => 'https://github.com/nubisproject/nubis-puppet-apache.git',
-    :ref => 'v0.1.8'
+# Needs to be removed once Nubis v2.1.0 is out
+mod 'nubis/nubis_discovery',
+    :git => 'https://github.com/nubisproject/nubis-puppet-discovery.git',
+    :ref => 'v1.3.5'
 
 # Jenkins Dependencies
 mod 'puppetlabs/apt', '2.2.1'
