@@ -3,6 +3,7 @@
     "name": "haul-admin",
     "port": 8080,
     "tags": [
+      "%%ENVIRONMENT%%",
       "sso=true"
     ],
     "check": {

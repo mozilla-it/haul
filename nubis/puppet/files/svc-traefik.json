@@ -3,6 +3,7 @@
     "name": "haul-frontend",
     "port": 8082,
     "tags": [
+      "%%ENVIRONMENT%%"
     ],
     "check": {
        "http": "http://localhost:8082/health",
