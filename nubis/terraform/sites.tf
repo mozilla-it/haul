@@ -24,62 +24,6 @@ module "planet-mozilla" {
   site_index           = "index.html"
 }
 
-module "planet-de" {
-  source = "sites"
-
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  role         = "${module.worker.role}"
-
-  site_name            = "planet-de"
-  site_build_frequency = "H */2 * * *"
-  site_index           = "index.html"
-}
-
-module "planet-firefox" {
-  source = "sites"
-
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  role         = "${module.worker.role}"
-
-  site_name            = "planet-firefox"
-  site_build_frequency = "H */2 * * *"
-  site_index           = "index.html"
-}
-
-module "planet-bugzilla" {
-  source = "sites"
-
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  role         = "${module.worker.role}"
-
-  site_name            = "planet-bugzilla"
-  site_build_frequency = "H */2 * * *"
-  site_index           = "index.html"
-}
-
-module "planet-webmademovies" {
-  source = "sites"
-
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  role         = "${module.worker.role}"
-
-  site_name            = "planet-webmademovies"
-  site_build_frequency = "H */2 * * *"
-  site_index           = "index.html"
-}
-
 module "tlscanary" {
   source = "sites"
 

@@ -20,34 +20,6 @@ nubis::static { 'planet-mozilla':
   override      => ['All'],
 }
 
-nubis::static { 'planet-de':
-  servername    => 'planet.mozilla.de',
-  serveraliases => [
-    'planet-de.allizom.org',
-  ]
-}
-
-nubis::static { 'planet-firefox':
-  servername    => 'planet.firefox.com',
-  serveraliases => [
-    'planet-firefox.allizom.org',
-  ]
-}
-
-nubis::static { 'planet-bugzilla':
-  servername    => 'planet.bugzilla.org',
-  serveraliases => [
-    'planet-bugzilla.allizom.org',
-  ]
-}
-
-nubis::static { 'planet-webmademovies':
-  servername    => 'planet.webmademovies.org',
-  serveraliases => [
-    'planet-webmademovies.allizom.org',
-  ]
-}
-
 nubis::static { 'en-us.start.mozilla.org':
   servername => 'en-us.start.mozilla.org',
   serveraliases => [
@@ -327,8 +299,3 @@ nubis::static { 'krakenbenchmark':
     'krakenbenchmark.allizom.org',
   ]
 }
-
-nubis::static { 'mozilla-europe':
-  servername => 'mozilla-europe.org',
-}
-
