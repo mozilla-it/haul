@@ -1,8 +1,10 @@
 nubis::static { 'static':
   servername           => 'static.mozilla.com',
   serveraliases        => [
-    'static-haul.allizom.org',
-    'static-haul.mozilla.com',
+    'static.allizom.org',
+    # For testing
+    "static-${project_name}.allizom.org",
+    "static-${project_name}.mozilla.com",
   ],
   options              => ['-Indexes'],
   redirectmatch_status => ['200'],

@@ -61,12 +61,24 @@ sans = [
   "tlscanary-haul.mozilla.org"
 ]
 
+[[acme.domains]]
+main = "static.mozilla.com"
+sans = [
+  "static-haul.mozilla.com"
+]
+
 {{ else }}
 
 [[acme.domains]]
 main = "tlscanary.allizom.org"
 sans = [
   "tlscanary-haul.allizom.org"
+]
+
+[[acme.domains]]
+main = "static.allizom.org"
+sans = [
+  "static-haul.allizom.org"
 ]
 
 {{ end }}
