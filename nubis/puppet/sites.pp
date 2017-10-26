@@ -20,52 +20,7 @@ nubis::static { 'planet-mozilla':
   override      => ['All'],
 }
 
-nubis::static { 'en-us.start.mozilla.org':
-  servername => 'en-us.start.mozilla.org',
-  serveraliases => [
-    'en-us.start-haul.allizom.org',
-    '*.start.mozilla.org',
-    '*.start2.mozilla.org',
-    '*.start3.mozilla.org',
-    '*.start-prod.mozilla.org',
-    '*.start.mozilla.com',
-    '*.start2.mozilla.com',
-    '*.start3.mozilla.com',
-    '*.start-prod.mozilla.com',
-  ],
-  custom_fragment => '
-    ExpiresActive On
-    ExpiresDefault "access plus 1 year"
-
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{HTTP_HOST} ^([a-z]{2,3})(-[a-z]{2})?\.(start.*)$
-    RewriteMap uppercase int:toupper
-    RewriteRule ^ http://start.mozilla.org/%1${uppercase:%2}/? [R=301,L]
-  '
-}
-
-nubis::static { 'start2.mozilla.org':
-  servername => 'start2.mozilla.org',
-  serveraliases => [
-    'start2-haul.allizom.org',
-    'start3.mozilla.org',
-    'start-prod.mozilla.org',
-    'start.mozilla.com',
-    'start2.mozilla.com',
-    'start3.mozilla.com',
-    'start-prod.mozilla.com',
-  ],
-  custom_fragment => '
-    # Why would we even get these? Oh well, very simple redirect...
-    # should preserve whatever path they asked for... dont know if that path will *work*
-    Redirect permanent / http://start.mozilla.org/
-    ExpiresActive On
-    ExpiresDefault "access plus 1 year"
-  '
-}
-
-nubis::static { 'start.mozilla.org':
+nubis::static { 'start':
   servername => 'start.mozilla.org',
   serveraliases => [
     'start-haul.allizom.org',
