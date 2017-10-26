@@ -133,7 +133,9 @@ nubis::static { 'archive':
   servername    => 'website-archive.mozilla.org',
   serveraliases => [
     'website-archive.allizom.org',
-    'website-archive-haul.allizom.org',
+    # For testing
+    "website-archive-${project_name}.allizom.org",
+    "website-archive-${project_name}.mozilla.org",
   ],
 }
 
