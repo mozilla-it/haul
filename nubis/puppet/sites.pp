@@ -207,6 +207,9 @@ nubis::static { 'tlscanary':
   servername    => 'tlscanary.mozilla.org',
   serveraliases => [
     'tlscanary.allizom.org',
+    # For testing
+    "tlscanary-${project_name}.allizom.org",
+    "tlscanary-${project_name}.mozilla.org",
   ],
 }
 
