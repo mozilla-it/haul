@@ -7,7 +7,7 @@ forge "https://forgeapi.puppetlabs.com"
 # Needs to be removed once Nubis v2.1.0 is out
 mod 'nubis/nubis_discovery',
     :git => 'https://github.com/nubisproject/nubis-puppet-discovery.git',
-    :ref => 'v1.3.5'
+    :ref => 'v1.3.4'
 
 # Jenkins Dependencies
 mod 'puppetlabs/apt', '2.2.1'
