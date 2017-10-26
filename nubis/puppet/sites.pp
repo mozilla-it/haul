@@ -259,13 +259,6 @@ nubis::static { 'publicsuffix':
   '
 }
 
-nubis::static { 'services':
-  servername    => 'docs.services.mozilla.com',
-  serveraliases => [
-    'docs-haul-services.allizom.org',
-  ]
-}
-
 nubis::static { 'trackertest':
   servername    => 'trackertest.org',
   serveraliases => [
