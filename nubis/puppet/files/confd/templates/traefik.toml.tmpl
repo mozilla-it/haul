@@ -82,6 +82,13 @@ sans = [
 [[acme.domains]]
 main = "krakenbenchmark.mozilla.org"
 
+[[acme.domains]]
+main = "www.mozilla.net"
+sans = [
+  "apps.mozillalabs.com",
+  "events.mozspaces.org"
+]
+
 {{ else }}
 
 [[acme.domains]]
@@ -110,6 +117,13 @@ sans = [
 
 [[acme.domains]]
 main = "krakenbenchmark.allizom.org"
+
+[[acme.domains]]
+main = "redirecttest.allizom.org"
+sans = [
+  "prs.paas.allizom.org",
+  "events.mozspaces.org"
+]
 
 {{ end }}
 
