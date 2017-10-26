@@ -56,37 +56,12 @@ onHostRule = false
 {{ if eq $env "prod" }}
 
 [[acme.domains]]
-main = "static-san-nubis.mozilla.org"
-sans = [
-    "planet.mozilla.org",
-    "static-haul.mozilla.com",
-    "static.mozilla.com",
-    "tlscanary.mozilla.org",
-    "www-archive.mozilla.org"
-    ]
-
-[[acme.domains]]
 main = "tlscanary.mozilla.org"
 sans = [
   "tlscanary-haul.mozilla.org"
 ]
 
 {{ else }}
-
-[[acme.domains]]
-main = "static-san-nubis.allizom.org"
-sans = [
-    "bugzilla-haul.allizom.org",
-    "docs-haul-services.allizom.org",
-    "itisatracker-haul.allizom.org",
-    "planet-bugzilla.allizom.org",
-    "planet-de.allizom.org",
-    "planet-firefox.allizom.org",
-    "planet-webmademovies.allizom.org",
-    "seamonkey-project-haul.allizom.org",
-    "sso-haul.allizom.org",
-    "start-haul.allizom.org",
-    ]
 
 [[acme.domains]]
 main = "tlscanary.allizom.org"
