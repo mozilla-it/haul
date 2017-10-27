@@ -15,7 +15,9 @@ nubis::static { 'planet-mozilla':
   servername    => 'planet.mozilla.org',
   serveraliases => [
     'planet.allizom.org',
-    'planet-haul.allizom.org',
+    # For testing
+    "planet-${project_name}.allizom.org",
+    "planet-${project_name}.mozilla.org",
   ],
   override      => ['All'],
 }
