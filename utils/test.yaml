@@ -1,0 +1,52 @@
+---
+https://apps.mozillalabs.com:
+  prod_only: true
+https://arewefunyet.com:
+  dns: alias
+  prod_only: true
+https://arewestableyet.com:
+  dns: alias
+  prod_only: true
+https://boot2gecko.org:
+  dns: alias
+  prod_only: true
+https://bugzilla-haul.allizom.org:
+  stage_only: 1
+https://contributejson.org:
+  dns: alias
+  prod_only: true
+https://detodosparatodos.com:
+  dns: alias
+  prod_only: true
+https://events.mozspaces.org:
+  prod_only: true
+https://itisatracker-haul.allizom.org:
+  stage_only: 1
+https://krakenbenchmark.allizom.org:
+  stage_only: 1
+https://krakenbenchmark.mozilla.org:
+  links: 1
+https://nightly-haul.allizom.org:
+  stage_only: 1
+https://planet-bugzilla.allizom.org:
+  stage_only: 1
+https://planet.mozilla.org:
+https://publicsuffix-haul.allizom.org:
+  stage_only: 1
+https://seamonkey-project-haul.allizom.org:
+  stage_only: 1
+https://start-haul.allizom.org:
+  stage_only: 1
+https://static.mozilla.com:
+  path: /moco/img/logo/120-m.png
+  stage: https://static.allizom.org
+https://tlscanary.mozilla.org:
+  links: 1
+  lint: 1
+https://website-archive.mozilla.org:
+  #links: 1
+  stage: https://website-archive.allizom.org
+https://www-archive.mozilla.org:
+  stage: https://www-archive.allizom.org
+https://www.mozilla.net:
+  prod_only: true
