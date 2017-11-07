@@ -11,8 +11,8 @@ mod 'nubis/nubis_discovery',
 
 #  Needs to be removed once Nubis v2.1.0 is out
 mod 'nubis/nubis_apache',
-    :git => 'https://github.com/gozer/nubis-puppet-apache.git',
-    :ref => 'd16211f07b9cab70fa22b17cdf0523e2a9873804'
+    :git => 'https://github.com/nubisproject/nubis-puppet-apache.git',
+    :ref => 'v0.1.13'
 
 # Jenkins Dependencies
 mod 'puppetlabs/apt', '2.2.1'
