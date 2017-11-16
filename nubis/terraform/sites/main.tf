@@ -39,4 +39,10 @@ resource "consul_keys" "config" {
     value  = "${var.site_git_branches}"
     delete = true
   }
+
+  key {
+    path    = "${module.consul.config_prefix}/sites/${var.site_name}/git_repo"
+    value   = "${var.haul_git_repo}"
+    delete  = true
+  }
 }
