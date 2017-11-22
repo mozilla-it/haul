@@ -30,3 +30,6 @@ mod 'garethr/docker', '5.3.0'
 mod 'maxchk/varnish',
   :git => 'https://github.com/gozer/puppet-varnish.git',
   :ref => 'issue/146/packagecloud'
+
+# Java 8
+mod 'spantree-java8', '0.6.0'
