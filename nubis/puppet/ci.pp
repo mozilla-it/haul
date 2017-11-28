@@ -25,18 +25,21 @@ file { '/etc/nubis.d/99-jenkins':
   source => 'puppet:///nubis/files/jenkins-startup',
 }
 
+$jenkins_version = "2.73.2"
 
+class { 'java8':
+}->
 package { 'daemon':
   ensure => 'present'
 }->
 class { 'jenkins':
   # Direct download because something in apt-land is borked with varnish ;-(
-  direct_download    => 'https://pkg.jenkins.io/debian-stable/binary/jenkins_2.46.2_all.deb',
+  direct_download    => "https://pkg.jenkins.io/debian-stable/binary/jenkins_${jenkins_version}_all.deb",
   repo               => false,
-  version            => 'latest',
   configure_firewall => false,
   service_enable     => false,
   service_ensure     => 'stopped',
+  install_java       => false,
   config_hash        => {
     'JENKINS_ARGS' => {
       'value' => '--webroot=/var/cache/$NAME/war --httpPort=$HTTP_PORT --requestHeaderSize=16384 --prefix=/admin/haul-admin'
