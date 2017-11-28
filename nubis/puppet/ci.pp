@@ -312,7 +312,7 @@ jenkins::plugin { 'pipeline-graph-analysis':
 }
 
 jenkins::plugin { 'pipeline-input-step':
-  version => '2.7'
+  version => '2.8'
 }
 
 jenkins::plugin { 'pipeline-milestone-step':
@@ -368,7 +368,7 @@ jenkins::plugin { 'scm-api':
 }
 
 jenkins::plugin { 'script-security':
-  version => '1.30'
+  version => '1.35'
 }
 
 jenkins::plugin { 'ssh-credentials':
