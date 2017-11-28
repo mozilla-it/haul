@@ -22,12 +22,12 @@ address = ":9109
 [consul]
 endpoint = "127.0.0.1:8500"
 watch = true
-prefix = "haul/{{ getv "/config/EnvironmentName" }}/config"
+prefix = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/config"
 
 [acme]
 # Handle when this isn't set
 email="{{ getv "/config/Email/Destination" }}"
-storage = "haul/{{ getv "/config/EnvironmentName" }}/acme"
+storage = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/acme"
 entryPoint = "https"
 
 # Only set CA server in stage where this consul key exists

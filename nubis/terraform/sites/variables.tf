@@ -33,3 +33,7 @@ variable "site_build_frequency" {
 variable "site_git_branches" {
   default = "master"
 }
+
+variable "haul_git_repo" {
+  default = "https://github.com/mozilla-it/haul.git"
+}
