@@ -15,7 +15,9 @@ defaultEntryPoints = ["http","https"]
     MinVersion = "VersionTLS12"
 
 [web]
-address = ":8082"
+address = ":9109
+
+[web.metrics.prometheus]
 
 [consul]
 endpoint = "127.0.0.1:8500"
