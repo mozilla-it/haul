@@ -8,7 +8,7 @@ node {
    }
 
   stage ('Build') {
-    docker.image('jekyll/builder:3.0.2').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY')  {
+    docker.image('jekyll/builder:3.6.2').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY')  {
       sh "jekyll  -v"
     }
     nubisStatic.buildSite()
