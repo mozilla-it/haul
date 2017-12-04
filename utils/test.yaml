@@ -50,3 +50,8 @@ https://www-archive.mozilla.org:
   stage: https://www-archive.allizom.org
 https://www.mozilla.net:
   prod_only: true
+https://iot.mozilla.org:
+https://design.mozilla.com:
+  stage: https://design.allizom.org
+https://ccadb.org:
+  stage: https://ccadb.allizom.org
