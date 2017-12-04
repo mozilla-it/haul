@@ -259,16 +259,17 @@ nubis::static { 'krakenbenchmark':
 
 ###
 nubis::static { 'ccadb':
-  servername    => 'ccadb.mozilla.org',
+  servername    => 'www.ccadb.org',
   serveraliases => [
+    'ccadb.org',
     'ccadb.allizom.org',
   ]
 }
 
 nubis::static { 'firefoxux':
-  servername    => 'firefoxux.mozilla.org',
+  servername    => 'design.firefox.com',
   serveraliases => [
-    'firefoxux.allizom.org',
+    'design.allizom.org',
   ]
 }
 

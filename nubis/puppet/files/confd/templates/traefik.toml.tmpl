@@ -59,6 +59,18 @@ onHostRule = false
 {{ if eq $env "prod" }}
 
 [[acme.domains]]
+main = "www.ccadb.org"
+sans = [
+  "ccadb.org"
+]
+
+[[acme.domains]]
+main = "iot.mozilla.org"
+
+[[acme.domains]]
+main = "design.firefox.com"
+
+[[acme.domains]]
 main = "tlscanary.mozilla.org"
 sans = [
   "tlscanary-haul.mozilla.org"
@@ -104,6 +116,15 @@ sans = [
 ]
 
 {{ else }}
+
+[[acme.domains]]
+main = "ccadb.allizom.org"
+
+[[acme.domains]]
+main = "iot.allizom.org"
+
+[[acme.domains]]
+main = "design.allizom.org"
 
 [[acme.domains]]
 main = "tlscanary.allizom.org"
