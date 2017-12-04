@@ -256,3 +256,25 @@ nubis::static { 'krakenbenchmark':
     'krakenbenchmark.allizom.org',
   ]
 }
+
+###
+nubis::static { 'ccadb':
+  servername    => 'ccadb.mozilla.org',
+  serveraliases => [
+    'ccadb.allizom.org',
+  ]
+}
+
+nubis::static { 'firefoxux':
+  servername    => 'firefoxux.mozilla.org',
+  serveraliases => [
+    'firefoxux.allizom.org',
+  ]
+}
+
+nubis::static { 'iot':
+  servername    => 'iot.mozilla.org',
+  serveraliases => [
+    'iot.allizom.org',
+  ]
+}
