@@ -29,6 +29,7 @@ prefix = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/
 email="{{ getv "/config/Email/Destination" }}"
 storage = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/acme"
 entryPoint = "https"
+dnsProvider = "route53"
 
 # Only set CA server in stage where this consul key exists
 {{if exists "/config/LetsEncrypt/CAServer" }}
