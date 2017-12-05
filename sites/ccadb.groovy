@@ -9,8 +9,8 @@ node {
 
   stage ('Build') {
     docker.image('jekyll/builder:3.6.2').inside('-e DEBUG=true -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY  --volume=$WORKSPACE:/srv/jekyll -u 0:0') {
-      sh "cd /srv/jekyll/src && jekyll /usr/jekyll/bin/jekyll -v"
-      sh "cd /srv/jekyll/src && PAGES_REPO_NWO=mozilla/www.ccadb.org /usr/jekyll/bin/jekyll build --verbose  -d ../dst"
+      sh "cd /srv/jekyll/src && /usr/jekyll/bin/entrypoint jekyll -v"
+      sh "cd /srv/jekyll/src && PAGES_REPO_NWO=mozilla/www.ccadb.org /usr/jekyll/bin/entrypoint jekyll build --verbose  -d ../dst"
     }
   }
 
