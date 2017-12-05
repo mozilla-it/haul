@@ -1,4 +1,4 @@
-output "zone_id" {
+output "application_zone_id" {
   value = "${aws_route53_zone.master_zone.zone_id}"
 }
 

@@ -1,4 +1,4 @@
-output "nameservers" {
+output "application_nameservers" {
   value = "${join(",",aws_route53_delegation_set.haul-delegation.name_servers)}"
 }
 
