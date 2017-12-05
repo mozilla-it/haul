@@ -8,7 +8,7 @@ node {
    }
 
   stage ('Build') {
-    docker.image('starefossen/ruby-node:2-8-alpine').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
+    docker.image('starefossen/ruby-node:2-8').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
       sh "pwd"
       sh "cd src && bundle install"
       sh "cd src && bundle exec jekyll --version"
