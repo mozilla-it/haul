@@ -1,3 +1,7 @@
+output "application_nameservers" {
+  value = "${join(",",aws_route53_delegation_set.haul-delegation.name_servers)}"
+}
+
 output "address" {
   value = "https://${module.dns_web.fqdn}/"
 }
