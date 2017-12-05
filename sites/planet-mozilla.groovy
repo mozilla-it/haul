@@ -9,8 +9,8 @@ node {
   }
 
   stage ('Build') {
-    docker.image('dhartnell/mozilla-planet-builder:4.5').inside("-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY -v /data/haul/.planet-cache/${env.JOB_NAME}:/data/efs/") {
-      sh "/usr/local/bin/planet-prod.sh planet"
+    docker.image('dhartnell/mozilla-planet-builder:4.6').inside("-u 0:0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY -v /data/haul/.planet-cache/${env.JOB_NAME}:/data/efs/") {
+      sh "/usr/local/bin/planet-build.sh planet"
       sh "rsync -aq /data/genericrhel6/src/planet.mozilla.org/ dst/"
     }
   }
