@@ -23,8 +23,8 @@ nubis::static { 'planet-mozilla':
 }
 
 nubis::static { 'start':
-  servername => 'start.mozilla.org',
-  serveraliases => [
+  servername      => 'start.mozilla.org',
+  serveraliases   => [
     'start-haul.allizom.org',
     'start-origin.cdn.mozilla.net',
     'start-origin-phx1.cdn.mozilla.net',
@@ -263,6 +263,15 @@ nubis::static { 'ccadb':
   serveraliases => [
     'ccadb.org',
     'ccadb.allizom.org',
+  ]
+  rewrites      => [
+  {
+    rewrite_cond => [
+      '%{REQUEST_FILENAME} !-f',
+      '%{REQUEST_FILENAME}.html -f',
+    ],
+    rewrite_rule => [ '^.+$ %{REQUEST_FILENAME}.html [L]' ],
+    }
   ]
 }
 
