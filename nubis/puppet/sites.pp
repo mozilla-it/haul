@@ -279,6 +279,9 @@ nubis::static { 'firefoxux':
   servername    => 'design.firefox.com',
   serveraliases => [
     'design.allizom.org',
+  ],
+  headers       => [
+    'set Strict-Transport-Security "max-age=63072000"',
   ]
 }
 
