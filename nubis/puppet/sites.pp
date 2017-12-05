@@ -263,7 +263,7 @@ nubis::static { 'ccadb':
   serveraliases => [
     'ccadb.org',
     'ccadb.allizom.org',
-  ]
+  ],
   rewrites      => [
   {
     rewrite_cond => [
@@ -271,7 +271,7 @@ nubis::static { 'ccadb':
       '%{REQUEST_FILENAME}.html -f',
     ],
     rewrite_rule => [ '^.+$ %{REQUEST_FILENAME}.html [L]' ],
-    }
+  }
   ]
 }
 
