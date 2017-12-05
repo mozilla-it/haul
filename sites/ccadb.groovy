@@ -10,11 +10,10 @@ node {
   stage ('Build') {
     docker.image('ruby:2.4').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
       sh "set -x"
-      sh "cd src"
-      sh "pwd"
-      sh "bundler install"
-      sh "jekyll --version"
-      sh "jekyll build --verbose  -d ../dst"
+      sh "gem install bundler"
+      sh "cd src && bundler install"
+      sh "cd src && bundler exec jekyll --version"
+      sh "cd src && bundler exec jekyll build --verbose  -d ../dst"
     }
   }
 
