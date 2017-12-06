@@ -286,7 +286,7 @@ nubis::static { 'firefoxux':
   aliases       => [
     {
       alias => '/icons',
-      path  => "/data/${project_name}/firefoxux/icon",
+      path  => "/data/${project_name}/firefoxux/icons",
     }
   ],
 }
