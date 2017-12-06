@@ -87,7 +87,7 @@ nubis::static { 'bugzilla':
   ],
   directories     => [
     {
-      path           => "/data/haul/${title}",
+      path           => "/data/${project_name}/bugzilla",
       allow_override => 'All',
       options        => ['Indexes', 'FollowSymLinks'],
     },
@@ -98,7 +98,7 @@ nubis::static { 'bugzilla':
       options        => ['Indexes', 'FollowSymLinks'],
     },
     {
-      path       => "/data/haul/${title}/favicon.ico",
+      path       => "/data/${project_name}/bugzilla/favicon.ico",
       provider   => 'files',
       force_type => 'image/png',
     },
@@ -208,7 +208,7 @@ nubis::static { 'seamonkey':
   # indexes         => ['index.en.html'],
   directories     => [
     {
-      path           => "/data/haul/${title}",
+      path           => "/data/${project_name}/seamonkey",
       allow_override => ['FileInfo', 'Options=All,MultiViews', 'Indexes'],
       options        => ['+FollowSymLinks', '-Indexes', '+MultiViews'],
     },
@@ -282,7 +282,12 @@ nubis::static { 'firefoxux':
   ],
   headers       => [
     'set Strict-Transport-Security "max-age=63072000"',
-  ]
+  ],
+  aliases => [
+    {
+      alias => '/icons',
+      path  => "/data/${project_name}/firefoxux/icon",
+  ],
 }
 
 nubis::static { 'iot':
