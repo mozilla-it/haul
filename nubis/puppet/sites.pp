@@ -283,10 +283,11 @@ nubis::static { 'firefoxux':
   headers       => [
     'set Strict-Transport-Security "max-age=63072000"',
   ],
-  aliases => [
+  aliases       => [
     {
       alias => '/icons',
       path  => "/data/${project_name}/firefoxux/icon",
+    }
   ],
 }
 

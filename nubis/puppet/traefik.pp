@@ -1,5 +1,5 @@
 $traefik_version = '1.4.4'
-$traefik_url = "https://github.com/containous/traefik/releases/download/v{$traefik_version}/traefik_linux-amd64"
+$traefik_url = "https://github.com/containous/traefik/releases/download/v{${traefik_version}}/traefik_linux-amd64"
 
 notice ("Grabbing traefik ${traefik_version}")
 
