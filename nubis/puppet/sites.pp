@@ -265,12 +265,12 @@ nubis::static { 'ccadb':
     'ccadb.allizom.org',
   ],
   rewrites      => [
-  {
+  { # Access html files without the html suffix
     rewrite_cond => [
-      '%{REQUEST_FILENAME} !-f',
-      '%{REQUEST_FILENAME}.html -f',
+      '%{CONTEXT_DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f',
+      '%{CONTEXT_DOCUMENT_ROOT}/%{REQUEST_FILENAME}.html -f',
     ],
-    rewrite_rule => [ '^.+$ %{REQUEST_FILENAME}.html [L]' ],
+    rewrite_rule => [ '^.+$ %{CONTEXT_DOCUMENT_ROOT}/%{REQUEST_FILENAME}.html [L]' ],
   }
   ]
 }
