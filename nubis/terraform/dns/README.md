@@ -1,8 +1,9 @@
-## dns module
+# dns module
 
-This dns module just creates a master zone and points the apex for the zone to an elb endpoint, as well as creates a 'www' entry that points back to the apex domain
+This dns module just creates a master zone and points the apex for the zone to an
+elb endpoint, as well as creates a 'www' entry that points back to the apex domain
 
-### How to create a DNS entry
+## How to create a DNS entry
 
 Example:
 
