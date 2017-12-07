@@ -18,3 +18,7 @@ file { '/etc/resolvconf/resolv.conf.d/tail':
   mode    => '0644',
   content => "nameserver 172.17.42.1\n",
 }
+
+systemd::unit_file { 'docker-cleanup.service':
+  source => 'puppet:///nubis/files/docker-cleanup.systemd',
+}

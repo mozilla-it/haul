@@ -51,7 +51,10 @@ https://www-archive.mozilla.org:
 https://www.mozilla.net:
   prod_only: true
 https://iot.mozilla.org:
+  links: 1
 https://design.firefox.com:
+  links: 1
   stage: https://design.allizom.org
 https://ccadb.org:
+  links: 1
   stage: https://ccadb.allizom.org
