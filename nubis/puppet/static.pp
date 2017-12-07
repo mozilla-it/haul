@@ -1,5 +1,5 @@
-define nubis::static (
-  $servername,
+# Puppet class for static sites
+define nubis::static ( # lint:ignore:autoloader_layout
   $serveradmin=undef,
   $serveraliases=[],
   $indexes=[],
@@ -17,13 +17,13 @@ define nubis::static (
   $use_default_headers=true) {
 
   if $use_default_headers {
-    $all_headers = concat($default_headers, ["set X-Nubis-Site ${title}"], $headers)
+    $all_headers = concat($::default_headers, ["set X-Nubis-Site ${title}"], $headers)
   } else {
     $all_headers = concat(["set X-Nubis-Site ${title}"], $headers)
   }
 
   apache::vhost { $title:
-    port                 => $port,
+    port                 => $::port,
     serveradmin          => $serveradmin,
     servername           => $servername,
     serveraliases        => $serveraliases,
@@ -34,9 +34,9 @@ define nubis::static (
     redirectmatch_regexp => $redirectmatch_regexp,
     redirectmatch_dest   => $redirectmatch_dest,
 
-    docroot              => "/data/${project_name}/${title}",
+    docroot              => "/data/${::project_name}/${title}",
 
-    directoryindex       => join(concat($indexes, $default_indexes), ' '),
+    directoryindex       => join(concat($indexes, $::default_indexes), ' '),
 
     directories          => $directories,
 
@@ -46,13 +46,13 @@ define nubis::static (
       'Remote_Addr ^10\. internal',
     ],
     access_log_env_var   => '!internal',
-    access_log_format    => $access_log_format,
+    access_log_format    => $::access_log_format,
 
     headers              => $all_headers,
 
     aliases              => $aliases,
 
-    rewrites             => concat($default_rewrites, $rewrites),
+    rewrites             => concat($::default_rewrites, $rewrites),
 
     error_documents      => $error_documents,
 
