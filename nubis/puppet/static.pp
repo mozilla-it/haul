@@ -1,5 +1,6 @@
 # Puppet class for static sites
 define nubis::static ( # lint:ignore:autoloader_layout
+  $servername = undef,
   $serveradmin=undef,
   $serveraliases=[],
   $indexes=[],
