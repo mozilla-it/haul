@@ -44,7 +44,7 @@ upstart::job { 'traefik':
     . /etc/profile.d/proxy.sh
   fi
 
-  exec /usr/local/bin/traefik --web.readonly=true --loglevel=INFO
+  exec /usr/local/bin/traefik --web.readonly=true --loglevel=DEBUG
 ',
     post_stop      => '
 goal=$(initctl status $UPSTART_JOB | awk \'{print $2}\' | cut -d \'/\' -f 1)
