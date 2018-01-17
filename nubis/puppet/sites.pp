@@ -297,3 +297,11 @@ nubis::static { 'iot':
     'iot.allizom.org',
   ]
 }
+
+nubis::static { 'getfirebug':
+  servername    => 'getfirebug.com',
+  serveraliases => [
+    'getfirebug.allizom.org',
+  ],
+  indexes       => [ 'index.php' ],
+}

@@ -61,6 +61,12 @@ onHostRule = false
 {{ if eq $env "prod" }}
 
 [[acme.domains]]
+main = "www.getfirebug.com"
+sans = [
+  "getfirebug.com"
+]
+
+[[acme.domains]]
 main = "www.ccadb.org"
 sans = [
   "ccadb.org"
@@ -118,6 +124,9 @@ sans = [
 ]
 
 {{ else }}
+
+[[acme.domains]]
+main = "getfirebug.allizom.org"
 
 [[acme.domains]]
 main = "ccadb.allizom.org"
