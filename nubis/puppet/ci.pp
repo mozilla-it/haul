@@ -27,8 +27,21 @@ file { '/etc/nubis.d/99-jenkins':
 
 $jenkins_version = '2.73.3'
 
-class { 'java8':
-}->
+include ::apt
+apt::ppa { 'ppa:openjdk-r/ppa': }
+
+package { 'openjdk':
+  ensure  => latest,
+  name    => 'openjdk-8-jdk',
+  require => [
+    Apt::Ppa['ppa:openjdk-r/ppa'],
+    Class['apt::update'],
+  ],
+}
+
+# Fix dependency chains for apt update
+Apt::Ppa['ppa:openjdk-r/ppa'] -> Class['apt::update'] -> Package['openjdk']
+
 package { 'daemon':
   ensure => 'present'
 }->
@@ -48,6 +61,9 @@ class { 'jenkins':
       'value' => '-Djenkins.install.runSetupWizard=false -Djava.awt.headless=true -Dhudson.diyChunking=false -Dhttp.proxyHost=proxy.service.consul -Dhttp.proxyPort=3128 -Dhttps.proxyHost=proxy.service.consul -Dhttps.proxyPort=3128'
     },
   },
+  require            => [
+    Package['openjdk'],
+  ],
 }
 
 # Jenkins is already defining the user for this, so cheat
