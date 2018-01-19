@@ -37,6 +37,11 @@ package { 'openjdk':
     Apt::Ppa['ppa:openjdk-r/ppa'],
     Class['apt::update'],
   ],
+}->
+exec { 'update-ca-certificates':
+  # Fixed bug in openjdk-8 package not generated trusted CA store for Java ;_(
+  # https://bugs.launchpad.net/ubuntu/+source/ca-certificates-java/+bug/1396760
+  command => '/usr/sbin/update-ca-certificates --verbose --fresh',
 }
 
 # Fix dependency chains for apt update
