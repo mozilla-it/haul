@@ -1,9 +1,10 @@
 {
   "service": {
-    "name": "haul-frontend",
+    "name": "haul-traefik",
     "port": 9109,
     "tags": [
-      "%%ENVIRONMENT%%"
+      "%%ENVIRONMENT%%",
+      "metrics"
     ],
     "check": {
        "http": "http://localhost:9109/ping",
