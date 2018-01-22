@@ -1,4 +1,4 @@
-$traefik_version = '1.4.4'
+$traefik_version = '1.5.0-rc5'
 $traefik_url = "https://github.com/containous/traefik/releases/download/v{${traefik_version}}/traefik_linux-amd64"
 
 notice ("Grabbing traefik ${traefik_version}")
@@ -44,7 +44,7 @@ upstart::job { 'traefik':
     . /etc/profile.d/proxy.sh
   fi
 
-  exec /usr/local/bin/traefik --web.readonly=true --loglevel=INFO
+  exec /usr/local/bin/traefik --web.readonly=true
 ',
     post_stop      => '
 goal=$(initctl status $UPSTART_JOB | awk \'{print $2}\' | cut -d \'/\' -f 1)
