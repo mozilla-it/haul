@@ -1,10 +1,28 @@
-debug = false
+defaultEntryPoints = ["http","https"]
+checkNewVersion = false
+
+{{ $debug := ( getv "/config/Debug" "false" ) }}
+{{ if ne $debug "false" }}
+logLevel = "DEBUG"
+acmeLogging = true
+{{ else }}
 logLevel = "INFO"
+acmeLogging = false
+{{ end }}
 
 MaxIdleConnsPerHost = 1000
-defaultEntryPoints = ["http","https"]
+
+[traefiklog]
+  filepath = "/var/log/traefik_error.log"
+  format   = "json"
+
+[accessLog]
+  filePath = "/var/log/traefik.log"
+  format = "json"
 
 [entryPoints]
+  [entryPoints.traefik]
+    address = ":9109"
   [entryPoints.http]
     address = ":80"
      [entryPoints.http.redirect]
@@ -14,15 +32,20 @@ defaultEntryPoints = ["http","https"]
     [entryPoints.https.tls]
     MinVersion = "VersionTLS12"
 
-[web]
-address = ":9109"
-
-[web.metrics.prometheus]
+[ping]
+[api]
+  [api.statistics]
+[metrics]
+  [metrics.prometheus]
 
 [consul]
 endpoint = "127.0.0.1:8500"
 watch = true
 prefix = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/config"
+
+# Use HTTP-01 challenges
+[acme.httpChallenge]
+  entryPoint = "http"
 
 [acme]
 # Handle when this isn't set
@@ -199,6 +222,3 @@ sans = [
 ]
 
 {{ end }}
-
-# Redirects
-#www.mozilla.net "apps.mozillalabs.com","events.mozspaces.org","krakenbenchmark.mozilla.org",prs.paas.allizom.org, redirecttest.allizom.org
