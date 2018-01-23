@@ -55,6 +55,6 @@ https://iot.mozilla.org:
 https://design.firefox.com:
   links: 1
   stage: https://design.allizom.org
-https://ccadb.org:
+https://ccadb.allizom.org:
   links: 1
-  stage: https://ccadb.allizom.org
+  stage_only: 1
