@@ -312,6 +312,7 @@ nubis::static { 'mozqa':
     'mozqa.com',
     'mozqa.allizom.org',
   ],
+  override      => ['All'],
   options       => ['+Indexes', '+FollowSymLinks'],
   rewrites      => [
   { # Redirect to the SSL CA file
