@@ -305,3 +305,20 @@ nubis::static { 'getfirebug':
   ],
   indexes       => [ 'index.php' ],
 }
+
+nubis::static { 'mozqa':
+  servername    => 'www.mozqa.com',
+  serveraliases => [
+    'mozqa.com',
+    'mozqa.allizom.org',
+  ],
+  options       => ['+Indexes', '+FollowSymLinks'],
+  rewrites      => [
+  { # Redirect to the SSL CA file
+    rewrite_rule => [ '^/ca/$ /ca/ssl-md5-mozqa-ca.pem [R]' ],
+  },
+  { # Send the correct content-type for a CA cert
+    rewrite_rule => [ '^/ca/ssl-md5-mozqa-ca.pem$ - [T=application/x-x509-ca-cert]' ],
+  },
+  ],
+}
