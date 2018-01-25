@@ -17,12 +17,6 @@ provider "consul" {
 # Publish our outputs into Consul for our application to consume
 resource "consul_keys" "config" {
   key {
-    path   = "${module.consul.config_prefix}/sites/${var.site_name}/index"
-    value  = "${var.site_index}"
-    delete = true
-  }
-
-  key {
     path   = "${module.consul.config_prefix}/sites/${var.site_name}/poll_frequency"
     value  = "${var.site_poll_frequency}"
     delete = true
@@ -41,8 +35,8 @@ resource "consul_keys" "config" {
   }
 
   key {
-    path    = "${module.consul.config_prefix}/sites/${var.site_name}/git_repo"
-    value   = "${var.haul_git_repo}"
-    delete  = true
+    path   = "${module.consul.config_prefix}/sites/${var.site_name}/git_repo"
+    value  = "${var.haul_git_repo}"
+    delete = true
   }
 }

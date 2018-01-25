@@ -16,11 +16,10 @@ provider "consul" {
 
 # Publish our outputs into Consul for our application to consume
 resource "consul_keys" "config" {
-
   key {
-    path    = "${module.consul.config_prefix}/ServiceName"
-    value   = "${var.service_name}"
-    delete  = true
+    path   = "${module.consul.config_prefix}/ServiceName"
+    value  = "${var.service_name}"
+    delete = true
   }
 
   key {

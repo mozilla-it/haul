@@ -21,7 +21,6 @@ module "planet-mozilla" {
 
   site_name            = "planet-mozilla"
   site_build_frequency = "H/30 * * * *"
-  site_index           = "index.html"
 }
 
 module "tlscanary" {
@@ -33,8 +32,7 @@ module "tlscanary" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name  = "tlscanary"
-  site_index = "index.htm"
+  site_name = "tlscanary"
 }
 
 module "nightly" {
@@ -72,7 +70,7 @@ module "www-archive" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name    = "www-archive"
+  site_name = "www-archive"
 }
 
 module "start" {
@@ -197,7 +195,6 @@ module "getfirebug" {
   role         = "${module.worker.role}"
 
   site_name = "getfirebug"
-  site_index = "index.php"
 }
 
 module "mozqa" {
