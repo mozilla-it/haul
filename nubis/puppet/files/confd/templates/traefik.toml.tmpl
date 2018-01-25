@@ -84,6 +84,9 @@ onHostRule = false
 {{ if eq $env "prod" }}
 
 [[acme.domains]]
+main = "dynamicua-origin.cdn.mozilla.net"
+
+[[acme.domains]]
 main = "www.mozqa.com"
 sans = [
   "mozqa.com"
@@ -153,6 +156,9 @@ sans = [
 ]
 
 {{ else }}
+
+[[acme.domains]]
+main = "dynamicua.allizom.org"
 
 [[acme.domains]]
 main = "mozqa.allizom.org"
