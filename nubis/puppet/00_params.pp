@@ -11,14 +11,6 @@ $default_headers = [
   'set Strict-Transport-Security "max-age=31536000"',
 ]
 
-$final_rewrite = [
-  {
-    comment      => 'Proxy to our bucket',
-    rewrite_map  => [ 'sitemap txt:/etc/haul/sitemap.txt' ],
-    rewrite_rule => ["/(.*) \${sitemap:${title}}\$1 [P,L]"],
-  }
-]
-
 $default_rewrites = [
 ]
 

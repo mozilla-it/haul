@@ -18,10 +18,6 @@ variable "role" {}
 
 variable "site_name" {}
 
-variable "site_index" {
-  default = "index.html"
-}
-
 variable "site_poll_frequency" {
   default = "H/10 * * * *"
 }

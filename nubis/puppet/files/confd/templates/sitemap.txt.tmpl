@@ -1,3 +1,0 @@
-# Confd generated{{range gets "/sites/*/bucket_endpoint"}}{{ $path := split .Key "/" }} {{ $site := index $path 2 }}
-# Bucket for {{ $site }}
-{{ $site }} {{ .Value }}{{end}}

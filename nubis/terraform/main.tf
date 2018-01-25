@@ -73,20 +73,20 @@ resource "aws_security_group" "ci" {
 }
 
 module "worker" {
-  source        = "github.com/nubisproject/nubis-terraform//worker?ref=v2.0.1"
-  region        = "${var.region}"
-  environment   = "${var.environment}"
-  account       = "${var.account}"
-  service_name  = "${var.service_name}"
-  purpose       = "webserver"
-  instance_type = "t2.medium"
-  ami           = "${var.ami}"
-  elb           = "${module.load_balancer_web.name}"
-  ssh_key_file  = "${var.ssh_key_file}"
-  ssh_key_name  = "${var.ssh_key_name}"
-  min_instances = 2
+  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.0.1"
+  region                    = "${var.region}"
+  environment               = "${var.environment}"
+  account                   = "${var.account}"
+  service_name              = "${var.service_name}"
+  purpose                   = "webserver"
+  instance_type             = "t2.medium"
+  ami                       = "${var.ami}"
+  elb                       = "${module.load_balancer_web.name}"
+  ssh_key_file              = "${var.ssh_key_file}"
+  ssh_key_name              = "${var.ssh_key_name}"
+  min_instances             = 2
   wait_for_capacity_timeout = "20m"
-  nubis_sudo_groups = "${var.nubis_sudo_groups}"
+  nubis_sudo_groups         = "${var.nubis_sudo_groups}"
 }
 
 module "load_balancer_web" {
@@ -108,23 +108,23 @@ module "load_balancer_web" {
 }
 
 module "ci" {
-  source                = "github.com/nubisproject/nubis-terraform//worker?ref=v2.0.1"
-  region                = "${var.region}"
-  environment           = "${var.environment}"
-  account               = "${var.account}"
-  service_name          = "${var.service_name}"
-  purpose               = "ci"
-  instance_type         = "t2.medium"
-  root_storage_size     = "64"
-  ami                   = "${var.ami}"
-  elb                   = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
-  ssh_key_file          = "${var.ssh_key_file}"
-  ssh_key_name          = "${var.ssh_key_name}"
-  min_instances         = 1
-  security_group_custom = true
-  security_group        = "${aws_security_group.ci.id}"
+  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.0.1"
+  region                    = "${var.region}"
+  environment               = "${var.environment}"
+  account                   = "${var.account}"
+  service_name              = "${var.service_name}"
+  purpose                   = "ci"
+  instance_type             = "t2.medium"
+  root_storage_size         = "64"
+  ami                       = "${var.ami}"
+  elb                       = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
+  ssh_key_file              = "${var.ssh_key_file}"
+  ssh_key_name              = "${var.ssh_key_name}"
+  min_instances             = 1
+  security_group_custom     = true
+  security_group            = "${aws_security_group.ci.id}"
   wait_for_capacity_timeout = "20m"
-  nubis_sudo_groups = "${var.nubis_sudo_groups}"
+  nubis_sudo_groups         = "${var.nubis_sudo_groups}"
 }
 
 module "load_balancer_ci" {
