@@ -10,3 +10,13 @@ resource "aws_route53_delegation_set" "haul-delegation" {
 
   reference_name = "${var.service_name}"
 }
+
+module "ccadb_org" {
+  source                  = "dns"
+  region                  = "${var.region}"
+  environment             = "${var.environment}"
+  service_name            = "${var.service_name}"
+  zone_name               = "ccadb.org"
+  route_53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  elb_address             = "${module.load_balancer_web.address}"
+}
