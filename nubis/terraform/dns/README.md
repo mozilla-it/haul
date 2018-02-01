@@ -14,7 +14,7 @@ module "example_com" {
     environment             = "${var.environment}"
     service_name            = "${var.service_name}"
     zone_name               = "example.com"
-    route_53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+    route53_delegation_set  = "${aws_route53_delegation_set.haul-delegation.id}"
     elb_address             = "${module.load_balancer_web.address}"
 }
 ```
