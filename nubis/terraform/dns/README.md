@@ -13,8 +13,10 @@ module "example_com" {
     region                  = "${var.region}"
     environment             = "${var.environment}"
     service_name            = "${var.service_name}"
-    zone_name               = "example.com"
     route53_delegation_set  = "${aws_route53_delegation_set.haul-delegation.id}"
     elb_address             = "${module.load_balancer_web.address}"
+
+    # Make sure to construct a unique zone name depending on the environment
+    zone_name               = "${var.environment == "prod" ? "domain.org" : join(",", var.environment, "domain.allizom.org")}"
 }
 ```
