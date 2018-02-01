@@ -21,7 +21,3 @@ module "ccadb_org" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name               = "${var.environment == "prod" ? "ccadb.org" : join(",", var.environment, "ccadb.allizom.org")}"
 }
-
-output "dns_servers" {
-  value = "${aws_route53_delegation_set.haul-delegation.name_servers}"
-}
