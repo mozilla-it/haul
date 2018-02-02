@@ -17,6 +17,6 @@ module "example_com" {
     elb_address             = "${module.load_balancer_web.address}"
 
     # Make sure to construct a unique zone name depending on the environment
-    zone_name               = "${var.environment == "prod" ? "ccadb.org" : join(",", list(var.environment, "ccadb.allizom.org"))}"
+    zone_name               = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
 }
 ```
