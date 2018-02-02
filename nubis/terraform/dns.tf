@@ -19,5 +19,5 @@ module "ccadb_org" {
   route53_delegation_set  = "${aws_route53_delegation_set.haul-delegation.id}"
   elb_address             = "${module.load_balancer_web.address}"
   # Make sure to construct a unique zone name depending on the environment
-  zone_name               = "${var.environment == "prod" ? "ccadb.org" : join(",", var.environment, "ccadb.allizom.org")}"
+  zone_name               = "${var.environment == "prod" ? "ccadb.org" : join(",", list(var.environment, "ccadb.allizom.org"))}"
 }
