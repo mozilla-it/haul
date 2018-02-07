@@ -18,7 +18,7 @@ resource "aws_route53_record" "hosted_zone" {
   name    = "${var.zone_name}"
 
   type = "NS"
-  ttl  = "86400"
+  ttl  = "${var.hosted_zone_ttl}"
 
   records = [
     "${aws_route53_zone.master_zone.name_servers}",

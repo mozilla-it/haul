@@ -1,5 +1,9 @@
 variable zone_name {}
 
+variable hosted_zone_ttl {
+  default = "86400"
+}
+
 variable route53_delegation_set {}
 
 variable elb_address {}
