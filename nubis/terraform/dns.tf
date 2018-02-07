@@ -25,7 +25,7 @@ module "ccadb_org" {
 # Adding prod and stage MX records for ccadb
 resource "aws_route53_record" "ccadb_mozilla_mx" {
   zone_id = "${module.ccadb_org.application_zone_id}"
-  name    = "ccadb.org"
+  name    = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
   type    = "MX"
 
   records = [
@@ -36,15 +36,3 @@ resource "aws_route53_record" "ccadb_mozilla_mx" {
   ttl     = "180"
 }
 
-resource "aws_route53_record" "ccadb_allizom_mx" {
-  zone_id = "${module.ccadb_org.application_zone_id}"
-  name    = "ccadb.allizom.org"
-  type    = "MX"
-
-  records = [
-    "10 mx1.scl3.mozilla.com",
-    "20 mx2.scl3.mozilla.com"
-  ]
-
-  ttl     = "180"
-}
