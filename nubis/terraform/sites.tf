@@ -23,6 +23,19 @@ module "planet-mozilla" {
   site_build_frequency = "H/30 * * * *"
 }
 
+module "planet-mozilla-de" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name            = "planet-mozilla-de"
+  site_build_frequency = "H/30 * * * *"
+}
+
 module "tlscanary" {
   source = "sites"
 

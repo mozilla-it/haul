@@ -22,6 +22,14 @@ nubis::static { 'planet-mozilla':
   override      => ['All'],
 }
 
+nubis::static { 'planet-mozilla-de':
+  servername    => 'planet.mozilla.de',
+  serveraliases => [
+    'planet-de.allizom.org',
+  ],
+  override      => ['All'],
+}
+
 nubis::static { 'start':
   servername      => 'start.mozilla.org',
   serveraliases   => [
