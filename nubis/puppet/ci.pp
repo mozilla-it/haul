@@ -37,8 +37,8 @@ package { 'openjdk':
     Apt::Ppa['ppa:openjdk-r/ppa'],
     Class['apt::update'],
   ],
-}->
-exec { 'update-ca-certificates':
+}
+  -> exec { 'update-ca-certificates':
   # Fixed bug in openjdk-8 package not generated trusted CA store for Java ;_(
   # https://bugs.launchpad.net/ubuntu/+source/ca-certificates-java/+bug/1396760
   command => '/usr/sbin/update-ca-certificates --verbose --fresh',
@@ -49,8 +49,8 @@ Apt::Ppa['ppa:openjdk-r/ppa'] -> Class['apt::update'] -> Package['openjdk']
 
 package { 'daemon':
   ensure => 'present'
-}->
-class { 'jenkins':
+}
+  -> class { 'jenkins':
   # Direct download because something in apt-land is borked with varnish ;-(
   direct_download    => "https://pkg.jenkins.io/debian-stable/binary/jenkins_${jenkins_version}_all.deb",
   repo               => false,
@@ -398,10 +398,6 @@ jenkins::plugin { 'ssh-credentials':
 
 jenkins::plugin { 'ssh-slaves':
   version => '1.20'
-}
-
-jenkins::plugin { 'structs':
-  version => '1.9'
 }
 
 jenkins::plugin { 'subversion':
