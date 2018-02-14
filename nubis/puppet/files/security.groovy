@@ -22,4 +22,7 @@ instance.proxy = proxy
 println "--> Enable Slave to Master Access Control" 
 instance.getInjector().getInstance(AdminWhitelistRule.class).setMasterKillSwitch(false)
 
+println "--> Disable CLI remoting"
+instance.getDescriptor("jenkins.CLI").get().setEnabled(false)
+
 instance.save()
