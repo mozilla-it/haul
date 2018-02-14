@@ -1,3 +1,7 @@
+{{if exists "/config/TraefikConfigVersion" }}
+# This is configuration version {{ getv "/config/TraefikConfigVersion" }}
+{{end}}
+
 defaultEntryPoints = ["http","https"]
 checkNewVersion = false
 
