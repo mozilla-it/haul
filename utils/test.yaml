@@ -42,7 +42,6 @@ https://static.mozilla.com:
   stage: https://static.allizom.org
 https://tlscanary.mozilla.org:
   links: 1
-  lint: 1
 https://website-archive.mozilla.org:
   #links: 1
   stage: https://website-archive.allizom.org

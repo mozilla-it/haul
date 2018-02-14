@@ -35,3 +35,7 @@ file { '/etc/resolvconf/resolv.conf.d/tail':
 systemd::unit_file { 'docker-cleanup.service':
   source => 'puppet:///nubis/files/docker-cleanup.systemd',
 }
+->service { 'docker-cleanup':
+  ensure => 'stopped',
+  enable => true,
+}
