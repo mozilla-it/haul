@@ -1,23 +1,14 @@
 #!/bin/bash -l
 
-DOCKER_CLEANUP_VERSION=1.8.0
-
 # Exit if we are not a CI role
 if nubis-purpose ci; then
   echo "We are a CI node, starting Jenkins"
-  /etc/init.d/jenkins start
-
-  echo "Run docker-cleanup $DOCKER_CLEANUP_VERSION"
-  /usr/bin/docker run -d --rm \
-    --name=docker-cleanup \
-    -v /var/run/docker.sock:/var/run/docker.sock:rw \
-    -v /var/lib/docker:/var/lib/docker:rw \
-    "meltwater/docker-cleanup:$DOCKER_CLEANUP_VERSION"
+  systemctl start jenkins
 else
   # Disable haul-admin role
   gzip /etc/consul/svc-haul-admin.json
-  service consul reload
+  systemctl reload consul
 
   # Stop docker, useless
-  service docker stop
+  systemctl stop docker
 fi

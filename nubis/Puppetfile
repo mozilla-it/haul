@@ -4,29 +4,27 @@ forge "https://forgeapi.puppetlabs.com"
 # All modules *must* be pinned to a specific version/tag #
 ##########################################################
 
-# Needs to be removed once Nubis v2.1.0 is out
-mod 'nubis/nubis_discovery',
-    :git => 'https://github.com/nubisproject/nubis-puppet-discovery.git',
-    :ref => 'v1.3.4'
-
-#  Needs to be removed once Nubis v2.1.0 is out
-mod 'nubis/nubis_apache',
-    :git => 'https://github.com/nubisproject/nubis-puppet-apache.git',
-    :ref => 'v0.1.13'
-
 # Jenkins Dependencies
-mod 'puppetlabs/apt', '2.2.2'
-mod 'puppetlabs/java','1.4.3'
-mod 'darin/zypprepo', '1.0.2'
+mod 'puppet/zypprepo', '2.2.0'
+mod 'puppetlabs-transition', '0.1.1'
 
 # Jenkins itself
-mod 'rtyler/jenkins', '1.7.0'
+mod 'rtyler/jenkins',
+    :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
+    :ref => '29b6494af929d2eae146c9545b7d86dae4b2e70b'
+
+# Java
+mod 'puppetlabs/java', '2.2.0'
+
+# Docker Dependencies
+mod 'puppetlabs/translate', '1.0.0'
+mod 'puppetlabs/stdlib', '4.24.0'
 
 # Docker
-mod 'garethr/docker', '5.3.0'
+mod 'puppetlabs/docker', '1.0.5'
 
 # Varnish
 
 mod 'maxchk/varnish',
-  :git => 'https://github.com/gozer/puppet-varnish.git',
-  :ref => 'issue/146/packagecloud'
+  :git => 'https://github.com/maxchk/puppet-varnish.git',
+  :ref => 'b998fbfb42207e5614ea0c6a4bf71423c59469b8'
