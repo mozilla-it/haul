@@ -414,10 +414,6 @@ jenkins::plugin { 'ssh-slaves':
   version => '1.25.1'
 }
 
-jenkins::plugin { 'structs':
-  version => '1.13'
-}
-
 jenkins::plugin { 'subversion':
   version => '2.10.2'
 }
