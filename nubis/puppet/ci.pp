@@ -301,7 +301,7 @@ jenkins::plugin { 'mapdb-api':
 }
 
 jenkins::plugin { 'matrix-auth':
-  version => '1.7'
+  version => '2.2'
 }
 
 jenkins::plugin { 'matrix-project':

@@ -6,8 +6,12 @@ import hudson.security.*
 def instance = Jenkins.getInstance()
 
 println "--> set authorization strategy"
-def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
-strategy.setAllowAnonymousRead(true)
+def strategy = new GlobalMatrixAuthorizationStrategy()
+
+strategy.add(Jenkins.ADMINISTER, "admin")
+strategy.add(Jenkins.ADMINISTER, "authenticated")
+strategy.add(Jenkins.READ, "anonymous")
+
 instance.setAuthorizationStrategy(strategy)
 
 println "--> creating proxy configuration"
