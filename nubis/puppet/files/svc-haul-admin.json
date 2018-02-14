@@ -8,7 +8,7 @@
       "sso=true"
     ],
     "check": {
-       "http": "http://localhost:8080/admin/haul-admin/cc.xml",
+       "http": "http://localhost:8080/admin/haul-admin-%%ENVIRONMENT%%/cc.xml",
        "interval": "10s",
        "timeout": "1s"
     }
