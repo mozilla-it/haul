@@ -33,4 +33,16 @@ resource "consul_keys" "config" {
     value  = "${var.acme_email}"
     delete = true
   }
+
+  key {
+    path   = "${module.consul.config_prefix}/Bucket/Backup/Name"
+    value  = "${module.backup.name}"
+    delete = true
+  }
+
+  key {
+    path   = "${module.consul.config_prefix}/Bucket/Backup/Region"
+    value  = "${var.region}"
+    delete = true
+  }
 }
