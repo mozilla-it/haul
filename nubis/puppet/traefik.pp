@@ -34,3 +34,19 @@ file { '/etc/consul/svc-traefik.json':
   mode   => '0644',
   source => 'puppet:///nubis/files/svc-traefik.json',
 }
+
+# Log rotation
+class { '::logrotate':
+  manage_cron_daily         => false,
+}
+
+logrotate::rule { 'traefik':
+  path         => '/var/log/traefik*.log',
+  rotate       => 5,
+  rotate_every => 'day',
+  postrotate   => 'systemctl kill -s USR1 traefik.service',
+  su_owner     => 'root',
+  su_group     => 'root',
+  compress     => true,
+  size         => '256M',
+}
