@@ -29,8 +29,8 @@ file { '/etc/nubis.d/99-jenkins':
 
 package { 'daemon':
   ensure => 'present'
-}->
-class { 'jenkins':
+}
+  -> class { 'jenkins':
   # Direct download because something in apt-land is borked with varnish ;-(
   direct_download    => "https://pkg.jenkins.io/debian-stable/binary/jenkins_${jenkins_version}_all.deb",
   repo               => false,

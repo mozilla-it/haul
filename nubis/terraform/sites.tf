@@ -231,6 +231,6 @@ module "dynamicua" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name = "dynamicua"
+  site_name            = "dynamicua"
   site_build_frequency = "@daily"
 }
