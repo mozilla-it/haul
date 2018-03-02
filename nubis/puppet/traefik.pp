@@ -37,16 +37,17 @@ file { '/etc/consul/svc-traefik.json':
 
 # Log rotation
 class { '::logrotate':
-  manage_cron_daily         => false,
+  manage_cron_daily => false,
+  config            => {
+    su_user      => 'root',
+    su_group     => 'syslog',
+    compress     => true,
+    rotate_every => 'day',
+  },
 }
 
 logrotate::rule { 'traefik':
-  path         => '/var/log/traefik*.log',
-  rotate       => 5,
-  rotate_every => 'day',
-  postrotate   => 'systemctl kill -s USR1 traefik.service',
-  su_owner     => 'root',
-  su_group     => 'root',
-  compress     => true,
-  size         => '256M',
+  path       => '/var/log/traefik*.log',
+  postrotate => 'systemctl kill -s USR1 traefik.service',
+  size       => '256M',
 }
