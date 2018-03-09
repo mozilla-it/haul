@@ -1,3 +1,7 @@
+{{if exists "/config/TraefikConfigVersion" }}
+# This is configuration version {{ getv "/config/TraefikConfigVersion" }}
+{{end}}
+
 defaultEntryPoints = ["http","https"]
 checkNewVersion = false
 
@@ -155,7 +159,7 @@ sans = [
   "detodosparatodos.com"
 ]
 
-[acme.domains]]
+[[acme.domains]]
 main = "planet.mozilla.de"
 
 {{ else }}

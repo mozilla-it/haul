@@ -7,7 +7,7 @@ Requires=docker.service
 WantedBy=multi-user.target
 
 [Service]
-Environment=IMAGE=meltwater/docker-cleanup:latest NAME=docker-cleanup
+Environment=IMAGE=meltwater/docker-cleanup:1.8.0 NAME=docker-cleanup
 
 # Allow docker pull to take some time
 TimeoutStartSec=600
