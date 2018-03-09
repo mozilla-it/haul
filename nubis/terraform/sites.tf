@@ -23,7 +23,7 @@ module "planet-mozilla" {
   site_build_frequency = "H/30 * * * *"
 }
 
-module "planet-mozilla-de" {
+module "planet-de" {
   source = "sites"
 
   region       = "${var.region}"
@@ -32,7 +32,7 @@ module "planet-mozilla-de" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name            = "planet-mozilla-de"
+  site_name            = "planet-de"
   site_build_frequency = "H/30 * * * *"
 }
 
