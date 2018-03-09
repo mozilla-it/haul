@@ -12,15 +12,16 @@ resource "aws_route53_delegation_set" "haul-delegation" {
 }
 
 module "ccadb_org" {
-  source                  = "dns"
-  region                  = "${var.region}"
-  environment             = "${var.environment}"
-  service_name            = "${var.service_name}"
-  route53_delegation_set  = "${aws_route53_delegation_set.haul-delegation.id}"
-  hosted_zone_ttl         = "3600"
-  elb_address             = "${module.load_balancer_web.address}"
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
   # Make sure to construct a unique zone name depending on the environment
-  zone_name               = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
+  zone_name = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
 }
 
 # Adding prod and stage MX records for ccadb
@@ -31,9 +32,8 @@ resource "aws_route53_record" "ccadb_mozilla_mx" {
 
   records = [
     "10 mx1.scl3.mozilla.com",
-    "20 mx2.scl3.mozilla.com"
+    "20 mx2.scl3.mozilla.com",
   ]
 
-  ttl     = "180"
+  ttl = "180"
 }
-
