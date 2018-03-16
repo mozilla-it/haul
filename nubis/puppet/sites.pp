@@ -290,6 +290,7 @@ nubis::static { 'firefoxux':
   ],
   headers       => [
     'set Strict-Transport-Security "max-age=63072000"',
+    'set X-Frame-Options "SAMEORIGIN"',
   ],
   aliases       => [
     {
