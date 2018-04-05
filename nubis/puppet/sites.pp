@@ -22,7 +22,7 @@ nubis::static { 'planet-mozilla':
   override      => ['All'],
 }
 
-nubis::static { 'planet-mozilla-de':
+nubis::static { 'planet-de':
   servername    => 'planet.mozilla.de',
   serveraliases => [
     'planet-de.allizom.org',
@@ -290,6 +290,7 @@ nubis::static { 'firefoxux':
   ],
   headers       => [
     'set Strict-Transport-Security "max-age=63072000"',
+    'set X-Frame-Options "SAMEORIGIN"',
   ],
   aliases       => [
     {
