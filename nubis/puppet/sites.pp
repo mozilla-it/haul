@@ -254,7 +254,7 @@ nubis::static { 'seamonkey':
     AddType application/vnd.stardivision.draw .sda
     AddType application/vnd.stardivision.calc .sdc
 
-    Redirect permanent / https://www.seamonkey-project.org/
+    # Redirect permanent / https://www.seamonkey-project.org/
   '
 }
 
