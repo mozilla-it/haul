@@ -35,7 +35,6 @@ nubis::static { 'planet-bugzilla':
   serveraliases => [
     'planet-bugzilla.allizom.org',
   ],
-  override      => ['All'],
 }
 
 nubis::static { 'start':
