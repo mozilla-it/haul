@@ -36,7 +36,7 @@ MaxIdleConnsPerHost = 1000
     [entryPoints.https.tls]
       MinVersion = "VersionTLS12"
     [entryPoints.https.forwardedHeaders]
-      trustedIPs = []
+      trustedIPs = ["127.0.0.0"]
 
 [ping]
 [api]
