@@ -22,6 +22,6 @@ fluentd::source { 'traefik-error':
   config      => {
     'read_from_head' => true,
     'path'           => '/var/log/traefik_error.log',
-    'pos_file'       => '/var/log/traefik.pos',
+    'pos_file'       => '/var/log/traefik_error.pos',
   },
 }
