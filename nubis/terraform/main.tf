@@ -173,3 +173,14 @@ module "backup" {
   purpose      = "backup"
   role         = "${module.worker.role}"
 }
+
+module "cloudfront" {
+  source                 = "github.com/nubisproject/nubis-terraform//cloudfront?ref=131daeedc94660a39fb8de148706070c6d293cf2"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  account                = "${var.account}"
+  service_name           = "${var.service_name}"
+  domain_aliases         = ["www.publicsuffix.org", "publicsuffix.org"]
+  acm_certificate_domain = "publicsuffix.org"
+  load_balancer_web      = "${module.load_balancer_web.name}"
+}
