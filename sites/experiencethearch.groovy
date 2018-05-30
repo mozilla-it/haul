@@ -10,9 +10,9 @@ node {
 
   stage ('Build') {
     docker.image('node:9').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY')  {
-      sh "rm -f build"
+      sh "cd src && rm -f build"
       sh "cd src && npm install"
-      sh "ln -sf ../dst build"
+      sh "cd src && ln -sf ../dst build"
       sh "cd src && npm run build"
     }
   }
