@@ -9,7 +9,7 @@ node {
    }
 
   stage ('Build') {
-    docker.image('node:9').inside('-e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY')  {
+    docker.image('node:9').inside('-e npm_config_cache=npm-cache -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY')  {
       sh "cd src && rm -f build"
       sh "cd src && npm install"
       sh "cd src && ln -sf ../dst build"
