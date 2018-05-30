@@ -133,6 +133,9 @@ module "publicsuffix" {
   role         = "${module.worker.role}"
 
   site_name = "publicsuffix"
+
+  cloudfront = true
+  domain_aliases = ["publicsuffix.org", "www.publicsuffix.org"]
 }
 
 module "trackertest" {
