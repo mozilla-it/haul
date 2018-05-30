@@ -40,3 +40,4 @@ variable "cloudfront" {
 
 variable "domain_aliases" {}
 
+variable "load_balancer_web" {}

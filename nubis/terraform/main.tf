@@ -173,4 +173,3 @@ module "backup" {
   purpose      = "backup"
   role         = "${module.worker.role}"
 }
-
