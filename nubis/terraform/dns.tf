@@ -11,7 +11,7 @@ resource "aws_route53_delegation_set" "haul-delegation" {
   reference_name = "${var.service_name}"
 }
 
-module "experiencethearch.com" {
+module "experiencethearch_com" {
   source                 = "dns"
   region                 = "${var.region}"
   environment            = "${var.environment}"
