@@ -348,8 +348,9 @@ nubis::static { 'dynamicua':
 }
 
 nubis::static { 'experiencethearch':
-  servername    => 'experiencethearch.mozilla.org',
+  servername    => 'experiencethearch.com',
   serveraliases => [
     'experiencethearch.allizom.org',
+    'experiencethearch.mozilla.org',
   ],
 }
