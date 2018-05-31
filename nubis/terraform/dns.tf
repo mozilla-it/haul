@@ -11,6 +11,18 @@ resource "aws_route53_delegation_set" "haul-delegation" {
   reference_name = "${var.service_name}"
 }
 
+module "experiencethearch_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  zone_name = "${var.environment == "prod" ? "experiencethearch.com" : join(".", list(var.environment, "experiencethearch.com"))}"
+}
+
 module "ccadb_org" {
   source                 = "dns"
   region                 = "${var.region}"
