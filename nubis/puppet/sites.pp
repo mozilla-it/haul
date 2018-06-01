@@ -352,5 +352,6 @@ nubis::static { 'experiencethearch':
   serveraliases => [
     'experiencethearch.allizom.org',
     'experiencethearch.mozilla.org',
+    'www.experiencethearch.com',
   ],
 }
