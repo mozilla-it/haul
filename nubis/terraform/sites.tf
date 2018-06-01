@@ -257,5 +257,6 @@ module "experiencethearch" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  site_name = "experiencethearch"
+  site_name           = "experiencethearch"
+  site_poll_frequency = "H/1 * * * *"
 }
