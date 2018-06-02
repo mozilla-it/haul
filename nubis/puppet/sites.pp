@@ -355,7 +355,7 @@ nubis::static { 'experiencethearch':
     'www.experiencethearch.com',
   ],
 
-  headers => [
+  headers       => [
     'set Cache-Control "no-cache"',
   ],
 }
