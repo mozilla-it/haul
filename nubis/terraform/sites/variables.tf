@@ -33,3 +33,11 @@ variable "site_git_branches" {
 variable "haul_git_repo" {
   default = "https://github.com/mozilla-it/haul.git"
 }
+
+variable "cdn" {
+  default = false
+}
+
+variable "domains" {}
+
+variable "load_balancer_web" {}
