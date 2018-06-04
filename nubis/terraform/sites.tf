@@ -251,3 +251,16 @@ module "dynamicua" {
   site_name            = "dynamicua"
   site_build_frequency = "@daily"
 }
+
+module "experiencethearch" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name           = "experiencethearch"
+  site_poll_frequency = "H/1 * * * *"
+}
