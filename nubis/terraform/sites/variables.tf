@@ -34,10 +34,10 @@ variable "haul_git_repo" {
   default = "https://github.com/mozilla-it/haul.git"
 }
 
-variable "cloudfront" {
+variable "cdn" {
   default = false
 }
 
-variable "domain_aliases" {}
+variable "domains" {}
 
 variable "load_balancer_web" {}

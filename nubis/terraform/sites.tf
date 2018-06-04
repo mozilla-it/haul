@@ -134,8 +134,8 @@ module "publicsuffix" {
 
   site_name = "publicsuffix"
 
-  cloudfront        = true
-  domain_aliases    = ["publicsuffix.org", "www.publicsuffix.org"]
+  cdn               = true
+  domains           = ["publicsuffix.org", "www.publicsuffix.org"]
   load_balancer_web = "${module.load_balancer_web.name}"
 }
 

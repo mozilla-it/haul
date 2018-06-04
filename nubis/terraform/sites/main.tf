@@ -9,15 +9,15 @@ module "consul" {
 
 # If needed, CloudFront is configured for the site
 module "cloudfront" {
-  count = "${var.cloudfront ? 1 : 0}"
+  count = "${var.cdn ? 1 : 0}"
 
   source                 = "github.com/nubisproject/nubis-terraform//cloudfront?ref=131daeedc94660a39fb8de148706070c6d293cf2"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
   service_name           = "${var.service_name}"
-  domain_aliases         = "${var.domain_aliases}"
-  acm_certificate_domain = "${var.domain_aliases[0]}"
+  domains                = "${var.domains}"
+  acm_certificate_domain = "${var.domains[0]}"
   load_balancer_web      = "${var.load_balancer_web}"
 }
 
