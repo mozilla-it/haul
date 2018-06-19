@@ -133,10 +133,6 @@ module "publicsuffix" {
   role         = "${module.worker.role}"
 
   site_name = "publicsuffix"
-
-  cdn               = true
-  domains           = ["publicsuffix.org", "www.publicsuffix.org"]
-  load_balancer_web = "${module.load_balancer_web.name}"
 }
 
 module "trackertest" {
