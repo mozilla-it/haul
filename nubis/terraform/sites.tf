@@ -132,6 +132,9 @@ module "publicsuffix" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
+  enable_cdn     = true
+  domain_aliases = ["publicsuffix.org", "www.publicsuffix.org"]
+
   site_name = "publicsuffix"
 }
 
