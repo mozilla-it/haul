@@ -14,7 +14,7 @@ module "cloudfront" {
   environment            = "${var.environment}"
   account                = "${var.account}"
   service_name           = "${var.service_name}"
-  load_balancer_web      = "${module.load_balancer_web.address}"
+  load_balancer_web      = "${var.load_balancer_web}"
   acm_certificate_domain = "${var.domain_aliases[0]}"
   domain_aliases         = "${var.domain_aliases}"
 }
