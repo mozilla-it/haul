@@ -18,6 +18,12 @@ variable "role" {}
 
 variable "site_name" {}
 
+variable "domain_aliases" {}
+
+variable "enable_cdn" {}
+
+variable "load_balancer_web" {}
+
 variable "site_poll_frequency" {
   default = "H/10 * * * *"
 }
