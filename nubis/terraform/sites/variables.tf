@@ -19,7 +19,7 @@ variable "role" {}
 variable "site_name" {}
 
 variable "domain_aliases" {
-  type = "list"
+  type    = "list"
   default = []
 }
 
