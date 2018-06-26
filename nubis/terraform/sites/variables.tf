@@ -31,6 +31,10 @@ variable "load_balancer_web" {
   default = ""
 }
 
+variable "acm_certificate_domain" {
+  default = ""
+}
+
 variable "site_poll_frequency" {
   default = "H/10 * * * *"
 }
