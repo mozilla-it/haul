@@ -338,7 +338,7 @@ nubis::static { 'mozqa':
     rewrite_rule => [ '^/ca/ssl-md5-mozqa-ca.pem$ - [T=application/x-x509-ca-cert]' ],
   },
   ],
-  headers             => [
+  headers       => [
     "set X-Nubis-Version ${project_version}",
     "set X-Nubis-Project ${project_name}",
     "set X-Nubis-Build   ${packer_build_name}",
