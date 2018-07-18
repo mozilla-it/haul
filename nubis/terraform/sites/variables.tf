@@ -18,23 +18,6 @@ variable "role" {}
 
 variable "site_name" {}
 
-variable "domain_aliases" {
-  type    = "list"
-  default = []
-}
-
-variable "enable_cdn" {
-  default = false
-}
-
-variable "load_balancer_web" {
-  default = ""
-}
-
-variable "acm_certificate_domain" {
-  default = ""
-}
-
 variable "site_poll_frequency" {
   default = "H/10 * * * *"
 }
