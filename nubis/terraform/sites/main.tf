@@ -7,18 +7,6 @@ module "consul" {
   service_name = "${var.service_name}"
 }
 
-module "cloudfront" {
-  source                 = "github.com/nubisproject/nubis-terraform//cloudfront?ref=685e9714ec80afb3c42ee3ce6b7f641b65f33349"
-  enabled                = "${var.enable_cdn}"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  account                = "${var.account}"
-  service_name           = "${var.service_name}"
-  load_balancer_web      = "${var.load_balancer_web}"
-  acm_certificate_domain = "${var.acm_certificate_domain}"
-  domain_aliases         = "${var.domain_aliases}"
-}
-
 # Configure our Consul provider, module can't do it for us
 provider "consul" {
   address    = "${module.consul.address}"
