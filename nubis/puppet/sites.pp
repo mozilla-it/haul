@@ -314,14 +314,6 @@ nubis::static { 'iot':
   ]
 }
 
-nubis::static { 'getfirebug':
-  servername    => 'getfirebug.com',
-  serveraliases => [
-    'getfirebug.allizom.org',
-  ],
-  indexes       => [ 'index.php' ],
-}
-
 nubis::static { 'mozqa':
   servername    => 'www.mozqa.com',
   serveraliases => [
