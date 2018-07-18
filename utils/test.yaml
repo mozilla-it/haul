@@ -57,9 +57,6 @@ https://design.firefox.com:
 https://ccadb.allizom.org:
   links: 1
   stage_only: 1
-https://getfirebug.allizom.org:
-  links: 1
-  stage_only: 1
 https://mozqa.allizom.org:
   links: 1
   stage_only: 1
