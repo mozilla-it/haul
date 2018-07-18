@@ -132,7 +132,7 @@ module "publicsuffix" {
   service_name = "${var.service_name}"
   role         = "${module.worker.role}"
 
-  enable_cdn             = true
+  enable_cdn             = false
   domain_aliases         = ["publicsuffix.org", "www.publicsuffix.org"]
   acm_certificate_domain = "publicsuffix.org"
   load_balancer_web      = "${module.load_balancer_web.address}"
