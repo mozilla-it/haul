@@ -9,6 +9,22 @@ provider "aws" {
   region = "${var.region}"
 }
 
+# Discover Consul settings
+module "consul" {
+  source       = "github.com/nubisproject/nubis-terraform//consul?ref=v2.2.0"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+}
+
+# Configure our Consul provider, module can't do it for us
+provider "consul" {
+  address    = "${module.consul.address}"
+  scheme     = "${module.consul.scheme}"
+  datacenter = "${module.consul.datacenter}"
+}
+
 resource "aws_security_group" "ci" {
   name_prefix = "${var.service_name}-${var.environment}-ci-"
 

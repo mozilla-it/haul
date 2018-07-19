@@ -19,13 +19,6 @@ module "cloudfront" {
   domain_aliases         = "${var.domain_aliases}"
 }
 
-# Configure our Consul provider, module can't do it for us
-provider "consul" {
-  address    = "${module.consul.address}"
-  scheme     = "${module.consul.scheme}"
-  datacenter = "${module.consul.datacenter}"
-}
-
 # Publish our outputs into Consul for our application to consume
 resource "consul_keys" "config" {
   key {
