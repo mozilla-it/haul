@@ -341,7 +341,7 @@ nubis::static { 'mozqa':
 }
 
 nubis::static { 'dynamicua':
-  servername    => 'dynamicua-origin.cdn.mozilla.org',
+  servername    => 'dynamicua-origin.mozilla.org',
   serveraliases => [
     'dynamicua.allizom.org',
   ],
