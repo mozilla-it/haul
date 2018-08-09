@@ -1,5 +1,5 @@
 module "info" {
-  source      = "github.com/nubisproject/nubis-terraform//info?ref=v2.2.0"
+  source      = "github.com/nubisproject/nubis-terraform//info?ref=v2.3.0"
   region      = "${var.region}"
   environment = "${var.environment}"
   account     = "${var.account}"
@@ -11,7 +11,7 @@ provider "aws" {
 
 # Discover Consul settings
 module "consul" {
-  source       = "github.com/nubisproject/nubis-terraform//consul?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//consul?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -89,7 +89,7 @@ resource "aws_security_group" "ci" {
 }
 
 module "worker" {
-  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.2.0"
+  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.3.0"
   region                    = "${var.region}"
   environment               = "${var.environment}"
   account                   = "${var.account}"
@@ -106,7 +106,7 @@ module "worker" {
 }
 
 module "load_balancer_web" {
-  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -124,7 +124,7 @@ module "load_balancer_web" {
 }
 
 module "ci" {
-  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.2.0"
+  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.3.0"
   region                    = "${var.region}"
   environment               = "${var.environment}"
   account                   = "${var.account}"
@@ -144,7 +144,7 @@ module "ci" {
 }
 
 module "load_balancer_ci" {
-  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -162,7 +162,7 @@ module "load_balancer_ci" {
 }
 
 module "dns_web" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -171,7 +171,7 @@ module "dns_web" {
 }
 
 module "storage" {
-  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v2.2.0"
+  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v2.3.0"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
@@ -181,7 +181,7 @@ module "storage" {
 }
 
 module "backup" {
-  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
