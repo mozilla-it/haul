@@ -1,8 +1,8 @@
 #!/bin/bash
 
-for domain in $*; do
+for domain in "$*"; do
 
-  safe_domain=$(echo $domain | sed -e's/\./_/g')
+  safe_domain="$(echo $domain | sed -e's/\./_/g')"
   
 
 cat <<EOF
