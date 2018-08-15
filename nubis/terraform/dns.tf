@@ -36,6 +36,450 @@ module "ccadb_org" {
   zone_name = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
 }
 
+# Adding prod and stage MX records for ccadb
+resource "aws_route53_record" "ccadb_mozilla_mx" {
+  zone_id = "${module.ccadb_org.application_zone_id}"
+  name    = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
+  type    = "MX"
+
+  records = [
+    "10 mx1.scl3.mozilla.com",
+    "20 mx2.scl3.mozilla.com",
+  ]
+
+  ttl = "180"
+}
+
+## Generated
+module "apps_mozillalabs_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "apps.mozillalabs.com" : join(".", list(var.environment, "apps.mozillalabs.com.allizom.org"))}"
+}
+
+module "arewestableyet_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "arewestableyet.com" : join(".", list(var.environment, "arewestableyet.com.allizom.org"))}"
+}
+
+module "boot2gecko_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "boot2gecko.org" : join(".", list(var.environment, "boot2gecko.org.allizom.org"))}"
+}
+
+module "cleopatra_io" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "cleopatra.io" : join(".", list(var.environment, "cleopatra.io.allizom.org"))}"
+}
+
+module "contributejson_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "contributejson.org" : join(".", list(var.environment, "contributejson.org.allizom.org"))}"
+}
+
+module "extensiontest_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "extensiontest.com" : join(".", list(var.environment, "extensiontest.com.allizom.org"))}"
+}
+
+module "firefoxcup_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefoxcup.com" : join(".", list(var.environment, "firefoxcup.com.allizom.org"))}"
+}
+
+module "firefox_hu" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefox.hu" : join(".", list(var.environment, "firefox.hu.allizom.org"))}"
+}
+
+module "firefoxik_ru" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefoxik.ru" : join(".", list(var.environment, "firefoxik.ru.allizom.org"))}"
+}
+
+module "firefox_lt" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefox.lt" : join(".", list(var.environment, "firefox.lt.allizom.org"))}"
+}
+
+module "firefoxparty_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefoxparty.com" : join(".", list(var.environment, "firefoxparty.com.allizom.org"))}"
+}
+
+module "firefoxquantum_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefoxquantum.com" : join(".", list(var.environment, "firefoxquantum.com.allizom.org"))}"
+}
+
+module "getfirefox_co_uk" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "getfirefox.co.uk" : join(".", list(var.environment, "getfirefox.co.uk.allizom.org"))}"
+}
+
+module "getfirefox_de" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "getfirefox.de" : join(".", list(var.environment, "getfirefox.de.allizom.org"))}"
+}
+
+module "getfirefox_net" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "getfirefox.net" : join(".", list(var.environment, "getfirefox.net.allizom.org"))}"
+}
+
+module "leandatapractices_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "leandatapractices.org" : join(".", list(var.environment, "leandatapractices.org.allizom.org"))}"
+}
+
+module "lightning-project_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "lightning-project.org" : join(".", list(var.environment, "lightning-project.org.allizom.org"))}"
+}
+
+module "metricsgraphicsjs_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "metricsgraphicsjs.org" : join(".", list(var.environment, "metricsgraphicsjs.org.allizom.org"))}"
+}
+
+module "mozilla_at" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
+}
+
+module "mozilla_ca" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla.ca" : join(".", list(var.environment, "mozilla.ca.allizom.org"))}"
+}
+
+module "mozilla_com_ru" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla.com.ru" : join(".", list(var.environment, "mozilla.com.ru.allizom.org"))}"
+}
+
+module "mozillactf_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillactf.org" : join(".", list(var.environment, "mozillactf.org.allizom.org"))}"
+}
+
+module "mozillaecuador_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillaecuador.org" : join(".", list(var.environment, "mozillaecuador.org.allizom.org"))}"
+}
+
+module "mozillafirefox_pl" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillafirefox.pl" : join(".", list(var.environment, "mozillafirefox.pl.allizom.org"))}"
+}
+
+module "mozillafoundation_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillafoundation.com" : join(".", list(var.environment, "mozillafoundation.com.allizom.org"))}"
+}
+
+module "mozilla_frl" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla.frl" : join(".", list(var.environment, "mozilla.frl.allizom.org"))}"
+}
+
+module "mozilla_it" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla.it" : join(".", list(var.environment, "mozilla.it.allizom.org"))}"
+}
+
+module "mozilla_org_uk" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla.org.uk" : join(".", list(var.environment, "mozilla.org.uk.allizom.org"))}"
+}
+
+module "mozilla-podcasts_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozilla-podcasts.org" : join(".", list(var.environment, "mozilla-podcasts.org.allizom.org"))}"
+}
+
+module "mozillausa_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillausa.org" : join(".", list(var.environment, "mozillausa.org.allizom.org"))}"
+}
+
+module "openwebgames_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "openwebgames.com" : join(".", list(var.environment, "openwebgames.com.allizom.org"))}"
+}
+
+module "pontoon_mozillalabs_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "pontoon.mozillalabs.com" : join(".", list(var.environment, "pontoon.mozillalabs.com.allizom.org"))}"
+}
+
+module "popcornjs_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "popcornjs.org" : join(".", list(var.environment, "popcornjs.org.allizom.org"))}"
+}
+
 module "smartdogz_org" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -49,16 +493,106 @@ module "smartdogz_org" {
   zone_name = "${var.environment == "prod" ? "smartdogz.org" : join(".", list(var.environment, "smartdogz.org.allizom.org"))}"
 }
 
-# Adding prod and stage MX records for ccadb
-resource "aws_route53_record" "ccadb_mozilla_mx" {
-  zone_id = "${module.ccadb_org.application_zone_id}"
-  name    = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
-  type    = "MX"
+module "srihash_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
 
-  records = [
-    "10 mx1.scl3.mozilla.com",
-    "20 mx2.scl3.mozilla.com",
-  ]
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "srihash.org" : join(".", list(var.environment, "srihash.org.allizom.org"))}"
+}
 
-  ttl = "180"
+module "standu_ps" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "standu.ps" : join(".", list(var.environment, "standu.ps.allizom.org"))}"
+}
+
+module "taskcluster_net" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "taskcluster.net" : join(".", list(var.environment, "taskcluster.net.allizom.org"))}"
+}
+
+module "trackingprotection_info" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "trackingprotection.info" : join(".", list(var.environment, "trackingprotection.info.allizom.org"))}"
+}
+
+module "webifyme_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "webifyme.org" : join(".", list(var.environment, "webifyme.org.allizom.org"))}"
+}
+
+module "arewefunyet_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "arewefunyet.com" : join(".", list(var.environment, "arewefunyet.com.allizom.org"))}"
+}
+
+module "firefoxacademiccenter_org" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefoxacademiccenter.org" : join(".", list(var.environment, "firefoxacademiccenter.org.allizom.org"))}"
+}
+
+module "firefox_pt" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "firefox.pt" : join(".", list(var.environment, "firefox.pt.allizom.org"))}"
 }
