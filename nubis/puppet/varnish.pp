@@ -58,3 +58,12 @@ systemd::unit_file { 'varnish_exporter.service':
   ensure => 'stopped',
   enable => true,
 }
+
+# Grab snippets-stats logs
+systemd::unit_file { 'snippets_stats.service':
+  source => 'puppet:///nubis/files/snippets_stats.systemd',
+}
+  -> service { 'snippets_stats':
+  ensure => 'stopped',
+  enable => true,
+}

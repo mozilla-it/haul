@@ -1,0 +1,13 @@
+[Unit]
+Description=Snippets Stats Log Exporter
+Wants=basic.target
+After=basic.target network.target traefik.service
+
+[Service]
+Restart=on-failure
+RestartSec=10s
+
+ExecStart=/bin/bash -c "/usr/bin/tail -F /var/log/traefik.log | jq -c '. | select(.RequestHost|test(\"^snippets-stats\\\\.(allizom|mozilla)\\\\.org$\"))' > /var/log/traefik_snippets.log"
+
+[Install]
+WantedBy=multi-user.target
