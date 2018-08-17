@@ -29,4 +29,10 @@ resource "consul_keys" "config" {
     value  = "${var.region}"
     delete = true
   }
+
+  key {
+    path   = "${module.consul.config_prefix}/Bucket/Snippets/Name"
+    value  = "${module.snippets.name}"
+    delete = true
+  }
 }

@@ -7,7 +7,7 @@ After=basic.target network.target traefik.service
 Restart=on-failure
 RestartSec=10s
 
-ExecStart=/bin/bash -c "/usr/bin/tail -F /var/log/traefik.log | jq -c '. | select(.RequestHost|test(\"^snippets-stats\\\\.(allizom|mozilla)\\\\.org$\"))' > /var/log/traefik_snippets.log"
+ExecStart=/bin/bash -c "/usr/bin/tail -F /var/log/traefik.log | jq -c '. | select(.RequestHost|test(\"^snippets-stats\\\\.(allizom|mozilla)\\\\.org$\"))' > /var/log/snippets.log"
 
 [Install]
 WantedBy=multi-user.target
