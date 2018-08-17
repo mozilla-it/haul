@@ -353,3 +353,14 @@ nubis::static { 'experiencethearch':
     'www.experiencethearch.com',
   ],
 }
+
+nubis::static { 'snippets':
+  servername           => 'snippets-stats.mozilla.org',
+  serveraliases        => [
+    'snippets-stats.allizom.org',
+  ],
+
+  # Just return 204 for any html requests (beacons)
+  redirectmatch_status => ['204'],
+  redirectmatch_regexp => ['\.html$'],
+}
