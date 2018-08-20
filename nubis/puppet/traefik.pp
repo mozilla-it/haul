@@ -54,6 +54,15 @@ logrotate::rule { 'traefik':
 
 logrotate::rule { 'snippets':
   path       => '/var/log/snippets*.log',
-  postrotate => 'systemctl restart snippets_stats.service',
+  dateext    => true,
+  postrotate => "/usr/local/bin/${project_name}-push-logs-to-s3",
   size       => '256M',
+}
+
+file { "/usr/local/bin/${project_name}-push-logs-to-s3":
+  ensure => file,
+  owner  => root,
+  group  => root,
+  mode   => '0755',
+  source => 'puppet:///nubis/files/push-logs-to-s3',
 }

@@ -1,0 +1,18 @@
+#!/bin/bash -l
+
+export PATH=/usr/local/bin:$PATH
+
+#systemctl restart snippets_stats.service
+
+NUBIS_STACK=$(nubis-metadata NUBIS_STACK)
+NUBIS_ENVIRONMENT=$(nubis-metadata NUBIS_ENVIRONMENT)
+
+REGION=$(nubis-region)
+
+BUCKET=$(consul kv get "$NUBIS_STACK/$NUBIS_ENVIRONMENT/config/Bucket/Snippets/Name")
+
+if [ -n "$BUCKET" ]; then
+  aws --region "$REGION" s3 sync /var/log/ "s3://$BUCKET/"  '--exclude=*' --include="snippet*.log"
+else
+  echo "Can't find our bucket: $NUBIS_STACK/$NUBIS_ENVIRONMENT/config/Bucket/Snippets/Name"
+fi
