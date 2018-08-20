@@ -49,9 +49,17 @@ endpoint = "127.0.0.1:8500"
 watch = true
 prefix = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/config"
 
+{{ $challenge := ( getv "/config/ACME/Challenge" "http-01" ) }}
+{{ if eq $challenge "http-01" }}
 # Use HTTP-01 challenges
 [acme.httpChallenge]
   entryPoint = "http"
+{{ else }}
+# Use DNS-01 challenges
+[acme.dnsChallenge]
+  provider = "route53"
+  delayBeforeCheck = 0
+{{ end }}
 
 [acme]
 # Handle when this isn't set
@@ -67,9 +75,9 @@ entryPoint = "https"
 caServer = "{{ getv "/config/LetsEncrypt/CAServer" }}"
 {{end}}
 
-acmeLogging = true
-onDemand = false
-onHostRule = false
+acmeLogging = {{ getv "/config/ACME/Logging" "true" }}
+onDemand = {{ getv "/config/ACME/onDemand" "false" }}
+onHostRule = {{ getv "/config/ACME/onHostRule" "false" }}
 
 [file]
 
