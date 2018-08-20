@@ -2,7 +2,7 @@
 
 export PATH=/usr/local/bin:$PATH
 
-#systemctl restart snippets_stats.service
+systemctl restart snippets_stats.service
 
 NUBIS_STACK=$(nubis-metadata NUBIS_STACK)
 NUBIS_ENVIRONMENT=$(nubis-metadata NUBIS_ENVIRONMENT)
