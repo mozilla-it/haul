@@ -1,0 +1,26 @@
+#!/bin/bash
+
+for domain in "$@"; do
+
+#  safe_domain=$(echo "$domain" | sed -e's/\./_/g')
+
+# For stage list
+#domain="$domain.allizom.org"
+
+sans=""
+case $domain in
+  www.*)
+    sans=$(printf "sans = [\\n  \"%s\"\\n]" "$domain")
+    domain=$(echo "$domain" | sed -e's/^www\.//g')
+  ;;
+esac
+  
+
+cat <<EOF
+[[acme]]
+main = "$domain"
+$sans
+
+EOF
+
+done
