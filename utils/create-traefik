@@ -10,7 +10,7 @@ for domain in "$@"; do
 sans=""
 case $domain in
   www.*)
-    sans=$(printf "sans = [\n  \"$domain\"\n]")
+    sans=$(printf "sans = [\\n  \"%s\"\\n]" "$domain")
     domain=$(echo "$domain" | sed -e's/^www\.//g')
   ;;
 esac
