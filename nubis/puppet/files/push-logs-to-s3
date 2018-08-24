@@ -13,7 +13,7 @@ BUCKET=$(consul kv get "$NUBIS_STACK/$NUBIS_ENVIRONMENT/config/Bucket/Snippets/N
 
 if [ -n "$BUCKET" ]; then
   INSTANCE=$(nubis-metadata INSTANCE_IDENTITY_INSTANCEID)
-  aws --region "$REGION" s3 sync /var/log/ "s3://$BUCKET/$INSTANCE"  '--exclude=*' --include="snippet*.log-*.gz"
+  aws --region "$REGION" s3 sync /var/log/ "s3://$BUCKET/$INSTANCE/"  '--exclude=*' --include="snippet*.log-*.gz"
 else
   echo "Can't find our bucket: $NUBIS_STACK/$NUBIS_ENVIRONMENT/config/Bucket/Snippets/Name"
 fi

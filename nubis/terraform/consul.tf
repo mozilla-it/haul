@@ -35,4 +35,16 @@ resource "consul_keys" "config" {
     value  = "${module.snippets.name}"
     delete = true
   }
+
+  key {
+    path   = "${module.consul.config_prefix}/Bucket/Snippets/AccessKey"
+    value  = "${aws_iam_access_key.snippets_bucket.id}"
+    delete = true
+  }
+
+  key {
+    path   = "${module.consul.config_prefix}/Bucket/Snippets/SecretKey"
+    value  = "${aws_iam_access_key.snippets_bucket.secret}"
+    delete = true
+  }
 }
