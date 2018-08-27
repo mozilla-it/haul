@@ -26,7 +26,7 @@ https://krakenbenchmark.allizom.org:
   stage_only: 1
 https://krakenbenchmark.mozilla.org:
   links: 1
-https://nightly-haul.allizom.org:
+https://nightly.allizom.org:
   stage_only: 1
 https://planet-bugzilla.allizom.org:
   stage_only: 1

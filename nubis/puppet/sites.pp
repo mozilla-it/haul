@@ -164,14 +164,6 @@ nubis::static { 'tlscanary':
   ],
 }
 
-nubis::static { 'nightly':
-  servername    => 'nightly.mozilla.org',
-  serveraliases => [
-    'nightly.allizom.org',
-    'nightly-haul.allizom.org',
-  ],
-}
-
 nubis::static { 'publicsuffix':
   servername          => 'www.publicsuffix.org',
   serveraliases       => [
