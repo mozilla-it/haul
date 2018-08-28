@@ -597,10 +597,6 @@ resource "aws_route53_record" "www_srihash" {
   records = ["yamanashi-5422.herokussl.com"]
 }
 
-
-
-
-
 module "standu_ps" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -919,10 +915,6 @@ resource "aws_route53_record" "www_firefoxacademiccenter" {
   ttl     = "300"
   records = ["firefox-academic-center.org"]
 }
-
-
-
-
 
 module "firefox_pt" {
   source                 = "dns"
