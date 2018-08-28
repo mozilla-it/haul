@@ -47,3 +47,7 @@ variable "elb_zone_id" {
     sa-east-1      = "Z2P70J7HTTTPLU"
   }
 }
+
+variable "www_dest" {
+  default = ""
+}
