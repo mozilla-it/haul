@@ -1,3 +1,4 @@
+# File for setting CNAMEs, MX, etc.
 # Create a delegation set so that we can reuse the same NS for a
 # multiple hosted zones
 #
@@ -298,6 +299,18 @@ module "mozilla_at" {
   zone_name = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
 }
 
+resource "aws_route53_record" "mozilla_at_mx" {
+  zone_id = "${module.mozilla_at.application_zone_id}"
+  name    = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
+  type    = "MX"
+
+  records = [
+    "10 mail.mozilla-europe.org",
+  ]
+
+  ttl = "180"
+}
+
 module "mozilla_ca" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -361,6 +374,19 @@ module "mozillafirefox_pl" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozillafirefox.pl" : join(".", list(var.environment, "mozillafirefox.pl.allizom.org"))}"
+}
+
+module "mozillafirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillafirefox.com" : join(".", list(var.environment, "mozillafirefox.com.allizom.org"))}"
 }
 
 module "mozillafoundation_com" {
@@ -506,6 +532,14 @@ module "srihash_org" {
   zone_name = "${var.environment == "prod" ? "srihash.org" : join(".", list(var.environment, "srihash.org.allizom.org"))}"
 }
 
+resource "aws_route53_record" "www_srihash" {
+  zone_id = "${module.srihash_org.application_zone_id}"
+  name    = "www"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["yamanashi-5422.herokussl.com"]
+}
+
 module "standu_ps" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -517,6 +551,27 @@ module "standu_ps" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "standu.ps" : join(".", list(var.environment, "standu.ps.allizom.org"))}"
+}
+
+module "operationfirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "operationfirefox.com" : join(".", list(var.environment, "operationfirefox.com.allizom.org"))}"
+}
+
+resource "aws_route53_record" "www_operationfirefox" {
+  zone_id = "${module.operationfirefox_com.application_zone_id}"
+  name    = "www"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["operationfirefox.com"]
 }
 
 module "taskcluster_net" {
@@ -794,7 +849,7 @@ module "firefoxacademiccenter_org" {
   elb_address            = "${module.load_balancer_web.address}"
 
   # Make sure to construct a unique zone name depending on the environment
-  zone_name = "${var.environment == "prod" ? "firefoxacademiccenter.org" : join(".", list(var.environment, "firefoxacademiccenter.org.allizom.org"))}"
+  zone_name = "${var.environment == "prod" ? "firefox-academic-center.org" : join(".", list(var.environment, "firefox-academic-center.org.allizom.org"))}"
 }
 
 module "firefox_pt" {
