@@ -679,14 +679,6 @@ resource "aws_route53_record" "queue_taskcluster" {
   records = ["toyama-73636.herokussl.com"]
 }
 
-resource "aws_route53_record" "queue_taskcluster" {
-  zone_id = "${module.taskcluster_net.application_zone_id}"
-  name    = "queue"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["toyama-73636.herokussl.com"]
-}
-
 resource "aws_route53_record" "references_taskcluster" {
   zone_id = "${module.taskcluster_net.application_zone_id}"
   name    = "references"
