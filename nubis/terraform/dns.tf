@@ -128,6 +128,7 @@ module "extensiontest_com" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "extensiontest.com" : join(".", list(var.environment, "extensiontest.com.allizom.org"))}"
 }
+
 resource "aws_route53_record" "www_extensiontestcom" {
   zone_id = "${module.extensiontest_com.application_zone_id}"
   name    = "www"
@@ -321,6 +322,7 @@ module "mozilla_at" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
 }
+
 resource "aws_route53_record" "www_mozillaat" {
   zone_id = "${module.mozilla_at.application_zone_id}"
   name    = "www"
@@ -340,9 +342,6 @@ resource "aws_route53_record" "mozilla_at_mx" {
 
   ttl = "180"
 }
-
-
-
 
 module "mozilla_ca" {
   source                 = "dns"
@@ -630,6 +629,7 @@ resource "aws_route53_record" "www_operationfirefox" {
   ttl     = "300"
   records = ["operationfirefox.com"]
 }
+
 module "taskcluster_net" {
   source                 = "dns"
   region                 = "${var.region}"
