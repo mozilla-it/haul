@@ -107,3 +107,4 @@ www.firefox.pt
 www.rockyourfirefox.com
 www.support.mozilla.org
 smartdogz.org
+releases.mozilla.org
