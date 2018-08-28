@@ -1,4 +1,4 @@
-# File for setting CNAMEs, MX, etc
+# File for setting CNAMEs, MX, etc.
 # Create a delegation set so that we can reuse the same NS for a
 # multiple hosted zones
 #
@@ -130,10 +130,6 @@ module "extensiontest_com" {
   zone_name = "${var.environment == "prod" ? "extensiontest.com" : join(".", list(var.environment, "extensiontest.com.allizom.org"))}"
 }
 
-
-
-
-
 module "firefoxcup_com" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -238,7 +234,6 @@ module "getfirefox_de" {
   zone_name = "${var.environment == "prod" ? "getfirefox.de" : join(".", list(var.environment, "getfirefox.de.allizom.org"))}"
 }
 
-
 module "getfirefox_net" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -291,7 +286,6 @@ module "metricsgraphicsjs_org" {
   zone_name = "${var.environment == "prod" ? "metricsgraphicsjs.org" : join(".", list(var.environment, "metricsgraphicsjs.org.allizom.org"))}"
 }
 
-
 module "mozilla_at" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -329,7 +323,6 @@ module "mozilla_ca" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla.ca" : join(".", list(var.environment, "mozilla.ca.allizom.org"))}"
 }
-
 
 module "mozilla_com_ru" {
   source                 = "dns"
@@ -395,7 +388,6 @@ module "mozillafirefox_com" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozillafirefox.com" : join(".", list(var.environment, "mozillafirefox.com.allizom.org"))}"
 }
-
 
 module "mozillafoundation_com" {
   source                 = "dns"
@@ -859,7 +851,6 @@ module "firefoxacademiccenter_org" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "firefox-academic-center.org" : join(".", list(var.environment, "firefox-academic-center.org.allizom.org"))}"
 }
-
 
 module "firefox_pt" {
   source                 = "dns"
