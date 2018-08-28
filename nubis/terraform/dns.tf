@@ -532,6 +532,227 @@ module "taskcluster_net" {
   zone_name = "${var.environment == "prod" ? "taskcluster.net" : join(".", list(var.environment, "taskcluster.net.allizom.org"))}"
 }
 
+# Temporarily fixing taskcluster.net incident
+# These can be removed or modified later: through END
+
+resource "aws_route53_record" "auth_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "auth"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "aws_provisioner_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "aws-provisioner"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "cloud_mirror_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "cloud-mirror"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "docs_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "docs"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["d2riyrukoaoyvi.cloudfront.net"]
+}
+
+resource "aws_route53_record" "downloads_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "downloads"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["dsyrlz5vae454.cloudfront.net"]
+}
+
+resource "aws_route53_record" "ec2_manager_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "ec2-manager"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "ec2_manager_staging_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "ec2-manager-staging"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "events_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "events"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "github_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "github"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "hooks_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "hooks"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "index_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "index"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "login_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "login"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "migration_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "migration"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["d2prg8duu479p0.cloudfront.net"]
+}
+
+resource "aws_route53_record" "notify_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "notify"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "public_artifacts_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "public-artifacts"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["d15i1wtwi4py6w.cloudfront.net"]
+}
+
+resource "aws_route53_record" "pulse_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "pulse"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "purge_cache_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "purge-cache"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "queue_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "queue"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "queue_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "queue"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "references_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "references"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["d27ltxxyvc62mr.cloudfront.net"]
+}
+
+resource "aws_route53_record" "scheduler_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "scheduler"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "schemas_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "schemas"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["dwct33i6dj3i.cloudfront.net"]
+}
+
+resource "aws_route53_record" "secrets_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "secrets"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["toyama-73636.herokussl.com"]
+}
+
+resource "aws_route53_record" "status_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "status"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["status.taskcluster.net.s3-website-us-west-1.amazonaws.com"]
+}
+
+resource "aws_route53_record" "tasks_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "tasks"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["tasks.taskcluster.net.s3-website-us-west-2.amazonaws.com"]
+}
+
+resource "aws_route53_record" "tools_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "tools"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["d1285yt6bca376.cloudfront.net"]
+}
+
+resource "aws_route53_record" "statsum_taskcluster" {
+  zone_id = "${module.taskcluster_net.application_zone_id}"
+  name    = "statsum"
+  type    = "A"
+  ttl     = "300"
+  records = ["54.71.54.57"]
+}
+
+# END
+
 module "trackingprotection_info" {
   source                 = "dns"
   region                 = "${var.region}"
