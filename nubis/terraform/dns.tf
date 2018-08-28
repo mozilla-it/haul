@@ -130,13 +130,9 @@ module "extensiontest_com" {
   zone_name = "${var.environment == "prod" ? "extensiontest.com" : join(".", list(var.environment, "extensiontest.com.allizom.org"))}"
 }
 
-resource "aws_route53_record" "www_extensiontestcom" {
-  zone_id = "${module.extensiontest_com.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["extensiontest.com"]
-}
+
+
+
 
 module "firefoxcup_com" {
   source                 = "dns"
@@ -242,13 +238,6 @@ module "getfirefox_de" {
   zone_name = "${var.environment == "prod" ? "getfirefox.de" : join(".", list(var.environment, "getfirefox.de.allizom.org"))}"
 }
 
-resource "aws_route53_record" "www_getfirefoxde" {
-  zone_id = "${module.getfirefox_de.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["getfirefox.de"]
-}
 
 module "getfirefox_net" {
   source                 = "dns"
@@ -302,14 +291,6 @@ module "metricsgraphicsjs_org" {
   zone_name = "${var.environment == "prod" ? "metricsgraphicsjs.org" : join(".", list(var.environment, "metricsgraphicsjs.org.allizom.org"))}"
 }
 
-#Commenting Out for Now
-#resource "aws_route53_record" "www_metricsgraphicsjs" {
-#  zone_id = "${module.metricsgraphicsjs_org.application_zone_id}"
-#  name    = "www"
-#  type    = "CNAME"
-#  ttl     = "300"
-#  records = ["metricsgraphicsjs.org"]
-#}
 
 module "mozilla_at" {
   source                 = "dns"
@@ -322,14 +303,6 @@ module "mozilla_at" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
-}
-
-resource "aws_route53_record" "www_mozillaat" {
-  zone_id = "${module.mozilla_at.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["mozilla.at"]
 }
 
 resource "aws_route53_record" "mozilla_at_mx" {
@@ -357,13 +330,6 @@ module "mozilla_ca" {
   zone_name = "${var.environment == "prod" ? "mozilla.ca" : join(".", list(var.environment, "mozilla.ca.allizom.org"))}"
 }
 
-resource "aws_route53_record" "www_mozillaca" {
-  zone_id = "${module.mozilla_ca.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["mozilla.ca"]
-}
 
 module "mozilla_com_ru" {
   source                 = "dns"
@@ -430,13 +396,6 @@ module "mozillafirefox_com" {
   zone_name = "${var.environment == "prod" ? "mozillafirefox.com" : join(".", list(var.environment, "mozillafirefox.com.allizom.org"))}"
 }
 
-resource "aws_route53_record" "www_mozillafirefoxcom" {
-  zone_id = "${module.mozillafirefox_com.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["mozillafirefox.com"]
-}
 
 module "mozillafoundation_com" {
   source                 = "dns"
@@ -475,14 +434,6 @@ module "mozilla_it" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla.it" : join(".", list(var.environment, "mozilla.it.allizom.org"))}"
-}
-
-resource "aws_route53_record" "www_mozillait" {
-  zone_id = "${module.mozilla_it.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["mozilla.it"]
 }
 
 module "mozilla_org_uk" {
@@ -909,13 +860,6 @@ module "firefoxacademiccenter_org" {
   zone_name = "${var.environment == "prod" ? "firefox-academic-center.org" : join(".", list(var.environment, "firefox-academic-center.org.allizom.org"))}"
 }
 
-resource "aws_route53_record" "www_firefoxacademiccenter" {
-  zone_id = "${module.firefoxacademiccenter_org.application_zone_id}"
-  name    = "www"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["firefox-academic-center.org"]
-}
 
 module "firefox_pt" {
   source                 = "dns"
