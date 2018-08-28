@@ -1,3 +1,4 @@
+# File for setting CNAMEs, MX, etc
 # Create a delegation set so that we can reuse the same NS for a
 # multiple hosted zones
 #
