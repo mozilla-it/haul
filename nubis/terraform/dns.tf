@@ -794,7 +794,7 @@ module "firefoxacademiccenter_org" {
   elb_address            = "${module.load_balancer_web.address}"
 
   # Make sure to construct a unique zone name depending on the environment
-  zone_name = "${var.environment == "prod" ? "firefoxacademiccenter.org" : join(".", list(var.environment, "firefoxacademiccenter.org.allizom.org"))}"
+  zone_name = "${var.environment == "prod" ? "firefox-academic-center.org" : join(".", list(var.environment, "firefox-academic-center.org.allizom.org"))}"
 }
 
 module "firefox_pt" {
