@@ -415,7 +415,7 @@ module "mozilla_org_uk" {
   zone_name = "${var.environment == "prod" ? "mozilla.org.uk" : join(".", list(var.environment, "mozilla.org.uk.allizom.org"))}"
 }
 
-module "mozilla-podcasts_org" {
+module "mozilla_podcasts_org" {
   source                 = "dns"
   region                 = "${var.region}"
   environment            = "${var.environment}"
@@ -426,6 +426,14 @@ module "mozilla-podcasts_org" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla-podcasts.org" : join(".", list(var.environment, "mozilla-podcasts.org.allizom.org"))}"
+}
+
+resource "aws_route53_record" "feeds_podcasts" {
+  zone_id = "${module.mozilla_podcasts_org.application_zone_id}"
+  name    = "feeds"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["redirect.feedpress.me"]
 }
 
 module "mozillausa_org" {
