@@ -111,6 +111,7 @@ module "contributejson_org" {
   route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
   hosted_zone_ttl        = "3600"
   elb_address            = "${module.load_balancer_web.address}"
+  www_dest               = "www.contributejson.org.herokudns.com"
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "contributejson.org" : join(".", list(var.environment, "contributejson.org.allizom.org"))}"
