@@ -272,19 +272,6 @@ module "lightning-project_org" {
   zone_name = "${var.environment == "prod" ? "lightning-project.org" : join(".", list(var.environment, "lightning-project.org.allizom.org"))}"
 }
 
-module "metricsgraphicsjs_org" {
-  source                 = "dns"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  service_name           = "${var.service_name}"
-  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
-  hosted_zone_ttl        = "3600"
-  elb_address            = "${module.load_balancer_web.address}"
-
-  # Make sure to construct a unique zone name depending on the environment
-  zone_name = "${var.environment == "prod" ? "metricsgraphicsjs.org" : join(".", list(var.environment, "metricsgraphicsjs.org.allizom.org"))}"
-}
-
 module "mozilla_at" {
   source                 = "dns"
   region                 = "${var.region}"
