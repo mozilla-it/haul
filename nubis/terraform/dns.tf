@@ -811,3 +811,16 @@ module "firefox_pt" {
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "firefox.pt" : join(".", list(var.environment, "firefox.pt.allizom.org"))}"
 }
+
+module "operationfirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "operationfirefox.com" : join(".", list(var.environment, "operationfirefox.com.allizom.org"))}"
+}
