@@ -43,7 +43,7 @@ resource "aws_route53_record" "www" {
   name    = "www.${var.zone_name}"
 
   type = "CNAME"
-  ttl  = "300"
+  ttl  = "${var.hosted_zone_ttl}"
 
   records = ["${coalesce(var.www_dest,aws_route53_record.apex_record.fqdn)}"]
 }

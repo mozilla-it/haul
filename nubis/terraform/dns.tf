@@ -111,6 +111,7 @@ module "contributejson_org" {
   route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
   hosted_zone_ttl        = "3600"
   elb_address            = "${module.load_balancer_web.address}"
+  www_dest               = "www.contributejson.org.herokudns.com"
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "contributejson.org" : join(".", list(var.environment, "contributejson.org.allizom.org"))}"
@@ -220,6 +221,27 @@ module "getfirefox_co_uk" {
   zone_name = "${var.environment == "prod" ? "getfirefox.co.uk" : join(".", list(var.environment, "getfirefox.co.uk.allizom.org"))}"
 }
 
+module "getfirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "getfirefox.com" : join(".", list(var.environment, "getfirefox.com.allizom.org"))}"
+}
+
+resource "aws_route53_record" "spf_getfirefox_com" {
+  zone_id = "${module.getfirefox_com.application_zone_id}"
+  name    = "${var.environment == "prod" ? "getfirefox.com" : join(".", list(var.environment, "getfirefox.com.allizom.org"))}"
+  type    = "TXT"
+  ttl     = "300"
+  records = ["v=spf1 -all"]
+}
+
 module "getfirefox_de" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -272,19 +294,6 @@ module "lightning-project_org" {
   zone_name = "${var.environment == "prod" ? "lightning-project.org" : join(".", list(var.environment, "lightning-project.org.allizom.org"))}"
 }
 
-module "metricsgraphicsjs_org" {
-  source                 = "dns"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  service_name           = "${var.service_name}"
-  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
-  hosted_zone_ttl        = "3600"
-  elb_address            = "${module.load_balancer_web.address}"
-
-  # Make sure to construct a unique zone name depending on the environment
-  zone_name = "${var.environment == "prod" ? "metricsgraphicsjs.org" : join(".", list(var.environment, "metricsgraphicsjs.org.allizom.org"))}"
-}
-
 module "mozilla_at" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -296,6 +305,18 @@ module "mozilla_at" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
+}
+
+resource "aws_route53_record" "mx_mozilla_at" {
+  zone_id = "${module.mozilla_at.application_zone_id}"
+  name    = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
+  type    = "MX"
+
+  records = [
+    "10 mail.mozilla-europe.org",
+  ]
+
+  ttl = "180"
 }
 
 module "mozilla_ca" {
@@ -363,6 +384,19 @@ module "mozillafirefox_pl" {
   zone_name = "${var.environment == "prod" ? "mozillafirefox.pl" : join(".", list(var.environment, "mozillafirefox.pl.allizom.org"))}"
 }
 
+module "mozillafirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillafirefox.com" : join(".", list(var.environment, "mozillafirefox.com.allizom.org"))}"
+}
+
 module "mozillafoundation_com" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -415,7 +449,7 @@ module "mozilla_org_uk" {
   zone_name = "${var.environment == "prod" ? "mozilla.org.uk" : join(".", list(var.environment, "mozilla.org.uk.allizom.org"))}"
 }
 
-module "mozilla-podcasts_org" {
+module "mozilla_podcasts_org" {
   source                 = "dns"
   region                 = "${var.region}"
   environment            = "${var.environment}"
@@ -426,6 +460,14 @@ module "mozilla-podcasts_org" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla-podcasts.org" : join(".", list(var.environment, "mozilla-podcasts.org.allizom.org"))}"
+}
+
+resource "aws_route53_record" "feeds_podcasts" {
+  zone_id = "${module.mozilla_podcasts_org.application_zone_id}"
+  name    = "feeds"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["redirect.feedpress.me"]
 }
 
 module "mozillausa_org" {
@@ -810,4 +852,17 @@ module "firefox_pt" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "firefox.pt" : join(".", list(var.environment, "firefox.pt.allizom.org"))}"
+}
+
+module "operationfirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "operationfirefox.com" : join(".", list(var.environment, "operationfirefox.com.allizom.org"))}"
 }
