@@ -462,13 +462,16 @@ module "mozilla_podcasts_org" {
   zone_name = "${var.environment == "prod" ? "mozilla-podcasts.org" : join(".", list(var.environment, "mozilla-podcasts.org.allizom.org"))}"
 }
 
-resource "aws_route53_record" "feeds_podcasts" {
-  zone_id = "${module.mozilla_podcasts_org.application_zone_id}"
-  name    = "feeds"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["redirect.feedpress.me"]
-}
+#
+# Commenting Out For Build
+# resource "aws_route53_record" "feeds_podcasts" {
+#  zone_id = "${module.mozilla_podcasts_org.application_zone_id}"
+#  name    = "feeds"
+#  type    = "CNAME"
+#  ttl     = "300"
+#  records = ["redirect.feedpress.me"]
+#}
+#
 
 module "mozillausa_org" {
   source                 = "dns"
