@@ -363,6 +363,19 @@ module "mozillafirefox_pl" {
   zone_name = "${var.environment == "prod" ? "mozillafirefox.pl" : join(".", list(var.environment, "mozillafirefox.pl.allizom.org"))}"
 }
 
+module "mozillafirefox_com" {
+  source                 = "dns"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  service_name           = "${var.service_name}"
+  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
+  hosted_zone_ttl        = "3600"
+  elb_address            = "${module.load_balancer_web.address}"
+
+  # Make sure to construct a unique zone name depending on the environment
+  zone_name = "${var.environment == "prod" ? "mozillafirefox.com" : join(".", list(var.environment, "mozillafirefox.com.allizom.org"))}"
+}
+
 module "mozillafoundation_com" {
   source                 = "dns"
   region                 = "${var.region}"
