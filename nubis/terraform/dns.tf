@@ -233,6 +233,14 @@ module "getfirefox_com" {
   zone_name = "${var.environment == "prod" ? "getfirefox.com" : join(".", list(var.environment, "getfirefox.com.allizom.org"))}"
 }
 
+resource "aws_route53_record" "spf_getfirefox_com" {
+  zone_id = "${module.getfirefox_com.application_zone_id}"
+  name    = "${var.environment == "prod" ? "getfirefox.com" : join(".", list(var.environment, "getfirefox.com.allizom.org"))}"
+  type    = "TXT"
+  ttl     = "300"
+  records = ["v=spf1 -all"]
+}
+
 module "getfirefox_de" {
   source                 = "dns"
   region                 = "${var.region}"
@@ -296,6 +304,18 @@ module "mozilla_at" {
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
+}
+
+resource "aws_route53_record" "mx_mozilla_at" {
+  zone_id = "${module.mozilla_at.application_zone_id}"
+  name    = "${var.environment == "prod" ? "mozilla.at" : join(".", list(var.environment, "mozilla.at.allizom.org"))}"
+  type    = "MX"
+
+  records = [
+    "10 mail.mozilla-europe.org",
+  ]
+
+  ttl = "180"
 }
 
 module "mozilla_ca" {
