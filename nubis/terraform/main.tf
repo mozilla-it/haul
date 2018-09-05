@@ -103,6 +103,9 @@ module "worker" {
   min_instances             = 2
   wait_for_capacity_timeout = "20m"
   nubis_sudo_groups         = "${var.nubis_sudo_groups}"
+
+  # CPU utilisation based autoscaling (with good defaults)
+  scale_load_defaults = true
 }
 
 module "load_balancer_web" {
