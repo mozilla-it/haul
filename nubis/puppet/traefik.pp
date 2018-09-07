@@ -49,7 +49,6 @@ class { '::logrotate':
 logrotate::rule { 'traefik':
   path       => '/var/log/traefik*.log',
   postrotate => 'systemctl kill -s USR1 traefik.service',
-  size       => '256M',
 }
 
 logrotate::rule { 'snippets':
