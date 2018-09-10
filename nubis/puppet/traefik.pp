@@ -55,7 +55,6 @@ logrotate::rule { 'snippets':
   path       => '/var/log/snippets*.log',
   dateext    => true,
   postrotate => "/usr/local/bin/${project_name}-push-logs-to-s3",
-  size       => '256M',
 }
 
 file { "/usr/local/bin/${project_name}-push-logs-to-s3":
