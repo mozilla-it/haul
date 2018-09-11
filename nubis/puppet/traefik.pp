@@ -47,17 +47,17 @@ class { '::logrotate':
 }
 
 logrotate::rule { 'traefik':
-  path       => '/var/log/traefik*.log',
+  path         => '/var/log/traefik*.log',
   rotate_every => 'day',
-  postrotate => 'systemctl kill -s USR1 traefik.service',
+  postrotate   => 'systemctl kill -s USR1 traefik.service',
 }
 
 logrotate::rule { 'snippets':
-  path       => '/var/log/snippets*.log',
-  dateext    => true,
-  rotate_every => 'day',
+  path          => '/var/log/snippets*.log',
+  dateext       => true,
+  rotate_every  => 'day',
   sharedscripts => true,
-  postrotate => "/usr/local/bin/${project_name}-push-logs-to-s3",
+  postrotate    => "/usr/local/bin/${project_name}-push-logs-to-s3",
 }
 
 file { "/usr/local/bin/${project_name}-push-logs-to-s3":
