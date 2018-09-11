@@ -125,6 +125,7 @@ module "extensiontest_com" {
   route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
   hosted_zone_ttl        = "3600"
   elb_address            = "${module.load_balancer_web.address}"
+  www_dest               = "www.extensiontest.com.herokudns.com"
 
   # Make sure to construct a unique zone name depending on the environment
   zone_name = "${var.environment == "prod" ? "extensiontest.com" : join(".", list(var.environment, "extensiontest.com.allizom.org"))}"
