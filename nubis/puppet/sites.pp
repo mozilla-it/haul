@@ -37,6 +37,38 @@ nubis::static { 'planet-bugzilla':
   ],
 }
 
+nubis::static { 'local-start':
+  servername    => 'en-us.start.mozilla.org',
+  serveraliases => [
+    '*.start.mozilla.com',
+    '*.start2.mozilla.com',
+    '*.start3.mozilla.com',
+    '*.start-prod.mozilla.com',
+  ],
+  custom_fragment => '
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{HTTP_HOST} ^([a-z]{2,3})(-[a-z]{2})?\.(start.*)$
+    RewriteMap uppercase int:toupper
+    RewriteRule ^ http://start.mozilla.org/%1${uppercase:%2}/? [R=301,L]
+  '
+}
+
+nubis::static { 'start-com-redirect':
+  servername    => 'start.mozilla.com',
+  serveraliases => [
+    'start-prod.mozilla.com',
+  ],
+  custom_fragment => '
+    Redirect permanent / http://start.mozilla.org/
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+  '
+}
+
 nubis::static { 'start':
   servername      => 'start.mozilla.org',
   serveraliases   => [
