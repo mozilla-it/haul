@@ -38,8 +38,8 @@ nubis::static { 'planet-bugzilla':
 }
 
 nubis::static { 'local-start':
-  servername    => 'en-us.start.mozilla.org',
-  serveraliases => [
+  servername      => 'en-us.start.mozilla.org',
+  serveraliases   => [
     '*.start.mozilla.com',
     '*.start2.mozilla.com',
     '*.start3.mozilla.com',
@@ -58,8 +58,8 @@ nubis::static { 'local-start':
 }
 
 nubis::static { 'start-com-redirect':
-  servername    => 'start.mozilla.com',
-  serveraliases => [
+  servername      => 'start.mozilla.com',
+  serveraliases   => [
     'start-prod.mozilla.com',
   ],
   custom_fragment => '
