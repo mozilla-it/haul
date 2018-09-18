@@ -29,14 +29,18 @@ MaxIdleConnsPerHost = 1000
     address = ":9109"
   [entryPoints.http]
     address = ":80"
+     [entryPoints.http.proxyProtocol]
+       trustedIPs = ["127.0.0.1/32", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
      [entryPoints.http.redirect]
        entryPoint = "https"
   [entryPoints.https]
     address = ":443"
     [entryPoints.https.tls]
       MinVersion = "VersionTLS12"
+    [entryPoints.https.proxyProtocol]
+      trustedIPs = ["127.0.0.1/32", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
     [entryPoints.https.forwardedHeaders]
-      trustedIPs = ["127.0.0.0"]
+      trustedIPs = ["127.0.0.1/32", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
 
 [ping]
 [api]
