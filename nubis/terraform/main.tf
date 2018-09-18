@@ -206,11 +206,11 @@ module "snippets" {
 }
 
 resource "aws_proxy_protocol_policy" "http_web" {
-  load_balancer  = "${module.load_balancer_web.name}}"
+  load_balancer  = "${module.load_balancer_web.name}"
   instance_ports = ["80", "443"]
 }
 
 resource "aws_proxy_protocol_policy" "http_ci" {
-  load_balancer  = "${module.load_balancer_ci.name}}"
+  load_balancer  = "${module.load_balancer_ci.name}"
   instance_ports = ["80", "443"]
 }
