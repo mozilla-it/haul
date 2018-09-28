@@ -43,8 +43,7 @@ resource "aws_route53_record" "ccadb_mozilla_mx" {
   type    = "MX"
 
   records = [
-    "10 mx1.scl3.mozilla.com",
-    "20 mx2.scl3.mozilla.com",
+    "10 smtp1.mdc2.mozilla.com",
   ]
 
   ttl = "180"
