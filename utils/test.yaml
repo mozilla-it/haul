@@ -26,8 +26,6 @@ https://krakenbenchmark.allizom.org:
   stage_only: 1
 https://krakenbenchmark.mozilla.org:
   links: 1
-https://nightly.allizom.org:
-  stage_only: 1
 https://planet-bugzilla.allizom.org:
   stage_only: 1
 https://planet.mozilla.org:
@@ -62,3 +60,4 @@ https://mozqa.allizom.org:
   stage_only: 1
 https://experiencethearch.mozilla.org:
 https://experiencethearch.com:
+  dns: alias
