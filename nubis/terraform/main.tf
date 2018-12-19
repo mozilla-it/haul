@@ -136,7 +136,7 @@ module "ci" {
   instance_type             = "t2.medium"
   root_storage_size         = "64"
   ami                       = "${var.ami}"
-  elb                       = "${module.load_balancer_web.name},${module.load_balancer_ci.name}"
+  elb                       = "${module.load_balancer_ci.name}"
   ssh_key_file              = "${var.ssh_key_file}"
   ssh_key_name              = "${var.ssh_key_name}"
   min_instances             = 1
