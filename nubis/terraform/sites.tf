@@ -109,23 +109,6 @@ module "bugzilla" {
   site_name = "bugzilla"
 }
 
-module "publicsuffix" {
-  source = "sites"
-
-  region       = "${var.region}"
-  environment  = "${var.environment}"
-  account      = "${var.account}"
-  service_name = "${var.service_name}"
-  role         = "${module.worker.role}"
-
-  enable_cdn             = false
-  domain_aliases         = ["publicsuffix.org", "www.publicsuffix.org"]
-  acm_certificate_domain = "publicsuffix.org"
-  load_balancer_web      = "${module.load_balancer_web.address}"
-
-  site_name = "publicsuffix"
-}
-
 module "trackertest" {
   source = "sites"
 

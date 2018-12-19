@@ -164,37 +164,6 @@ nubis::static { 'tlscanary':
   ],
 }
 
-nubis::static { 'publicsuffix':
-  servername          => 'www.publicsuffix.org',
-  serveraliases       => [
-    'publicsuffix.org',
-    'publicsuffix-haul.allizom.org',
-  ],
-  headers             => [
-  "set X-Nubis-Version ${project_version}",
-  "set X-Nubis-Project ${project_name}",
-  "set X-Nubis-Build   ${packer_build_name}",
-  'set X-Content-Type-Options "nosniff"',
-  'set X-XSS-Protection "1; mode=block"',
-  'set X-Frame-Options "DENY"',
-  'set Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"',
-  'always set Content-Security-Policy "default-src \'none\'; img-src \'self\'; script-src \'unsafe-inline\'; style-src \'self\'"',
-  'set Access-Control-Allow-Origin "*"',
-  ],
-  use_default_headers => false,
-  custom_fragment     => '
-    ExpiresActive On
-    ExpiresDefault "access plus 1 hour"
-
-    <FilesMatch "\.(dat)$">
-        ExpiresActive  On
-        ExpiresDefault "access plus 1 week"
-
-        Header set Cache-Control "max-age=604800"
-    </FilesMatch>
-  '
-}
-
 nubis::static { 'trackertest':
   servername    => 'trackertest.org',
   serveraliases => [

@@ -29,8 +29,6 @@ https://krakenbenchmark.mozilla.org:
 https://planet-bugzilla.allizom.org:
   stage_only: 1
 https://planet.mozilla.org:
-https://publicsuffix-haul.allizom.org:
-  stage_only: 1
 https://seamonkey-project-haul.allizom.org:
   stage_only: 1
 https://start-haul.allizom.org:
@@ -61,3 +59,5 @@ https://mozqa.allizom.org:
 https://experiencethearch.mozilla.org:
 https://experiencethearch.com:
   dns: alias
+https://snippets-stats.mozilla.org:
+  path: /test.html
