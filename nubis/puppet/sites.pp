@@ -275,30 +275,6 @@ nubis::static { 'iot':
   ]
 }
 
-nubis::static { 'mozqa':
-  servername    => 'www.mozqa.com',
-  serveraliases => [
-    'mozqa.com',
-    'mozqa.allizom.org',
-  ],
-  override      => ['All'],
-  options       => ['+Indexes', '+FollowSymLinks'],
-  rewrites      => [
-  { # Redirect to the SSL CA file
-    rewrite_rule => [ '^/ca/$ /ca/ssl-md5-mozqa-ca.pem [R]' ],
-  },
-  { # Send the correct content-type for a CA cert
-    rewrite_rule => [ '^/ca/ssl-md5-mozqa-ca.pem$ - [T=application/x-x509-ca-cert]' ],
-  },
-  ],
-  headers       => [
-    "set X-Nubis-Version ${project_version}",
-    "set X-Nubis-Project ${project_name}",
-    "set X-Nubis-Build   ${packer_build_name}",
-    'set Access-Control-Allow-Origin "*"',
-  ],
-}
-
 nubis::static { 'dynamicua':
   servername    => 'dynamicua-origin.mozilla.org',
   serveraliases => [

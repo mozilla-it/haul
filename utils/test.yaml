@@ -50,12 +50,9 @@ https://iot.mozilla.org:
 https://design.firefox.com:
   links: 1
   stage: https://design.allizom.org
-https://ccadb.allizom.org:
+https://ccadb.org:
+  dns: alias
   links: 1
-  stage_only: 1
-https://mozqa.allizom.org:
-  links: 1
-  stage_only: 1
 https://experiencethearch.mozilla.org:
 https://experiencethearch.com:
   dns: alias
