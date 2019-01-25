@@ -428,6 +428,7 @@ resource "aws_route53_record" "frl_mozilla_mx" {
   zone_id = "${module.mozilla_frl.application_zone_id}"
   name    = "${var.environment == "prod" ? "mozilla.frl" : join(".",
 list(var.environment, "mozilla.frl.allizom.org"))}"
+
   type = "MX"
 
   records = [
