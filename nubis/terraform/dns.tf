@@ -428,7 +428,7 @@ resource "aws_route53_record" "frl_mozilla_mx" {
   zone_id = "${module.mozilla_frl.application_zone_id}"
   name    = "${var.environment == "prod" ? "mozilla.frl" : join(".",
 list(var.environment, "mozilla.frl.allizom.org"))}"
-  type    = "MX"
+  type = "MX"
 
   records = [
     "1 ASPMX.L.GOOGLE.COM",
@@ -437,6 +437,7 @@ list(var.environment, "mozilla.frl.allizom.org"))}"
     "10 ALT3.ASPMX.L.GOOGLE.COM",
     "10 ALT4.ASPMX.L.GOOGLE.COM",
   ]
+
   ttl = "3600"
 }
 
