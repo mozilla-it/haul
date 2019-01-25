@@ -423,6 +423,23 @@ module "mozilla_frl" {
   zone_name = "${var.environment == "prod" ? "mozilla.frl" : join(".", list(var.environment, "mozilla.frl.allizom.org"))}"
 }
 
+# Adding prod and stage MX records for mozilla_frl
+resource "aws_route53_record" "frl_mozilla_mx" {
+  zone_id = "${module.mozilla_frl.application_zone_id}"
+  name    = "${var.environment == "prod" ? "mozilla.frl" : join(".",
+list(var.environment, "mozilla.frl.allizom.org"))}"
+  type    = "MX"
+
+  records = [
+    "1 ASPMX.L.GOOGLE.COM",
+    "5 ALT1.ASPMX.L.GOOGLE.COM",
+    "5 ALT2.ASPMX.L.GOOGLE.COM",
+    "10 ALT3.ASPMX.L.GOOGLE.COM",
+    "10 ALT4.ASPMX.L.GOOGLE.COM",
+  ]
+  ttl = "3600"
+}
+
 module "mozilla_it" {
   source                 = "dns"
   region                 = "${var.region}"
