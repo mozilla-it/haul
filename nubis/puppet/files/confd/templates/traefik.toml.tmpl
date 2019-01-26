@@ -63,6 +63,8 @@ entryPoint = "https"
 # Use HTTP-01 challenges
 [acme.httpChallenge]
   entryPoint = "http"
+{{ else if eq $challenge "tls-apln-01" }}
+[acme.tlsChallenge]
 {{ else }}
 # Use DNS-01 challenges
 [acme.dnsChallenge]
