@@ -53,6 +53,11 @@ endpoint = "127.0.0.1:8500"
 watch = true
 prefix = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/config"
 
+[acme]
+# Handle when this isn't set
+email="{{ getv "/config/Email/Destination" }}"
+storage = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/acme"
+entryPoint = "https"
 {{ $challenge := ( getv "/config/ACME/Challenge" "http-01" ) }}
 {{ if eq $challenge "http-01" }}
 # Use HTTP-01 challenges
@@ -64,12 +69,6 @@ prefix = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/
   provider = "route53"
   delayBeforeCheck = 0
 {{ end }}
-
-[acme]
-# Handle when this isn't set
-email="{{ getv "/config/Email/Destination" }}"
-storage = "{{ getv "/config/ServiceName" }}/{{ getv "/config/EnvironmentName" }}/acme"
-entryPoint = "https"
 
 # Doesn't fallback to https:// checks, bummer
 #dnsProvider = "route53"
@@ -290,39 +289,18 @@ main = "design.allizom.org"
 
 [[acme.domains]]
 main = "tlscanary.allizom.org"
-sans = [
-  "tlscanary-haul.allizom.org"
-]
 
 [[acme.domains]]
 main = "static.allizom.org"
-sans = [
-  "static-haul.allizom.org"
-]
 
 [[acme.domains]]
 main = "website-archive.allizom.org"
-sans = [
-  "website-archive-haul.allizom.org"
-]
 
 [[acme.domains]]
 main = "www-archive.allizom.org"
-sans = [
-  "www-archive-haul.allizom.org"
-]
-
-[[acme.domains]]
-main = "bugzilla-haul.allizom.org"
-
-[[acme.domains]]
-main = "itisatracker-haul.allizom.org"
 
 [[acme.domains]]
 main = "planet.allizom.org"
-sans = [
-  "planet-haul.allizom.org"
-]
 
 [[acme.domains]]
 main = "planet-bugzilla.allizom.org"
@@ -347,99 +325,6 @@ main = "planet-de.allizom.org"
 
 [[acme.domains]]
 main = "experiencethearch.allizom.org"
-
-[[acme.domains]]
-main = "apps.mozillalabs.com.allizom.org"
-
-[[acme.domains]]
-main = "arewestableyet.com.allizom.org"
-
-[[acme.domains]]
-main = "boot2gecko.org.allizom.org"
-
-[[acme.domains]]
-main = "contributejson.org.allizom.org"
-
-[[acme.domains]]
-main = "extensiontest.com.allizom.org"
-
-[[acme.domains]]
-main = "firefoxcup.com.allizom.org"
-
-[[acme.domains]]
-main = "firefoxik.ru.allizom.org"
-
-[[acme.domains]]
-main = "firefox.lt.allizom.org"
-
-[[acme.domains]]
-main = "firefoxparty.com.allizom.org"
-
-[[acme.domains]]
-main = "firefoxquantum.com.allizom.org"
-
-[[acme.domains]]
-main = "getfirefox.co.uk.allizom.org"
-
-[[acme.domains]]
-main = "getfirefox.de.allizom.org"
-
-[[acme.domains]]
-main = "getfirefox.net.allizom.org"
-
-[[acme.domains]]
-main = "leandatapractices.org.allizom.org"
-
-[[acme.domains]]
-main = "lightning-project.org.allizom.org"
-
-[[acme.domains]]
-main = "mozilla.at.allizom.org"
-
-[[acme.domains]]
-main = "mozilla.ca.allizom.org"
-
-[[acme.domains]]
-main = "mozillactf.org.allizom.org"
-
-[[acme.domains]]
-main = "mozillaecuador.org.allizom.org"
-
-[[acme.domains]]
-main = "mozillafirefox.pl.allizom.org"
-
-[[acme.domains]]
-main = "mozillafoundation.com.allizom.org"
-
-[[acme.domains]]
-main = "mozilla.frl.allizom.org"
-
-[[acme.domains]]
-main = "mozilla.it.allizom.org"
-
-[[acme.domains]]
-main = "mozillausa.org.allizom.org"
-
-[[acme.domains]]
-main = "popcornjs.org.allizom.org"
-
-[[acme.domains]]
-main = "prs.paas.allizom.org.allizom.org"
-
-[[acme.domains]]
-main = "trackingprotection.info.allizom.org"
-
-[[acme.domains]]
-main = "webifyme.org.allizom.org"
-
-[[acme.domains]]
-main = "arewefunyet.com.allizom.org"
-sans = [
-  "www.arewefunyet.com.allizom.org"
-]
-
-[[acme.domains]]
-main = "smartdogz.org.allizom.org"
 
 [[acme.domains]]
 main = "snippets-stats.allizom.org"
