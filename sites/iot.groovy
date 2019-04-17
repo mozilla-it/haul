@@ -13,7 +13,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
 
   stage ('Build') {
     dir("docs") {
-      docker.image('jekyll/jekyll:3.7').inside('-u 0:0 -e DEBUG=1 -e JEKYLL_UID=0 --volume="$PWD:/srv/jekyll" -e JEKYLL_GID=0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
+      docker.image('jekyll/jekyll:3.7').inside('-u 0:0 -e DEBUG=true -e JEKYLL_UID=0 --volume="$PWD:/srv/jekyll" -e JEKYLL_GID=0 -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
         sh "ls -l"
         sh "pwd"
         sh "/usr/jekyll/bin/entrypoint jekyll build"
