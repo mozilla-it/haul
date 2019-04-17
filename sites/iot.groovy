@@ -3,8 +3,8 @@
 def nubisStatic = new org.mozilla.nubis.Static()
 
 environment {
-    userId = "${env.UID}";
-    groupId = ${env.GID}";
+    userId = "${env.UID}"
+    groupId = ${env.GID}"
 } 
 
 node {
