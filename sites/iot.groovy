@@ -16,7 +16,6 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
 
     dir("docs") {
       docker.image('jekyll/jekyll:3.7').inside('-u 0:0 -e JEKYLL_UID=115 -e JEKYLL_GID=121 --volume="${PWD}:/srv/jekyll" -e https_proxy=$HTTPS_PROXY -e HTTPS_PROXY -e http_proxy=$HTTP_PROXY -e HTTP_PROXY') {
-        sh "env"
         sh "bundler install"
         sh "/usr/jekyll/bin/entrypoint jekyll build"
       }
