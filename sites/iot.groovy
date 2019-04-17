@@ -5,7 +5,7 @@ def nubisStatic = new org.mozilla.nubis.Static()
 node {
   environment {
       userId = "${env.UID}"
-      groupId = ${env.GID}"
+      groupId = "${env.GID}"
    } 
    stage('Prep') {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'src/'], [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: true, reference: '', trackingSubmodules: true], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/mozilla-iot/mozilla-iot.github.io.git']]])
