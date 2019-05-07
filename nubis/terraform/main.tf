@@ -103,6 +103,7 @@ module "worker" {
   min_instances             = 2
   wait_for_capacity_timeout = "20m"
   nubis_sudo_groups         = "${var.nubis_sudo_groups}"
+  root_storage_size         = "${var.environment == "prod" ? "50": "20"}"
 
   # CPU utilisation based autoscaling (with good defaults)
   scale_load_defaults = true
