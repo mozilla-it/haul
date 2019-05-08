@@ -5,7 +5,7 @@ variable "url" {
 }
 
 variable "days" {
-  default = 28
+  default = 14
 }
 
 variable "policy_id" {
@@ -15,7 +15,7 @@ variable "policy_id" {
 # The monitor's checking frequency in minutes
 # one of 1, 5, 10, 15, 30, 60, 360, 720, or 1440
 variable "frequency" {
-  default = 60
+  default = 720
 }
 
 variable "sla_threshold" {
@@ -26,8 +26,6 @@ variable "locations" {
   type = "list"
 
   default = [
-    "AWS_AP_NORTHEAST_1",
     "AWS_EU_WEST_1",
-    "LINODE_US_WEST_1",
   ]
 }
