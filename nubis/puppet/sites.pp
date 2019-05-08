@@ -301,3 +301,10 @@ nubis::static { 'snippets':
   redirectmatch_status => ['204'],
   redirectmatch_regexp => ['\.html$'],
 }
+
+nubis::static { 'surf':
+  servername    => 'surf.mozilla.org',
+  serveraliases => [
+    'surf.allizom.org',
+  ],
+}

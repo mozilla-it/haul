@@ -210,3 +210,15 @@ module "experiencethearch" {
   site_name           = "experiencethearch"
   site_poll_frequency = "H/1 * * * *"
 }
+
+module "surf" {
+  source = "sites"
+
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  role         = "${module.worker.role}"
+
+  site_name = "surf"
+}
