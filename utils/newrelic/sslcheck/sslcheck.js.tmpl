@@ -44,7 +44,7 @@ r.on('response',
       console.log('**** Date at time of testing: '+currentDate);   
       //   
       if(expirationDate < currentDate){     
-         throw new Error('The test has FAILED as the offset expiration date is before now!');   
+         throw new Error('The SSL certificate test has FAILED, cert expiring sooner than '+daysBeforeExpiration+' days.');
       }else{     
          console.log('The test is a SUCCESS, the expiration date is after now...');   
       } 
