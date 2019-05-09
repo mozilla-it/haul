@@ -55,3 +55,6 @@ https://experiencethearch.com:
 https://snippets-stats.mozilla.org:
   path: /test.html
 https://surf.mozilla.org:
+  links: 1
+https://g20openletter.mozilla.org:
+  links: 1

@@ -298,3 +298,10 @@ nubis::static { 'surf':
     'surf.allizom.org',
   ],
 }
+
+nubis::static { 'g20openletter':
+  servername    => 'g20openletter.mozilla.org',
+  serveraliases => [
+    'g20openletter.allizom.org',
+  ],
+}
