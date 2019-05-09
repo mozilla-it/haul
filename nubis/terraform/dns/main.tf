@@ -13,18 +13,6 @@ resource "aws_route53_zone" "master_zone" {
   }
 }
 
-resource "aws_route53_record" "hosted_zone" {
-  zone_id = "${aws_route53_zone.master_zone.id}"
-  name    = "${var.zone_name}"
-
-  type = "NS"
-  ttl  = "${var.hosted_zone_ttl}"
-
-  records = [
-    "${aws_route53_zone.master_zone.name_servers}",
-  ]
-}
-
 resource "aws_route53_record" "apex_record" {
   zone_id = "${aws_route53_zone.master_zone.zone_id}"
   name    = "${var.zone_name}"
