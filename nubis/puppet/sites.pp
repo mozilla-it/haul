@@ -304,4 +304,10 @@ nubis::static { 'g20openletter':
   serveraliases => [
     'g20openletter.allizom.org',
   ],
+  directories     => [
+    {
+      path           => "/data/${project_name}/g20openletter",
+      options        => ['+MultiViews'],
+    },
+  ],
 }
