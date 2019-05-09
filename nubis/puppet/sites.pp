@@ -98,7 +98,6 @@ nubis::static { 'bugzilla':
   servername      => 'www.bugzilla.org',
   serveraliases   => [
     'bugzilla.org',
-    'bugzilla-haul.allizom.org',
   ],
   directories     => [
     {
@@ -161,15 +160,6 @@ nubis::static { 'tlscanary':
     # For testing
     "tlscanary-${project_name}.allizom.org",
     "tlscanary-${project_name}.mozilla.org",
-  ],
-}
-
-nubis::static { 'trackertest':
-  servername    => 'trackertest.org',
-  serveraliases => [
-    'itsatracker.org',
-    'itsatracker.com',
-    'itisatracker-haul.allizom.org',
   ],
 }
 

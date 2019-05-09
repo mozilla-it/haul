@@ -10,8 +10,6 @@ https://arewestableyet.com:
 https://boot2gecko.org:
   dns: alias
   prod_only: true
-https://bugzilla-haul.allizom.org:
-  stage_only: 1
 https://contributejson.org:
   dns: alias
   prod_only: true
@@ -20,8 +18,6 @@ https://detodosparatodos.com:
   prod_only: true
 https://events.mozspaces.org:
   prod_only: true
-https://itisatracker-haul.allizom.org:
-  stage_only: 1
 https://krakenbenchmark.allizom.org:
   stage_only: 1
 https://krakenbenchmark.mozilla.org:
