@@ -58,4 +58,5 @@ https://surf.mozilla.org:
   links: 1
 https://g20openletter.mozilla.org:
 https://g20openletter.org:
+  prod_only: true
   dns: alias

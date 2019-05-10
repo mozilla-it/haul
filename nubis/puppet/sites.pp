@@ -306,10 +306,10 @@ nubis::static { 'g20openletter':
     'g20openletter.mozilla.org',
     'g20openletter.allizom.org',
   ],
-  directories     => [
+  directories   => [
     {
-      path           => "/data/${project_name}/g20openletter",
-      options        => ['+MultiViews'],
+      path    => "/data/${project_name}/g20openletter",
+      options => ['+MultiViews'],
     },
   ],
 }
