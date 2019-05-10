@@ -57,4 +57,5 @@ https://snippets-stats.mozilla.org:
 https://surf.mozilla.org:
   links: 1
 https://g20openletter.mozilla.org:
-  links: 1
+https://g20openletter.org:
+  dns: alias

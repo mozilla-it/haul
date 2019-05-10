@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 
-use Test::More tests => 95;
+use Test::More tests => 97;
 use Test::WWW::Mechanize;
 use Test::DNS;
 use Net::DNS;
