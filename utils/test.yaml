@@ -1,6 +1,4 @@
 ---
-https://apps.mozillalabs.com:
-  prod_only: true
 https://arewefunyet.com:
   dns: alias
   prod_only: true

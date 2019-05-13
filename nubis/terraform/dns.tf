@@ -50,19 +50,6 @@ resource "aws_route53_record" "ccadb_mozilla_mx" {
 }
 
 ## Generated
-module "apps_mozillalabs_com" {
-  source                 = "dns"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  service_name           = "${var.service_name}"
-  route53_delegation_set = "${aws_route53_delegation_set.haul-delegation.id}"
-  hosted_zone_ttl        = "3600"
-  elb_address            = "${module.load_balancer_web.address}"
-
-  # Make sure to construct a unique zone name depending on the environment
-  zone_name = "${var.environment == "prod" ? "apps.mozillalabs.com" : join(".", list(var.environment, "apps.mozillalabs.com.allizom.org"))}"
-}
-
 module "arewestableyet_com" {
   source                 = "dns"
   region                 = "${var.region}"
