@@ -4,7 +4,7 @@ def nubisStatic = new org.mozilla.nubis.Static()
 
 node {
    stage('Prep') {
-        checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[credentialsId: '', depthOption: 'infinity', ignoreExternalsOption: true, local: 'src', remote: 'https://svn.mozilla.org/projects/website-archive.mozilla.org']], workspaceUpdater: [$class: 'UpdateUpdater']])
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'src/'], [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: true, reference: '', trackingSubmodules: true], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/mozilla-it/website-archive.mozilla.org.git']]])
    }
    
   stage ('Build') {
