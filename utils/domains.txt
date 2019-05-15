@@ -5,7 +5,6 @@ airmo.mozilla.org
 air.mozilla.com
 ambassadors.mozilla.org
 apps.mozilla.com
-apps.mozillalabs.com
 arewestableyet.com
 ask.mozilla.org
 aurora.mozilla.org
