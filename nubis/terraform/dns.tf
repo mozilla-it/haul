@@ -49,6 +49,14 @@ resource "aws_route53_record" "ccadb_mozilla_mx" {
   ttl = "180"
 }
 
+resource "aws_route53_record" "ccadb_mozilla_txt" {
+  zone_id = "${module.ccadb_org.application_zone_id}"
+  name    = "${var.environment == "prod" ? "ccadb.org" : join(".", list(var.environment, "ccadb.allizom.org"))}"
+  type    = "TXT"
+  records = ["v=spf1 a mx include:_spf.salesforce.com -all"]
+  ttl     = "300"
+}
+
 ## Generated
 module "arewestableyet_com" {
   source                 = "dns"
